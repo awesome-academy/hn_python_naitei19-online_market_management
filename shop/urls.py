@@ -19,9 +19,14 @@ from django.urls import path, include
 from django.views.generic.base import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('home.urls')),
     path('', RedirectView.as_view(url='home/')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += i18n_patterns(
+    path('home/', include('home.urls')),
+    path('admin/', admin.site.urls),
+)

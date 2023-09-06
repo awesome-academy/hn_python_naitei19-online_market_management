@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-07 00:37+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\home\models.py:16
+msgid "Parent category of this category (if any)."
+msgstr "Thể loại gốc của thể loại này (nếu có)."
+
+#: .\home\models.py:23
+msgid "URL of the product image."
+msgstr "URL của hình ảnh sản phẩm."
+
+#: .\home\models.py:24
+msgid "Brief description of the product."
+msgstr "Mô tả ngắn gọn về sản phẩm."
+
+#: .\home\models.py:25
+msgid "The origin price of the product."
+msgstr "giá gốc của sản phẩm."
+
+#: .\home\models.py:26
+msgid "Quantity of the product available in stock."
+msgstr "Số lượng sản phẩm có sẵn trong kho."
+
+#: .\home\models.py:27
+msgid "Number of products sold."
+msgstr "Số lượng sản phẩm đã bán."
+
+#: .\home\models.py:37
+msgid "Date of the order."
+msgstr "Ngày đặt hàng."
+
+#: .\home\models.py:45
+msgid "Status of the order."
+msgstr "Tình trạng của đơn hàng."
+
+#: .\home\models.py:50
+msgid "Price of product at order."
+msgstr "Giá sản phẩm theo đơn hàng."
+
+#: .\home\models.py:51
+msgid "total quantity of products ordered."
+msgstr "tổng số lượng sản phẩm đã đặt hàng."
+
+#: .\home\models.py:54
+msgid "total cost of order."
+msgstr "tổng chi phí của đơn hàng"
+
+#: .\home\models.py:60
+msgid "Quantity of each product in the cart."
+msgstr "Số lượng của từng sản phẩm trong giỏ hàng."
+
+#: .\home\models.py:66
+msgid "The number of sales of the best-selling product."
+msgstr "Số lượng bán ra của sản phẩm bán chạy nhất"
+
+#: .\home\models.py:69
+msgid "Best Seller"
+msgstr "Sản phẩm bán chạy"
+
+#: .\home\models.py:70
+msgid "Best Sellers"
+msgstr "Sản phẩm bán chạy"
+
+#: .\shop\settings.py:120
+msgid "Vietnamese"
+msgstr "Tiếng Việt"
+
+#: .\shop\settings.py:121
+msgid "English"
+msgstr "Tiếng Anh"

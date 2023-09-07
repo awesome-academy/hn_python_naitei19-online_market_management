@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-07 00:37+0700\n"
+"POT-Creation-Date: 2023-09-08 10:16+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgid "Parent category of this category (if any)."
 msgstr "Thể loại gốc của thể loại này (nếu có)."
 
 #: .\home\models.py:23
-msgid "URL of the product image."
+msgid "Product image"
 msgstr "URL của hình ảnh sản phẩm."
 
 #: .\home\models.py:24
@@ -79,9 +79,65 @@ msgid "Best Sellers"
 msgstr "Sản phẩm bán chạy"
 
 #: .\shop\settings.py:120
-msgid "Vietnamese"
-msgstr "Tiếng Việt"
+msgid "VI"
+msgstr "VI"
 
 #: .\shop\settings.py:121
-msgid "English"
-msgstr "Tiếng Anh"
+msgid "EN"
+msgstr "EN"
+
+#: .\templates\homepage\footer.html:11
+msgid " Contact Us "
+msgstr "Liên Hệ Chúng Tôi"
+
+#: .\templates\homepage\footer.html:15
+msgid "Call Liu: +84 394188326"
+msgstr "Gọi Liu: +84 394188326"
+
+#: .\templates\homepage\footer.html:19
+msgid "Call Huy: +84 343036100"
+msgstr "Gọi Huy: +84 343036100"
+
+#: .\templates\homepage\footer.html:36
+msgid ""
+" The most important thing is always the customer's taste and the reliability "
+"of the food "
+msgstr ""
+" Điều quan trọng nhất với chúng tôi luôn là trải nghiệm của khách hàng và "
+"chất lượngcủa món ăn"
+
+#: .\templates\homepage\footer.html:37
+msgid " We are honored to serve you "
+msgstr "Được phục vụ quý khách là vinh hạnh của chúng tôi"
+
+#: .\templates\homepage\footer.html:59
+msgid " Opening Hours "
+msgstr "Giờ Mở Cửa"
+
+#: .\templates\homepage\footer.html:62
+msgid " Everyday "
+msgstr "Mỗi ngày"
+
+#: .\templates\homepage\index.html:23
+msgid ""
+" We are Hyniu restaurant, managed by Le Quang Huy and Doan Quang Liu with a "
+"chain of 507 stores worldwide."
+msgstr ""
+"Chúng tôi là nhà hàng Hyniu, được quản lý bởi Lê Quang Huy và Đoàn Quang Liu "
+"với một chuỗi 507 nhà hàng trên toàn thế giới."
+
+#: .\templates\homepage\index.html:24
+msgid "Welcome to Hyniu Food & Drink! "
+msgstr "Chào mừng bạn đến với Hyniu Food & Drink!"
+
+#: .\templates\homepage\navbar.html:22
+msgid "HOME"
+msgstr "HOME"
+
+#: .\templates\homepage\navbar.html:23
+msgid "MENU"
+msgstr "MENU"
+
+#: .\templates\homepage\navbar.html:24
+msgid "ABOUT"
+msgstr "ABOUT"

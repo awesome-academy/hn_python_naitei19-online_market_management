@@ -61,7 +61,7 @@ ROOT_URLCONF = 'shop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -117,8 +117,8 @@ AUTH_USER_MODEL = 'home.CustomUser'
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGES = [
-    ('vi', _('Vietnamese')),
-    ('en', _('English')),
+    ('vi', _('VI')),
+    ('en', _('EN')),
 ]
 
 LANGUAGE_CODE = 'vi'
@@ -138,3 +138,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #Path to the translation file
 LOCALE_PATHS = (BASE_DIR / 'locale/', )
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]

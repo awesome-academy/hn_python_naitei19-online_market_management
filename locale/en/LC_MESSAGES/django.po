@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-08 10:16+0700\n"
+"POT-Creation-Date: 2023-09-08 22:23+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,6 +86,30 @@ msgstr ""
 msgid "EN"
 msgstr ""
 
+#: .\templates\catalog\menu.html:12
+msgid "Our Menu"
+msgstr ""
+
+#: .\templates\catalog\menu.html:19
+#, python-format
+msgid ""
+"\n"
+"                        %(Category.name)s\n"
+"                    "
+msgstr ""
+
+#: .\templates\catalog\menu.html:67 .\templates\homepage\navbar.html:24
+msgid "HOME"
+msgstr ""
+
+#: .\templates\catalog\menu.html:68 .\templates\homepage\navbar.html:25
+msgid "MENU"
+msgstr ""
+
+#: .\templates\catalog\menu.html:69 .\templates\homepage\navbar.html:26
+msgid "ABOUT"
+msgstr ""
+
 #: .\templates\homepage\footer.html:11
 msgid " Contact Us "
 msgstr ""
@@ -124,16 +148,4 @@ msgstr ""
 
 #: .\templates\homepage\index.html:24
 msgid "Welcome to Hyniu Food & Drink! "
-msgstr ""
-
-#: .\templates\homepage\navbar.html:22
-msgid "HOME"
-msgstr ""
-
-#: .\templates\homepage\navbar.html:23
-msgid "MENU"
-msgstr ""
-
-#: .\templates\homepage\navbar.html:24
-msgid "ABOUT"
 msgstr ""

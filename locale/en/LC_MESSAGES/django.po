@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-11 14:39+0700\n"
+"POT-Creation-Date: 2023-09-11 01:28+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -158,10 +158,22 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
-#: .\templates\registration\login.html:106
-msgid "Password"
-msgstr ""
-
 #: .\templates\registration\login.html:114
 msgid "Register Now!"
+msgstr ""
+
+#: .\templates\registration\profile.html:75
+msgid "Profile"
+msgstr ""
+
+#: .\templates\registration\profile.html:88
+msgid "{{ field.label }}:"
+msgstr ""
+
+#: .\templates\registration\profile.html:109
+msgid "Save Changes"
+msgstr ""
+
+#: .\templates\registration\profile.html:113
+msgid "Logout"
 msgstr ""

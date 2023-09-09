@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-08 22:23+0700\n"
+"POT-Creation-Date: 2023-09-11 14:38+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,39 +42,39 @@ msgstr "Số lượng sản phẩm có sẵn trong kho."
 msgid "Number of products sold."
 msgstr "Số lượng sản phẩm đã bán."
 
-#: .\home\models.py:37
+#: .\home\models.py:40
 msgid "Date of the order."
 msgstr "Ngày đặt hàng."
 
-#: .\home\models.py:45
+#: .\home\models.py:48
 msgid "Status of the order."
 msgstr "Tình trạng của đơn hàng."
 
-#: .\home\models.py:50
+#: .\home\models.py:53
 msgid "Price of product at order."
 msgstr "Giá sản phẩm theo đơn hàng."
 
-#: .\home\models.py:51
+#: .\home\models.py:54
 msgid "total quantity of products ordered."
 msgstr "tổng số lượng sản phẩm đã đặt hàng."
 
-#: .\home\models.py:54
+#: .\home\models.py:57
 msgid "total cost of order."
 msgstr "tổng chi phí của đơn hàng"
 
-#: .\home\models.py:60
+#: .\home\models.py:63
 msgid "Quantity of each product in the cart."
 msgstr "Số lượng của từng sản phẩm trong giỏ hàng."
 
-#: .\home\models.py:66
+#: .\home\models.py:69
 msgid "The number of sales of the best-selling product."
 msgstr "Số lượng bán ra của sản phẩm bán chạy nhất"
 
-#: .\home\models.py:69
+#: .\home\models.py:72
 msgid "Best Seller"
 msgstr "Sản phẩm bán chạy"
 
-#: .\home\models.py:70
+#: .\home\models.py:73
 msgid "Best Sellers"
 msgstr "Sản phẩm bán chạy"
 
@@ -90,23 +90,18 @@ msgstr "EN"
 msgid "Our Menu"
 msgstr "Thực Đơn Của Chúng Tôi"
 
-#: .\templates\catalog\menu.html:19
-#, python-format
-msgid ""
-"\n"
-"                        %(Category.name)s\n"
-"                    "
-msgstr ""
-
-#: .\templates\catalog\menu.html:67 .\templates\homepage\navbar.html:24
+#: .\templates\catalog\menu.html:52 .\templates\homepage\navbar.html:24
+#: .\templates\registration\login.html:33
 msgid "HOME"
 msgstr "HOME"
 
-#: .\templates\catalog\menu.html:68 .\templates\homepage\navbar.html:25
+#: .\templates\catalog\menu.html:53 .\templates\homepage\navbar.html:25
+#: .\templates\registration\login.html:34
 msgid "MENU"
 msgstr "MENU"
 
-#: .\templates\catalog\menu.html:69 .\templates\homepage\navbar.html:26
+#: .\templates\catalog\menu.html:54 .\templates\homepage\navbar.html:26
+#: .\templates\registration\login.html:35
 msgid "ABOUT"
 msgstr "ABOUT"
 
@@ -142,7 +137,7 @@ msgstr "Giờ Mở Cửa"
 msgid " Everyday "
 msgstr "Mỗi ngày"
 
-#: .\templates\homepage\index.html:23
+#: .\templates\homepage\index.html:13
 msgid ""
 " We are Hyniu restaurant, managed by Le Quang Huy and Doan Quang Liu with a "
 "chain of 507 stores worldwide."
@@ -150,9 +145,14 @@ msgstr ""
 "Chúng tôi là nhà hàng Hyniu, được quản lý bởi Lê Quang Huy và Đoàn Quang Liu "
 "với một chuỗi 507 nhà hàng trên toàn thế giới."
 
-#: .\templates\homepage\index.html:24
+#: .\templates\homepage\index.html:14
 msgid "Welcome to Hyniu Food & Drink! "
 msgstr "Chào mừng bạn đến với Hyniu Food & Drink!"
+
+#: .\templates\registration\login.html:82
+#: .\templates\registration\login.html:110
+msgid "Login"
+msgstr "Đăng Nhập"
 
 msgid "Milk Tea"
 msgstr "Trà Sữa"
@@ -168,3 +168,19 @@ msgstr "Cà phê"
 
 msgid "Fried Chicken"
 msgstr "Gà Rán"
+
+#: .\templates\registration\login.html:84
+msgid "Your username or password didn't match. Please try again."
+msgstr "Tên đăng nhập và mật khẩu của bạn không khớp. Hãy thử lại"
+
+#: .\templates\registration\login.html:95
+msgid "Username"
+msgstr "Tên Đăng Nhập"
+
+#: .\templates\registration\login.html:106
+msgid "Password"
+msgstr "Mật Khẩu"
+
+#: .\templates\registration\login.html:114
+msgid "Register Now!"
+msgstr "Đăng Ký Ngay!"

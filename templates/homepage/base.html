@@ -86,6 +86,13 @@
             <a class="listlink" href="{% url 'en:register' %}">   &emsp;
               <img src="/static/homepage/images/en.png" class="imagesflag">
               <a  href="{% url 'en:register' %}" class="trans-button"> EN &emsp; </a>
+            {% elif request.resolver_match.url_name == 'cart' %}
+            <a class="listlink" href="{% url 'vi:cart' %}">  &emsp;
+              <img src="/static/homepage/images/vi.png" class="imagesflag">
+              <a  href="{% url 'vi:cart' %}" class="trans-button"> VI </a> 
+            <a class="listlink" href="{% url 'en:cart' %}">   &emsp;
+              <img src="/static/homepage/images/en.png" class="imagesflag">
+              <a  href="{% url 'en:cart' %}" class="trans-button"> EN &emsp; </a>  
             {% endif %}
             <div class="user_option">
               {% if user.is_authenticated %}
@@ -99,7 +106,7 @@
                 <i class="fa fa-user" aria-hidden="true"></i>
               </a>
               {% endif %}
-              <a href="" class="user_link">
+              <a href="{% url 'home:cart' %}" class="user_link">
                 <i class="fa fa-shopping-cart	" aria-hidden="true"></i>
               </a>
               <form class="form-inline">

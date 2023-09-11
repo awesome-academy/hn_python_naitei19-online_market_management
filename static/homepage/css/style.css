@@ -708,3 +708,28 @@ table.table td, table.table th {
   ::-webkit-scrollbar-thumb:active{
   	background: rgba(0,0,0,.9);
   }
+
+  .cart-container {
+    width:fit-content;
+    margin: 0px auto;
+    padding: 20px;
+    background-color: #3b3838;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 40px;
+    text-align: center;
+  }
+
+.tablecart {
+    border-collapse: separate;
+    border-spacing: 10px; 
+}
+
+.tablecart th, td {
+    padding: 8px;
+    border: 1px solid #ddd; 
+    color: white;
+    vertical-align: middle;
+    text-align: center; 
+}

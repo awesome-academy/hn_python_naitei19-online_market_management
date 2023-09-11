@@ -1,12 +1,13 @@
 from django.views import View, generic
-from .models import Category, Product
+from .models import Category, Product, Cart, CartItem, CustomUser
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import CustomUserForm
 from .forms import RegistrationForm
 from django.contrib.auth import logout
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
+from djmoney.money import Money
 
 class HomeView(View):
     def get(self, request):
@@ -42,9 +43,32 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            cart = Cart.objects.create(user=user)
+            cart.save()
             # Xử lý sau khi đăng ký thành công, ví dụ: chuyển hướng đến trang đăng nhập
             return redirect('login')
     else:
         form = RegistrationForm()
     return render(request, 'registration/register.html', {'form': form})
+
+class CartView(View):
+    model=Cart
+
+    def get(self, request):
+        cartall = CartItem.objects.filter(cart_id=Cart.objects.get(user_id=request.user.id))
+        total_price = Money(sum(item.product.base_price * item.quantity for item in cartall),'VND')
+        return render(request, 'catalog/cart.html',{'cartall':cartall,'total_price':total_price})
+
+def add_to_cart(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    user = request.user
+    cart, created = Cart.objects.get_or_create(user=user)
+
+    # Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa, nếu có thì tăng số lượng
+    cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+    if not created:
+        cart_item.quantity += 1
+        cart_item.save()
+
+    return redirect('/cart')

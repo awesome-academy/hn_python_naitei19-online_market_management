@@ -1,16 +1,6 @@
-{% extends 'homepage/base.html'%}
+{% extends 'homepage/navbar.html'%}
 {% load static %}
 {% load i18n %}
-
-{% block cssblock %}
-<link rel="shortcut icon" href="{% static 'homepage/images/favicon.png' %}" type="">
-
-<title> HyNiu Food & Drink </title>
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="{% static 'homepage/css/bootstrap.css' %}" />
-  <!-- Custom styles for this template -->
-  <link href="{% static 'homepage/css/style.css' %}" rel="stylesheet" />
-{% endblock %}
 
 {% block content %}
     <!-- Header section -->

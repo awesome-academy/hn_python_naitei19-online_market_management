@@ -13,7 +13,7 @@ class CustomUser(AbstractUser):
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
-    parent = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, help_text=_("Parent category of this category (if any)."))
+    parent = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, help_text=_("Parent category of this category (if any)."))
 
     def __str__(self):
         return self.name
@@ -26,6 +26,9 @@ class Product(models.Model):
     number_in_stock = models.IntegerField(default=0, help_text=_("Quantity of the product available in stock."))
     sold_number = models.IntegerField(default=0, help_text=_("Number of products sold."))
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
     def is_available(self):
         return self.number_in_stock > 0

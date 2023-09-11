@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load static %}
 
 <!DOCTYPE html>
 <html>
@@ -6,13 +7,25 @@
   <!-- Basic -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    {% block cssblock %}
-    {% endblock %}
+  <link rel="shortcut icon" href="{% static 'homepage/images/favicon.png' %}" type="">
+  <title> HyNiu Food & Drink </title>
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'homepage/css/bootstrap.css' %}" />
+    <!-- Custom styles for this template -->
+    <link href="{% static 'homepage/css/style.css' %}" rel="stylesheet" />
+  
 </head>
 <body>
-{% include 'homepage/navbar.html' %}
+
+{% block navbarblock %}
+{% endblock %}
+
 {% block content %}
 {% endblock %}
+
+{% block menublock %}
+{% endblock %}
+
 {% include 'homepage/footer.html' %}
 </body>
 </html>

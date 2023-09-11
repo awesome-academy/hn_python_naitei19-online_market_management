@@ -19,9 +19,9 @@
 
 </head>
 <body>
-
-<div class="hero_area">
+  {% block navbarblock %}
   <!-- header section strats -->
+  <div class="hero_area">
     {% if request.resolver_match.url_name == 'category'%}
     <div class="bg-navbar">
       <img src="{% static 'homepage/images/navbar.jpg' %}" alt="">
@@ -107,6 +107,7 @@
       </div>
   </header>
   <!-- end header section -->
+  {% endblock %}
 
   {% block content %}
   {% endblock %}

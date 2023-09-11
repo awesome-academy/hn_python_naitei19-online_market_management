@@ -29,6 +29,7 @@ urlpatterns = [
     path('en/', include('home.urls', namespace='en')),
     path('vi/', include('home.urls', namespace='vi')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += i18n_patterns(
     path('home/', include('home.urls')),
     path('admin/', admin.site.urls),

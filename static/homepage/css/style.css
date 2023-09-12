@@ -655,3 +655,21 @@ input[type="submit"]:hover {
 .login-container .forgot-password {
   margin-top: 15px; /* Điều chỉnh khoảng cách từ trên xuống cho liên kết "Forgot Password?" */
 }
+.white-label {
+  color: white;
+}
+table.table {
+  border-collapse: collapse;
+}
+
+table.table td, table.table th {
+  border: none;
+  padding: 8px;
+}
+.table-col-text-left {
+  text-align: left !important;
+  width: 35%;
+}
+.trans-button {
+  margin-left: 8px;
+}

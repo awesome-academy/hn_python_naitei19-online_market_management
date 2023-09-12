@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-11 14:38+0700\n"
+"POT-Creation-Date: 2023-09-12 00:16+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,6 +78,10 @@ msgstr "Sản phẩm bán chạy"
 msgid "Best Sellers"
 msgstr "Sản phẩm bán chạy"
 
+#: .\home\views.py:28
+msgid "Changes Saved"
+msgstr ""
+
 #: .\shop\settings.py:120
 msgid "VI"
 msgstr "VI"
@@ -86,24 +90,26 @@ msgstr "VI"
 msgid "EN"
 msgstr "EN"
 
-#: .\templates\catalog\menu.html:12
+#: .\templates\catalog\menu.html:11
 msgid "Our Menu"
 msgstr "Thực Đơn Của Chúng Tôi"
 
-#: .\templates\catalog\menu.html:52 .\templates\homepage\navbar.html:24
-#: .\templates\registration\login.html:33
+#: .\templates\homepage\base.html:47
 msgid "HOME"
 msgstr "HOME"
 
-#: .\templates\catalog\menu.html:53 .\templates\homepage\navbar.html:25
-#: .\templates\registration\login.html:34
+#: .\templates\homepage\base.html:48
 msgid "MENU"
 msgstr "MENU"
 
-#: .\templates\catalog\menu.html:54 .\templates\homepage\navbar.html:26
-#: .\templates\registration\login.html:35
+#: .\templates\homepage\base.html:49
 msgid "ABOUT"
 msgstr "ABOUT"
+
+#: .\templates\homepage\base.html:91 .\templates\registration\login.html:10
+#: .\templates\registration\login.html:38
+msgid "Login"
+msgstr "Đăng Nhập"
 
 #: .\templates\homepage\footer.html:11
 msgid " Contact Us "
@@ -149,38 +155,54 @@ msgstr ""
 msgid "Welcome to Hyniu Food & Drink! "
 msgstr "Chào mừng bạn đến với Hyniu Food & Drink!"
 
-#: .\templates\registration\login.html:82
-#: .\templates\registration\login.html:110
-msgid "Login"
-msgstr "Đăng Nhập"
-
-msgid "Milk Tea"
-msgstr "Trà Sữa"
-
-msgid "Snack"
-msgstr "Đồ Ăn Nhẹ"
-
-msgid "Soda"
-msgstr "Nước Ngọt"
-
-msgid "Coffee"
-msgstr "Cà phê"
-
-msgid "Fried Chicken"
-msgstr "Gà Rán"
-
-#: .\templates\registration\login.html:84
+#: .\templates\registration\login.html:12
 msgid "Your username or password didn't match. Please try again."
 msgstr "Tên đăng nhập và mật khẩu của bạn không khớp. Hãy thử lại"
 
-#: .\templates\registration\login.html:95
+#: .\templates\registration\login.html:23
 msgid "Username"
 msgstr "Tên Đăng Nhập"
 
-#: .\templates\registration\login.html:106
+#: .\templates\registration\login.html:34
 msgid "Password"
 msgstr "Mật Khẩu"
 
-#: .\templates\registration\login.html:114
+#: .\templates\registration\login.html:42
 msgid "Register Now!"
 msgstr "Đăng Ký Ngay!"
+
+#: .\templates\registration\profile.html:11
+msgid "Profile"
+msgstr "Thông tin"
+
+#: .\templates\registration\profile.html:45
+msgid "Save Changes"
+msgstr "Lưu Thay Đổi"
+
+#: .\templates\registration\profile.html:51
+msgid "Logout"
+msgstr "Đăng Xuất"
+
+#~ msgid "Milk Tea"
+#~ msgstr "Trà Sữa"
+
+#~ msgid "Snack"
+#~ msgstr "Đồ Ăn Nhẹ"
+
+#~ msgid "Soda"
+#~ msgstr "Nước Ngọt"
+
+#~ msgid "Coffee"
+#~ msgstr "Cà phê"
+
+#~ msgid "Fried Chicken"
+#~ msgstr "Gà Rán"
+
+#~ msgid "Email:"
+#~ msgstr "ABC"
+
+#~ msgid "Phone"
+#~ msgstr "SĐT"
+
+#~ msgid "Address"
+#~ msgstr "Địa Chỉ"

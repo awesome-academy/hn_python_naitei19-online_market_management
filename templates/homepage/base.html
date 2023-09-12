@@ -54,28 +54,35 @@
             {% if request.resolver_match.url_name == 'home' or request.resolver_match.url_name == 'index' %}
             <a class="listlink" href="{% url 'vi:home' %}">  &emsp;
               <img src="/static/homepage/images/vi.png" class="imagesflag">
-              <a  href="{% url 'vi:home' %}" style="margin-left: 8px;"> VI </a> 
+              <a  href="{% url 'vi:home' %}" class="trans-button"> VI </a> 
             <a class="listlink" href="{% url 'en:home' %}">   &emsp;
               <img src="/static/homepage/images/en.png" class="imagesflag">
-              <a  href="{% url 'en:home' %}" style="margin-left: 8px;"> EN &emsp; </a> 
+              <a  href="{% url 'en:home' %}" class="trans-button"> EN &emsp; </a> 
             {% elif request.resolver_match.url_name == 'login' %}
             <a class="listlink" href="{% url 'vi:login' %}">  &emsp;
               <img src="/static/homepage/images/vi.png" class="imagesflag">
-              <a  href="{% url 'vi:login' %}" style="margin-left: 8px;"> VI </a> 
+              <a  href="{% url 'vi:login' %}" class="trans-button"> VI </a> 
             <a class="listlink" href="{% url 'en:login' %}">   &emsp;
               <img src="/static/homepage/images/en.png" class="imagesflag">
-              <a  href="{% url 'en:login' %}" style="margin-left: 8px;"> EN &emsp; </a>
+              <a  href="{% url 'en:login' %}" class="trans-button"> EN &emsp; </a>
             {% elif request.resolver_match.url_name == 'category' %}
             <a class="listlink" href="{% url 'vi:category' %}">  &emsp;
               <img src="/static/homepage/images/vi.png" class="imagesflag">
-              <a  href="{% url 'vi:category' %}" style="margin-left: 8px;"> VI </a> 
+              <a  href="{% url 'vi:category' %}" class="trans-button"> VI </a> 
             <a class="listlink" href="{% url 'en:category' %}">   &emsp;
               <img src="/static/homepage/images/en.png" class="imagesflag">
-              <a  href="{% url 'en:category' %}" style="margin-left: 8px;"> EN &emsp; </a>
+              <a  href="{% url 'en:category' %}" class="trans-button"> EN &emsp; </a>
+            {% elif request.resolver_match.url_name == 'profile' %}
+            <a class="listlink" href="{% url 'vi:profile' %}">  &emsp;
+              <img src="/static/homepage/images/vi.png" class="imagesflag">
+              <a  href="{% url 'vi:profile' %}" class="trans-button"> VI </a> 
+            <a class="listlink" href="{% url 'en:profile' %}">   &emsp;
+              <img src="/static/homepage/images/en.png" class="imagesflag">
+              <a  href="{% url 'en:profile' %}" class="trans-button"> EN &emsp; </a>
             {% endif %}
             <div class="user_option">
               {% if user.is_authenticated %}
-              <a href="" class="user_link">
+              <a href="{% url 'home:profile' %}" class="user_link">
                 {{ user.get_username }}
                 <i class="fa fa-user" aria-hidden="true"></i>
               </a>

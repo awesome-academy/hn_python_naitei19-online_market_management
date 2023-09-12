@@ -79,6 +79,13 @@
             <a class="listlink" href="{% url 'en:profile' %}">   &emsp;
               <img src="/static/homepage/images/en.png" class="imagesflag">
               <a  href="{% url 'en:profile' %}" class="trans-button"> EN &emsp; </a>
+            {% elif request.resolver_match.url_name == 'register' %}
+            <a class="listlink" href="{% url 'vi:register' %}">  &emsp;
+              <img src="/static/homepage/images/vi.png" class="imagesflag">
+              <a  href="{% url 'vi:register' %}" class="trans-button"> VI </a> 
+            <a class="listlink" href="{% url 'en:register' %}">   &emsp;
+              <img src="/static/homepage/images/en.png" class="imagesflag">
+              <a  href="{% url 'en:register' %}" class="trans-button"> EN &emsp; </a>
             {% endif %}
             <div class="user_option">
               {% if user.is_authenticated %}

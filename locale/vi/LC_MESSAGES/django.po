@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-12 00:16+0700\n"
+"POT-Creation-Date: 2023-09-12 12:34+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,9 +78,9 @@ msgstr "Sản phẩm bán chạy"
 msgid "Best Sellers"
 msgstr "Sản phẩm bán chạy"
 
-#: .\home\views.py:28
-msgid "Changes Saved"
-msgstr ""
+#: .\home\views.py:29
+msgid "Changes saved"
+msgstr "Thay đổi đã lưu"
 
 #: .\shop\settings.py:120
 msgid "VI"
@@ -160,14 +160,20 @@ msgid "Your username or password didn't match. Please try again."
 msgstr "Tên đăng nhập và mật khẩu của bạn không khớp. Hãy thử lại"
 
 #: .\templates\registration\login.html:23
+#: .\templates\registration\register.html:30
 msgid "Username"
 msgstr "Tên Đăng Nhập"
 
 #: .\templates\registration\login.html:34
+#: .\templates\registration\register.html:52
 msgid "Password"
 msgstr "Mật Khẩu"
 
 #: .\templates\registration\login.html:42
+msgid "Don't have an account yet? "
+msgstr "Chưa có tài khoản? "
+
+#: .\templates\registration\login.html:43
 msgid "Register Now!"
 msgstr "Đăng Ký Ngay!"
 
@@ -185,6 +191,30 @@ msgstr "Đăng Xuất"
 
 msgid "Phone"
 msgstr "SĐT"
+#: .\templates\registration\register.html:10
+#: .\templates\registration\register.html:67
+msgid "Register"
+msgstr "Đăng Ký"
+
+#: .\templates\registration\register.html:12
+msgid "There was an error with your submission:"
+msgstr "Đã xảy ra lỗi với nội dung bạn gửi:"
+
+#: .\templates\registration\register.html:41
+msgid "Email"
+msgstr "Email"
+
+#: .\templates\registration\register.html:63
+msgid "Confirm Password"
+msgstr "Xác Nhận Mật Khẩu"
+
+#: .\templates\registration\register.html:70
+msgid "Already have an account? "
+msgstr "Đã có tài khoản? "
+
+#: .\templates\registration\register.html:71
+msgid "Login here!"
+msgstr "Đăng nhập ở đây!"
 
 msgid "Address"
 msgstr "Địa Chỉ"

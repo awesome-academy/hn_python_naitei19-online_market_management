@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-11 01:28+0700\n"
+"POT-Creation-Date: 2023-09-12 12:34+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,6 +78,10 @@ msgstr ""
 msgid "Best Sellers"
 msgstr ""
 
+#: .\home\views.py:29
+msgid "Changes saved"
+msgstr ""
+
 #: .\shop\settings.py:120
 msgid "VI"
 msgstr ""
@@ -86,26 +90,24 @@ msgstr ""
 msgid "EN"
 msgstr ""
 
-#: .\templates\catalog\menu.html:12
+#: .\templates\catalog\menu.html:11
 msgid "Our Menu"
 msgstr ""
 
-#: .\templates\catalog\menu.html:52 .\templates\homepage\navbar.html:24
-#: .\templates\registration\login.html:33
+#: .\templates\homepage\base.html:47
 msgid "HOME"
 msgstr ""
 
-#: .\templates\catalog\menu.html:53 .\templates\homepage\navbar.html:25
-#: .\templates\registration\login.html:34
+#: .\templates\homepage\base.html:48
 msgid "MENU"
 msgstr ""
 
-#: .\templates\catalog\menu.html:54 .\templates\homepage\navbar.html:26
-#: .\templates\registration\login.html:35
+#: .\templates\homepage\base.html:49
 msgid "ABOUT"
 msgstr ""
 
-#: .\templates\homepage\base.html:68
+#: .\templates\homepage\base.html:91 .\templates\registration\login.html:10
+#: .\templates\registration\login.html:38
 msgid "Login"
 msgstr ""
 
@@ -149,35 +151,61 @@ msgstr ""
 msgid "Welcome to Hyniu Food & Drink! "
 msgstr ""
 
-#: .\templates\registration\login.html:82
-#: .\templates\registration\login.html:110
-msgid "Login"
-msgstr ""
-
-#: .\templates\registration\login.html:84
+#: .\templates\registration\login.html:12
 msgid "Your username or password didn't match. Please try again."
 msgstr ""
 
-#: .\templates\registration\login.html:95
+#: .\templates\registration\login.html:23
+#: .\templates\registration\register.html:30
 msgid "Username"
 msgstr ""
 
-#: .\templates\registration\login.html:114
+#: .\templates\registration\login.html:34
+#: .\templates\registration\register.html:52
+msgid "Password"
+msgstr ""
+
+#: .\templates\registration\login.html:42
+msgid "Don't have an account yet? "
+msgstr ""
+
+#: .\templates\registration\login.html:43
 msgid "Register Now!"
 msgstr ""
 
-#: .\templates\registration\profile.html:75
+#: .\templates\registration\profile.html:11
 msgid "Profile"
 msgstr ""
 
-#: .\templates\registration\profile.html:88
-msgid "{{ field.label }}:"
-msgstr ""
-
-#: .\templates\registration\profile.html:109
+#: .\templates\registration\profile.html:45
 msgid "Save Changes"
 msgstr ""
 
-#: .\templates\registration\profile.html:113
+#: .\templates\registration\profile.html:51
 msgid "Logout"
+msgstr ""
+
+#: .\templates\registration\register.html:10
+#: .\templates\registration\register.html:67
+msgid "Register"
+msgstr ""
+
+#: .\templates\registration\register.html:12
+msgid "There was an error with your submission:"
+msgstr ""
+
+#: .\templates\registration\register.html:41
+msgid "Email"
+msgstr ""
+
+#: .\templates\registration\register.html:63
+msgid "Confirm Password"
+msgstr ""
+
+#: .\templates\registration\register.html:70
+msgid "Already have an account? "
+msgstr ""
+
+#: .\templates\registration\register.html:71
+msgid "Login here!"
 msgstr ""

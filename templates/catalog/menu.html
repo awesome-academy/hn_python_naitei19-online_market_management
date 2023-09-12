@@ -1,9 +1,8 @@
 {% extends 'homepage/base.html'%}
-
 {% load i18n %}
 {% load static %}
-{% block menublock %}
 
+{% block content %}
 <section class="food_section layout_padding-bottom">
     <div class="container">
       <div class="heading_container heading_center">
@@ -25,60 +24,3 @@
     </div>
 </section>
 {% endblock %}>
-
-{% block content %}
-{% endblock %}
-
-
-{% block navbarblock %}
-    <!-- header section strats -->
-    <div class="hero_area">
-    <div class="bg-navbar">
-      <img src="{% static 'homepage/images/navbar.jpg' %}" alt="">
-    </div>
-    <header class="header_section">
-        <div class="container">
-          <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="{% url 'home:home' %}">
-              <span>
-                HyNiu F&D
-              </span>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class=""> </span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav  mx-auto ">
-                <li class="listlink"><a href="{% url 'home:home' %}"> {% trans "HOME" %}</a> </li>
-                <li class="listlink"><a href="{% url 'home:category' %}">&emsp;  &emsp; {% trans "MENU" %}</a></li>
-                <li class="listlink"><a href="">&emsp;  &emsp; {% trans "ABOUT" %}</a></li>
-              </ul>
-              {% get_current_language as LANGUAGE_CODE %}
-              {% get_available_languages as LANGUAGES %}
-              {% get_language_info_list for LANGUAGES as languages %}
-              <a class="listlink" href="{% url 'vi:category' %}">   &emsp;
-                <img src="/static/homepage/images/vi.png" class="imagesflag">
-                <a  href="{% url 'vi:category' %}" style="margin-left: 8px;"> VI </a> 
-              <a class="listlink" href="{% url 'en:category' %}">   &emsp;
-                <img src="/static/homepage/images/en.png" class="imagesflag">
-                <a  href="{% url 'en:category' %}" style="margin-left: 8px;"> EN &emsp; &emsp; &emsp; </a> 
-              <div class="user_option">
-                <a href="" class="user_link">
-                  <i class="fa fa-user" aria-hidden="true"></i>
-                </a>
-                <a href="" class="user_link">
-                  <i class="fa fa-shopping-cart	" aria-hidden="true"></i>
-                </a>
-                <form class="form-inline">
-                  <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                  </button>
-                </form>
-                  <a href="https://sun-asterisk.vn/en/" class="sunas"> <b> Sun Asterisk</b></a>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
-      <!-- end header section -->
-{% endblock %}

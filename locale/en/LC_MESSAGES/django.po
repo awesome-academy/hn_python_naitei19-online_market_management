@@ -105,6 +105,10 @@ msgstr ""
 msgid "ABOUT"
 msgstr ""
 
+#: .\templates\homepage\base.html:68
+msgid "Login"
+msgstr ""
+
 #: .\templates\homepage\footer.html:11
 msgid " Contact Us "
 msgstr ""

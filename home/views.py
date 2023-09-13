@@ -1,6 +1,5 @@
-from django.shortcuts import render
 from django.views import View, generic
-from .models import Category
+from .models import Category, Product
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import CustomUserForm
@@ -17,7 +16,8 @@ class CategoryView(generic.DetailView):
 
     def get(self, request):
         menu = Category.objects.all()
-        return render(request, 'catalog/menu.html', {'menu': menu})
+        products = Product.objects.all()
+        return render(request, 'catalog/menu.html', {'menu': menu,'products' : products})
 
 @login_required
 def update_profile(request):

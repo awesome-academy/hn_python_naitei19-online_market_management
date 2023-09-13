@@ -14,13 +14,38 @@
       <ul class="filters_menu">
         {% for Category in menu %}
             <li class="active" data-filter=".{{ Category.name }}">
-                <a href="{{ Category.get_absolute_url }}">
-                  {% trans Category.name %}
-                </a>
+                <a href="?category={{Category.name}}">  {% trans Category.name %} </a>
             </li>
             &emsp; 
         {% endfor %}
-      </ul>
+    </ul>
+    <div class="filters-content">
+      <div class="row grid">
+        {% for Product in products%}
+        {% if request.GET.category == Product.category.name or request.GET.category|length == 0  %}
+        <div class="col-sm-6 col-lg-4 all pizza">
+          <div class="box">
+            <div>
+              <div class="img-box">
+                <img src="{{Product.image.url}}" >
+              </div>
+              <div class="detail-box">
+                <h5  class="product-title-text"> {% trans Product.name%} </h5>
+                <p class="description-text"> {% trans Product.description %} </p>
+                <div class="options">
+                  <h6> {{Product.base_price}} đ </h6>
+                  <a href="" class="user_link">
+                    <i class="fa fa-shopping-cart	" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
     </div>
 </section>
 {% endblock %}>

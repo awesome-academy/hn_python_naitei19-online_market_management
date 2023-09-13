@@ -22,7 +22,7 @@ class Product(models.Model):
     name = models.CharField(max_length=50)
     image = models.ImageField(upload_to='product_images/', null=True, blank=True, help_text=_("Product image"))
     description = models.CharField(max_length=255, help_text=_("Brief description of the product."))
-    base_price = models.DecimalField(max_digits=12, decimal_places=3, help_text=_("The origin price of the product."))
+    base_price = models.DecimalField(max_digits=12, decimal_places=0, help_text=_("The origin price of the product."))
     number_in_stock = models.IntegerField(default=0, help_text=_("Quantity of the product available in stock."))
     sold_number = models.IntegerField(default=0, help_text=_("Number of products sold."))
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -50,11 +50,11 @@ class Order(models.Model):
     cart = models.ForeignKey('Cart', on_delete=models.CASCADE)
 
 class OrderDetail(models.Model):
-    price = models.DecimalField(max_digits=12, decimal_places=3, default=0, help_text=_("Price of product at order."))
+    price = models.DecimalField(max_digits=12, decimal_places=0, default=0, help_text=_("Price of product at order."))
     quantity = models.IntegerField(default=0, help_text=_("total quantity of products ordered."))
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    total_cost = models.DecimalField(max_digits=12, decimal_places=3, default=0, help_text=_("total cost of order."))
+    total_cost = models.DecimalField(max_digits=12, decimal_places=0, default=0, help_text=_("total cost of order."))
 
 class Cart(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)

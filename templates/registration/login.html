@@ -39,7 +39,8 @@
                         <input type="hidden" name="next" value="{{ next }}" />
                     </form>
                     <p class="forgot-password">
-                      <a href="">{% trans "Register Now!" %}</a>
+                      {% trans "Don't have an account yet? " %}
+                      <a href="{% url 'home:register' %}">{% trans "Register Now!" %}</a>
                     </p>
                 </div>
             </div>

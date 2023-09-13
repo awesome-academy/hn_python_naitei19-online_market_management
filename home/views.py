@@ -3,6 +3,7 @@ from .models import Category, Product
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import CustomUserForm
+from .forms import RegistrationForm
 from django.contrib.auth import logout
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
@@ -25,7 +26,7 @@ def update_profile(request):
         form = CustomUserForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            messages.success(request, _('Changes Saved'))
+            messages.success(request, _('Changes saved'))
             return redirect('/profile')  # Sử dụng tên URL 'profile' để chuyển hướng
 
     else:
@@ -36,3 +37,14 @@ def update_profile(request):
 def custom_logout(request):
     logout(request)
     return redirect('login')
+
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # Xử lý sau khi đăng ký thành công, ví dụ: chuyển hướng đến trang đăng nhập
+            return redirect('login')
+    else:
+        form = RegistrationForm()
+    return render(request, 'registration/register.html', {'form': form})

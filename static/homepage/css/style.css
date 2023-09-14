@@ -720,11 +720,28 @@ table.table td, table.table th {
     position: relative;
     top: 40px;
     text-align: center;
+    overflow: hidden;
   }
 
+  .ordercart {
+    display: inline-block;
+    padding: 6px 20px;
+    background-color: #ffffff;
+    color: #040404;
+    border-radius: 40px;
+    float: right;
+  }
+
+  
 .tablecart {
     border-collapse: separate;
     border-spacing: 10px; 
+    margin:auto;
+    padding-top: 20px;
+}
+.order-status{
+  border-bottom: 2px dashed  white;
+  padding-bottom: 20px;
 }
 
 .tablecart th, td {
@@ -752,3 +769,11 @@ table.table td, table.table th {
 .custom-select select {
   width: 100%;
 }
+.infor li{
+  list-style-type: none;
+  text-align: left ; 
+}
+.errororder{
+  color:red
+}
+

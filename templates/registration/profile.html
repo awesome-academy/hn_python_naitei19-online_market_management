@@ -35,8 +35,9 @@
                                        id="{{ field.id_for_label }}"
                                        value="{{ field.value }}"
                                        {% if field.label == "Email address" or field.label == "Địa chỉ email" %}
-                                       readonly{% endif %}>
-                            </div>
+                                       readonly{% endif %}
+                                       required oninvalid="this.setCustomValidity('{% trans "Please Fill Out This Field" %}')">
+                                      </div>
                         </td>
                     </tr>
                     {% endif %}

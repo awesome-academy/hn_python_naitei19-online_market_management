@@ -93,6 +93,20 @@
             <a class="listlink" href="{% url 'en:cart' %}">   &emsp;
               <img src="/static/homepage/images/en.png" class="imagesflag">
               <a  href="{% url 'en:cart' %}" class="trans-button"> EN &emsp; </a>  
+            {% elif request.resolver_match.url_name == 'order' %}
+            <a class="listlink" href="{% url 'vi:order' %}">  &emsp;
+              <img src="/static/homepage/images/vi.png" class="imagesflag">
+              <a  href="{% url 'vi:order' %}" class="trans-button"> VI </a> 
+            <a class="listlink" href="{% url 'en:order' %}">   &emsp;
+              <img src="/static/homepage/images/en.png" class="imagesflag">
+              <a  href="{% url 'en:order' %}" class="trans-button"> EN &emsp; </a>    
+            {% elif request.resolver_match.url_name == 'yourorder' %}
+            <a class="listlink" href="{% url 'vi:yourorder' %}">  &emsp;
+              <img src="/static/homepage/images/vi.png" class="imagesflag">
+              <a  href="{% url 'vi:yourorder' %}" class="trans-button"> VI </a> 
+            <a class="listlink" href="{% url 'en:yourorder' %}">   &emsp;
+              <img src="/static/homepage/images/en.png" class="imagesflag">
+              <a  href="{% url 'en:yourorder' %}" class="trans-button"> EN &emsp; </a>    
             {% endif %}
             <div class="user_option">
               {% if user.is_authenticated %}
@@ -109,6 +123,10 @@
               {% if user.is_authenticated %}
               <a href="{% url 'home:cart' %}" class="user_link">
                 <i class="fa fa-shopping-cart	" aria-hidden="true"></i>
+              </a>
+              {% elif user.order %}
+              <a href="{% url 'home:yourorder' %}" class="user_link">
+                <i class="fa fa-shopping-cart	" aria-hidden="true"><p>(*)</p></i>
               </a>
               {% endif %}
               <form class="form-inline">

@@ -1,0 +1,67 @@
+{% extends 'homepage/base.html'%}
+{% load i18n %}
+{% load static %}
+{%load djmoney%}
+{% money_localize money on}
+
+{% block content %}
+
+  <!-- slider section -->
+    <section class="slider_section ">
+            <div class="container ">
+                <div class="cart-container">
+                    <h1>{% trans "YOUR ORDERS" %}</h1>
+                    <br>
+                  {% for orderall in orderAllItem %}  
+                    <table class="tablecart">
+                        <thead>
+                            <tr>
+                              <th>{% trans "Product Name" %}</th>
+                              <th>{% trans "Price" %}</th>
+                              <th>{% trans "Quantity" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orderall.allItem %}
+                              <tr id="row_{{cart.id}}" data-url="{% url 'home:update_cart'  %}" data-csrf="{{ csrf_token }}">
+                                <td>{% trans order.product.name %}</td>
+                                <td>{% money_localize order.price 'VND' %}</td>
+                                <td>{{ order.quantity }}</td>
+                              </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>    
+                      
+                    <div>         
+                      <h1 class="total-text">{% trans "Total" %}: </h1><h1 class="total-text" id="total_price">{% money_localize orderall.total_price 'VND' %}</h1>
+                    </div> 
+                    <h1>{% trans "Order Date:" %} {{orderall.formatted_date}}</h1>
+                    <h1 class="order-status">{% trans "User's Status:" %} {% trans orderall.order.get_status_display %}</h1>
+                  {% endfor %}
+                  <ul class="infor">                 
+                     <h1>{% trans "User's Information:" %} </h1>
+                     <li>{% if user.first_name or user.last_name %}
+                        <p>{% trans "Name:" %} {{user.first_name}} {{user.last_name}}</p>
+                    {% else %}
+                        <p class="errororder">{% trans "Please enter your name." %}</p>
+                    {% endif %}</li>
+                     <li>{% if user.phone %}
+                        <p>{% trans "User's Phone Number:" %} {{ user.phone }}</p>
+                    {% else %}
+                        <p class="errororder">{% trans "Please enter your phone number." %}</p>
+                    {% endif %}</li>
+                    <li>{% if user.address %}
+                        <p>{% trans "User's Address:" %} {{ user.address }}</p>
+                    {% else %}
+                        <p class="errororder">{% trans "Please enter your address." %}</p>
+                    {% endif %}</li>
+                    <li><p>{% trans "User's Email:" %} {{user.email}}</p></li>
+                  </ul>
+                  <div>         
+                  </div> 
+                </div>   
+            </div>
+    </section>
+  <!-- end slider section -->
+</div>
+{% endblock %}

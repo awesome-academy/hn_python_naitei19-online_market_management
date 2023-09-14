@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import date
+from datetime import datetime
 from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
@@ -37,13 +37,12 @@ class Product(models.Model):
         return self.number_in_stock
 
 class Order(models.Model):
-    order_date = models.DateField(default=date.today, help_text=_("Date of the order."))
+    order_date = models.DateTimeField(default=datetime.now, help_text=_("Date of the order."))
     ORDER_STATUS = (
         (0, 'Pending'),
         (1, 'Accepted-Ongoing'),
         (2, 'Cancelled'),
         (3, 'Rejected'),
-        (4, 'Done'),
     )
     status = models.IntegerField(choices=ORDER_STATUS, default=0, help_text=_("Status of the order."))
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)

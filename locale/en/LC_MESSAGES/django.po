@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-12 12:34+0700\n"
+"POT-Creation-Date: 2023-09-13 13:53+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,6 +90,26 @@ msgstr ""
 msgid "EN"
 msgstr ""
 
+#: .\templates\catalog\cart.html:11
+msgid "SHOPPING CART"
+msgstr ""
+
+#: .\templates\catalog\cart.html:16
+msgid "Product Name"
+msgstr ""
+
+#: .\templates\catalog\cart.html:17
+msgid "Price"
+msgstr ""
+
+#: .\templates\catalog\cart.html:18
+msgid "Quantity"
+msgstr ""
+
+#: .\templates\catalog\cart.html:31
+msgid "Total"
+msgstr ""
+
 #: .\templates\catalog\menu.html:11
 msgid "Our Menu"
 msgstr ""
@@ -106,7 +126,7 @@ msgstr ""
 msgid "ABOUT"
 msgstr ""
 
-#: .\templates\homepage\base.html:91 .\templates\registration\login.html:10
+#: .\templates\homepage\base.html:105 .\templates\registration\login.html:10
 #: .\templates\registration\login.html:38
 msgid "Login"
 msgstr ""
@@ -202,10 +222,10 @@ msgstr ""
 msgid "Confirm Password"
 msgstr ""
 
-#: .\templates\registration\register.html:70
+#: .\templates\registration\register.html:69
 msgid "Already have an account? "
 msgstr ""
 
-#: .\templates\registration\register.html:71
+#: .\templates\registration\register.html:70
 msgid "Login here!"
 msgstr ""

@@ -1,0 +1,38 @@
+{% extends 'homepage/base.html'%}
+{% load i18n %}
+{% load static %}
+{%load djmoney%}
+{% money_localize money on}
+
+{% block content %}
+  <!-- slider section -->
+    <section class="slider_section ">
+            <div class="container ">
+                <div class="cart-container">
+                    <h1>{% trans "SHOPPING CART" %}</h1>
+                    <br>
+                    <table class="tablecart">
+                        <thead>
+                            <tr>
+                                <th>{% trans "Product Name" %}</th>
+                                <th>{% trans "Price" %}</th>
+                                <th>{% trans "Quantity" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cart in cartall %}
+                            <tr>
+                                <td>{{ cart.product.name }}</td>
+                                <td>{% money_localize cart.product.base_price 'VND' %}</td>
+                                <td>{{ cart.quantity }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <h1>{% trans "Total" %}: {{total_price}}</h1>
+                    </div>                    
+            </div>
+    </section>
+  <!-- end slider section -->
+</div>
+{% endblock %}

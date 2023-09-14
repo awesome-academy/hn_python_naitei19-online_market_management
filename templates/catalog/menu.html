@@ -1,6 +1,8 @@
 {% extends 'homepage/base.html'%}
 {% load i18n %}
 {% load static %}
+{%load djmoney%}
+{% money_localize money on}
 
 {% block content %}
 <section class="food_section layout_padding-bottom">
@@ -32,9 +34,9 @@
               <div class="detail-box">
                 <h5  class="product-title-text"> {% trans Product.name%} </h5>
                 <p class="description-text"> {% trans Product.description %} </p>
-                <div class="options">
-                  <h6> {{Product.base_price}} đ </h6>
-                  <a href="" class="user_link">
+                <div class="options"> 
+                  <h6> {% money_localize Product.base_price 'VND' %} </h6>
+                  <a href="{% url 'home:add_to_cart' Product.id %}" class="user_link">
                     <i class="fa fa-shopping-cart	" aria-hidden="true"></i>
                   </a>
                 </div>

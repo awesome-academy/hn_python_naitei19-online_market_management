@@ -60,7 +60,7 @@ class Cart(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
 class CartItem(models.Model):
-    quantity = models.IntegerField(default=0, help_text=_("Quantity of each product in the cart."))
+    quantity = models.IntegerField(default=1, help_text=_("Quantity of each product in the cart."))
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 

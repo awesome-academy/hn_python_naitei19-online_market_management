@@ -49,6 +49,7 @@ class Order(models.Model):
         (1, 'Accepted-Ongoing'),
         (2, 'Cancelled'),
         (3, 'Rejected'),
+        (4, 'Done'),
     )
     status = models.IntegerField(choices=ORDER_STATUS, default=0, help_text=_("Status of the order."))
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)

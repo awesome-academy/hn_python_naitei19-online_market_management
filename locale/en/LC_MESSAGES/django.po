@@ -114,6 +114,10 @@ msgstr ""
 msgid "Create category"
 msgstr ""
 
+#: .\templates\admin\category_form.html:51
+msgid "Return category list"
+msgstr ""
+
 #: .\templates\admin\category_list.html:11
 msgid "Categories Manage"
 msgstr ""
@@ -243,17 +247,17 @@ msgid "YOUR ORDERS"
 msgstr ""
 
 #: .\templates\catalog\cart.html:19 .\templates\catalog\order.html:18
-#: .\templates\catalog\yourorder.html:19
+#: .\templates\catalog\yourorder.html:20
 msgid "Product Name"
 msgstr ""
 
 #: .\templates\catalog\cart.html:20 .\templates\catalog\order.html:19
-#: .\templates\catalog\yourorder.html:20
+#: .\templates\catalog\yourorder.html:21
 msgid "Price"
 msgstr ""
 
 #: .\templates\catalog\cart.html:21 .\templates\catalog\order.html:20
-#: .\templates\catalog\yourorder.html:21
+#: .\templates\catalog\yourorder.html:22
 msgid "Quantity"
 msgstr ""
 
@@ -266,7 +270,7 @@ msgid "Delete"
 msgstr ""
 
 #: .\templates\catalog\cart.html:50 .\templates\catalog\order.html:34
-#: .\templates\catalog\yourorder.html:36
+#: .\templates\catalog\yourorder.html:37
 msgid "Total"
 msgstr ""
 
@@ -279,7 +283,7 @@ msgstr ""
 msgid "There are no products in your cart, please add products to cart!!!"
 msgstr ""
 
-#: .\templates\catalog\menu.html:13
+#: .\templates\catalog\menu.html:12
 msgid "Our Menu"
 msgstr ""
 
@@ -295,7 +299,7 @@ msgstr ""
 msgid "YOUR ORDER"
 msgstr ""
 
-#: .\templates\catalog\order.html:37 .\templates\catalog\yourorder.html:42
+#: .\templates\catalog\order.html:37 .\templates\catalog\yourorder.html:43
 msgid "User's Information:"
 msgstr ""
 
@@ -303,27 +307,27 @@ msgstr ""
 msgid "Name:"
 msgstr ""
 
-#: .\templates\catalog\order.html:41 .\templates\catalog\yourorder.html:46
+#: .\templates\catalog\order.html:41
 msgid "Please enter your name."
 msgstr ""
 
-#: .\templates\catalog\order.html:44 .\templates\catalog\yourorder.html:49
+#: .\templates\catalog\order.html:44 .\templates\catalog\yourorder.html:45
 msgid "User's Phone Number:"
 msgstr ""
 
-#: .\templates\catalog\order.html:46 .\templates\catalog\yourorder.html:51
+#: .\templates\catalog\order.html:46
 msgid "Please enter your phone number."
 msgstr ""
 
-#: .\templates\catalog\order.html:49 .\templates\catalog\yourorder.html:54
+#: .\templates\catalog\order.html:49 .\templates\catalog\yourorder.html:46
 msgid "User's Address:"
 msgstr ""
 
-#: .\templates\catalog\order.html:51 .\templates\catalog\yourorder.html:56
+#: .\templates\catalog\order.html:51
 msgid "Please enter your address."
 msgstr ""
 
-#: .\templates\catalog\order.html:53 .\templates\catalog\yourorder.html:58
+#: .\templates\catalog\order.html:53 .\templates\catalog\yourorder.html:47
 msgid "User's Email:"
 msgstr ""
 
@@ -337,11 +341,19 @@ msgid ""
 "ordering!!!"
 msgstr ""
 
-#: .\templates\catalog\yourorder.html:38
-msgid "Order Date:"
+#: .\templates\catalog\yourorder.html:17
+msgid "Your order has been cancelled!"
+msgstr ""
+
+#: .\templates\catalog\yourorder.html:17
+msgid "Cancel Order"
 msgstr ""
 
 #: .\templates\catalog\yourorder.html:39
+msgid "Order Date:"
+msgstr ""
+
+#: .\templates\catalog\yourorder.html:40
 msgid "User's Status:"
 msgstr ""
 

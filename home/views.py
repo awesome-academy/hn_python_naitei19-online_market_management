@@ -9,6 +9,10 @@ from django.contrib.auth import logout
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from djmoney.money import Money
+from django.contrib.admin.views.decorators import staff_member_required
+from django.http import HttpResponseRedirect
+from .forms import CategoryForm, ProductForm, DeleteCategoryForm
+from django.urls import reverse
 
 class HomeView(View):
     def get(self, request):
@@ -98,3 +102,77 @@ def update_cart(request):
             return JsonResponse({'status':-1,'message': 'Sản phẩm không tồn tại'}, status=404)
     else:
         return JsonResponse({'status':-1,'message': 'Yêu cầu không hợp lệ'}, status=400)
+
+@staff_member_required
+def overview(request):
+    return render(request, 'admin/overview.html')
+
+@staff_member_required 
+def admin_category_list(request):
+    categories = Category.objects.all()
+    return render(request, 'admin/category_list.html', {'categories': categories})
+
+@staff_member_required 
+def delete_categories(request):
+    if request.method == 'POST':
+        form = DeleteCategoryForm(request.POST)
+        if form.is_valid():
+            category_ids = form.cleaned_data['category_ids']
+            Category.objects.filter(id__in=category_ids).delete()
+            return redirect('home:admin_category_list')
+    else:
+        form = DeleteCategoryForm()
+
+    categories = Category.objects.all()
+    return render(request, 'category_list.html', {'categories': categories, 'form': form})
+
+@staff_member_required
+def admin_category_create(request):
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('home:admin_category_list'))
+    else:
+        form = CategoryForm()
+    return render(request, 'admin/category_form.html', {'form': form})
+
+@staff_member_required
+def admin_category_update(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('admin_category_list'))
+    else:
+        form = CategoryForm(instance=category)
+    return render(request, 'admin/category_form.html', {'form': form})
+
+@staff_member_required
+def admin_product_list(request):
+    products = Product.objects.all()
+    return render(request, 'admin/product_list.html', {'products': products})
+
+@staff_member_required
+def admin_product_create(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('admin_product_list'))
+    else:
+        form = ProductForm()
+    return render(request, 'admin/product_form.html', {'form': form})
+
+@staff_member_required
+def admin_product_update(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, instance=product)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('admin_product_list'))
+    else:
+        form = ProductForm(instance=product)
+    return render(request, 'admin/product_form.html', {'form': form})

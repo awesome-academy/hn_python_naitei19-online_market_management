@@ -25,7 +25,7 @@ class Product(models.Model):
     base_price = models.DecimalField(max_digits=12, decimal_places=0, help_text=_("The origin price of the product."))
     number_in_stock = models.IntegerField(default=0, help_text=_("Quantity of the product available in stock."))
     sold_number = models.IntegerField(default=0, help_text=_("Number of products sold."))
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.name

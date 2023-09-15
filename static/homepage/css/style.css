@@ -88,6 +88,7 @@ a:focus {
 }
 .btn,
 .btn:focus {
+  width: auto;
   outline: none !important;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -735,4 +736,19 @@ table.table td, table.table th {
 }
 .total-text{
   display:inline;
+}
+
+.tablecate {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+.tdcate{
+  text-align: left;
+  padding-left: 20px;
+  vertical-align: middle;
+}
+
+.custom-select select {
+  width: 100%;
 }

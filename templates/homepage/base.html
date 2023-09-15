@@ -116,7 +116,11 @@
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form>
+              {% if user.is_superuser %}
+                <a href="{% url 'home:admin_overview' %}" class="sunas"> <b>{%trans "Admin Page"%}</b></a>
+              {% else %}
                 <a href="https://sun-asterisk.vn/en/" class="sunas"> <b> Sun Asterisk</b></a>
+              {% endif %}
             </div>
           </div>
         </nav>

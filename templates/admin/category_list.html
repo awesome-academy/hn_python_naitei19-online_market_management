@@ -1,0 +1,33 @@
+{% extends 'admin/home.html'%}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<section class="slider_section ">
+    <div class="container ">
+        <div class="login-container">
+        <form method="post" action="{% url 'home:delete_categories' %}">
+        {% csrf_token %}
+            <h1>{% trans "Categories Manage" %}</h1>
+        <table class="tablecate">
+        <tbody>
+            {% for category in categories %}
+            <tr>
+                <td><input type="checkbox" name="category_ids" value="{{ category.id }}"></td>
+                <td class="tdcate"><a href="{% url 'home:admin_category_update' category.id %}">{% trans category.name %}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-danger btn-block">{% trans 'Delete selected' %}</button>
+            </div>
+        </form>
+        <p class="mb-0">--------or--------</p>
+        <form method="get" action="{% url 'home:admin_category_create' %}">
+            <button type="submit" class="btn btn-success">{% trans 'Create new category' %}</button>
+        </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

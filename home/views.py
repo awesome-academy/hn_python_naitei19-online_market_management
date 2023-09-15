@@ -2,6 +2,7 @@ from django.views import View, generic
 from .models import Category, Product, Cart, CartItem, CustomUser
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import JsonResponse
 from .forms import CustomUserForm
 from .forms import RegistrationForm
 from django.contrib.auth import logout
@@ -57,7 +58,7 @@ class CartView(View):
 
     def get(self, request):
         cartall = CartItem.objects.filter(cart_id=Cart.objects.get(user_id=request.user.id))
-        total_price = Money(sum(item.product.base_price * item.quantity for item in cartall),'VND')
+        total_price = sum(item.product.base_price * item.quantity for item in cartall)
         return render(request, 'catalog/cart.html',{'cartall':cartall,'total_price':total_price})
 
 def add_to_cart(request, product_id):
@@ -72,3 +73,28 @@ def add_to_cart(request, product_id):
         cart_item.save()
 
     return redirect('/cart')
+
+def update_cart(request):
+
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        status = -1
+        try:
+            cart = CartItem.objects.get(id=request.POST.get("cart_item_id"))
+            if (action=='increase'):
+                cart.quantity += 1
+            elif (action == 'decrease'):
+                cart.quantity -= 1
+            cart.save()
+            status = 1
+            if (action == 'delete') or (cart.quantity<1):
+                cart.delete()
+                status = 2
+            cartall = CartItem.objects.filter(cart_id=Cart.objects.get(user_id=request.user.id))
+            total_price = sum(item.product.base_price * item.quantity for item in cartall)
+            return JsonResponse({'status':status,'message': 'Cập nhật giỏ hàng thành công', 'quantity': cart.quantity,'total_price':total_price})
+            
+        except Cart.DoesNotExist:
+            return JsonResponse({'status':-1,'message': 'Sản phẩm không tồn tại'}, status=404)
+    else:
+        return JsonResponse({'status':-1,'message': 'Yêu cầu không hợp lệ'}, status=400)

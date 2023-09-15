@@ -733,3 +733,6 @@ table.table td, table.table th {
     vertical-align: middle;
     text-align: center; 
 }
+.total-text{
+  display:inline;
+}

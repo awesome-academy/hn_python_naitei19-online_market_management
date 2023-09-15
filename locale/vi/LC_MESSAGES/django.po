@@ -126,11 +126,6 @@ msgstr "MENU"
 msgid "ABOUT"
 msgstr "ABOUT"
 
-#: .\templates\homepage\base.html:105 .\templates\registration\login.html:10
-#: .\templates\registration\login.html:38
-msgid "Login"
-msgstr "Đăng Nhập"
-
 #: .\templates\homepage\footer.html:11
 msgid " Contact Us "
 msgstr "Liên Hệ Chúng Tôi"
@@ -239,6 +234,11 @@ msgstr "SĐT"
 
 msgid "Address"
 msgstr "Địa Chỉ"
+
+#: .\templates\registration\login.html:82
+#: .\templates\registration\login.html:110
+msgid "Login"
+msgstr "Đăng Nhập"
 
 msgid "Milk Tea"
 msgstr "Trà Sữa"

@@ -169,8 +169,8 @@ a:focus {
 }
 
 .header_section .container-fluid {
-  padding-right: 25px;
-  padding-left: 25px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .navbar-brand {
@@ -188,7 +188,7 @@ a:focus {
 }
 
 .custom_nav-container .navbar-nav {
-  padding-left: 18%;
+  padding-left: 0%;
 }
 
 .custom_nav-container .navbar-nav .nav-item .nav-link {
@@ -759,21 +759,37 @@ table.table td, table.table th {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+  color: white;
+}
+.tablepagi {
+  width: 100%;
+  margin-bottom: 20px;
+  border: none;
+}
+.tdpagi{
+  width:100px;
 }
 .tdcate{
   text-align: left;
   padding-left: 20px;
   vertical-align: middle;
 }
-
+.tdprod{
+  text-align: left;
+  padding-left: 20px;
+  vertical-align: middle;
+  width: 200px;
+}
+.tdprod2{
+  text-align: left;
+  padding-left: 20px;
+  vertical-align: middle;
+  min-width: 100px;
+}
+.thprod{
+  text-align: left;
+  padding-left: 20px;
+}
 .custom-select select {
   width: 100%;
 }
-.infor li{
-  list-style-type: none;
-  text-align: left ; 
-}
-.errororder{
-  color:red
-}
-

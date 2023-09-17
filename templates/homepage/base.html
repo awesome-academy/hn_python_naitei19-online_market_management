@@ -100,13 +100,13 @@
             <a class="listlink" href="{% url 'en:order' %}">   &emsp;
               <img src="/static/homepage/images/en.png" class="imagesflag">
               <a  href="{% url 'en:order' %}" class="trans-button"> EN &emsp; </a>    
-            {% elif request.resolver_match.url_name == 'yourorder' %}
-            <a class="listlink" href="{% url 'vi:yourorder' %}">  &emsp;
+            {% elif request.resolver_match.url_name == 'your_order' %}
+            <a class="listlink" href="{% url 'vi:your_order' %}">  &emsp;
               <img src="/static/homepage/images/vi.png" class="imagesflag">
-              <a  href="{% url 'vi:yourorder' %}" class="trans-button"> VI </a> 
-            <a class="listlink" href="{% url 'en:yourorder' %}">   &emsp;
+              <a  href="{% url 'vi:your_order' %}" class="trans-button"> VI </a> 
+            <a class="listlink" href="{% url 'en:your_order' %}">   &emsp;
               <img src="/static/homepage/images/en.png" class="imagesflag">
-              <a  href="{% url 'en:yourorder' %}" class="trans-button"> EN &emsp; </a>    
+              <a  href="{% url 'en:your_order' %}" class="trans-button"> EN &emsp; </a>    
             {% endif %}
             <div class="user_option">
               {% if user.is_authenticated %}
@@ -134,8 +134,8 @@
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
               </form>
-              {% if user.is_superuser %}
-                <a href="{% url 'home:admin_overview' %}" class="sunas"> <b>{%trans "Admin Page"%}</b></a>
+              {% if user.is_staff %}
+                <a href="{% url 'home:admin_order' %}" class="sunas"> <b>{%trans "Admin Page"%}</b></a>
               {% else %}
                 <a href="https://sun-asterisk.vn/en/" class="sunas"> <b> Sun Asterisk</b></a>
               {% endif %}

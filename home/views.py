@@ -14,6 +14,11 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.db import transaction
 from django.http import Http404
 
+from django.http import HttpResponseRedirect
+from .forms import CategoryForm, ProductForm, DeleteCategoryForm, DeleteProductForm
+from django.urls import reverse
+from django.utils.decorators import method_decorator
+from django.views.generic import ListView
 
 class HomeView(View):
     def get(self, request):
@@ -104,14 +109,20 @@ def update_cart(request):
     else:
         return JsonResponse({'status': -1,'message': 'Yêu cầu không hợp lệ'}, status=400)
 
+#views cho quản lý đơn hàng
 @staff_member_required
-def overview(request):
-    return render(request, 'admin/overview.html')
+def admin_order(request):
+    return render(request, 'admin/order.html')
 
-@staff_member_required 
-def admin_category_list(request):
-    categories = Category.objects.all()
-    return render(request, 'admin/category_list.html', {'categories': categories})
+#views cho quản lý thể loại
+@method_decorator(staff_member_required, name='dispatch')
+class AdminCategoryList(ListView):
+    model = Category
+    template_name = 'admin/category_list.html'
+    context_object_name = 'categories'
+    paginate_by = 5
+
+    ordering = ['name']
 
 @staff_member_required 
 def delete_categories(request):
@@ -151,17 +162,37 @@ def admin_category_update(request, category_id):
     return render(request, 'admin/category_form.html', {'form': form})
 
 @staff_member_required
-def admin_product_list(request):
-    products = Product.objects.all()
-    return render(request, 'admin/product_list.html', {'products': products})
+def admin_category_detail(request, category_id):
+    category = get_object_or_404(Category, pk=category_id)
+    categories = Category.objects.all().order_by('name')
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            messages.success(request, _('Changes saved'))
+            return redirect('home:admin_category_detail', category_id=category_id)
+    else:
+        form = CategoryForm(instance=category)
+    return render(request, 'admin/category_detail.html', {'category': category, 'categories': categories, 'form': form})
+
+#views cho quản lý sản phẩm
+@method_decorator(staff_member_required, name='dispatch')
+class AdminProductList(ListView):
+    model = Product
+    template_name = 'admin/product_list.html'
+    context_object_name = 'products'
+    paginate_by = 5
+
+    def get_queryset(self):
+        return Product.objects.select_related('category').order_by('category__name', 'name')
 
 @staff_member_required
 def admin_product_create(request):
     if request.method == 'POST':
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse('admin_product_list'))
+            return HttpResponseRedirect(reverse('home:admin_product_list'))
     else:
         form = ProductForm()
     return render(request, 'admin/product_form.html', {'form': form})
@@ -177,6 +208,33 @@ def admin_product_update(request, product_id):
     else:
         form = ProductForm(instance=product)
     return render(request, 'admin/product_form.html', {'form': form})
+
+@staff_member_required
+def delete_products(request):
+    if request.method == 'POST':
+        form = DeleteProductForm(request.POST)
+        if form.is_valid():
+            product_ids = form.cleaned_data['product_ids']
+            Product.objects.filter(id__in=product_ids).delete()
+            return redirect('home:admin_product_list')
+    else:
+        form = DeleteProductForm()
+    products = Product.objects.all()
+    return render(request, 'product_list.html', {'products': products, 'form': form})
+
+@staff_member_required
+def admin_product_detail(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    products = Product.objects.all().order_by('name')
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, _('Changes saved'))
+            return redirect('home:admin_product_detail', product_id=product_id)
+    else:
+        form = ProductForm(instance=product)
+    return render(request, 'admin/product_detail.html', {'product': product, 'products': products, 'form': form})
 
 class OrderView(View):
     model = Order

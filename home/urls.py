@@ -33,4 +33,9 @@ urlpatterns = [
     path('admin/products/<int:product_id>/', views.admin_product_detail, name='admin_product_detail'),
     path('admin/products/create/', views.admin_product_create, name='admin_product_create'),
     path('admin/products/<int:product_id>/update/', views.admin_product_update, name='admin_product_update'),
+    # URL cho quản lý sản phẩm
+    path('admin/users/', views.AdminUserList.as_view(), name='admin_user_list'),
+    path('delete_users/', views.delete_users, name='delete_users'),
+    path('admin/users/<int:user_id>/', views.admin_user_detail, name='admin_user_detail'),
+    path('admin/users/create/', views.admin_user_create, name='admin_user_create'),
 ]

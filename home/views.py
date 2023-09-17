@@ -15,7 +15,7 @@ from django.db import transaction
 from django.http import Http404
 
 from django.http import HttpResponseRedirect
-from .forms import CategoryForm, ProductForm, DeleteCategoryForm, DeleteProductForm
+from .forms import CategoryForm, ProductForm, DeleteCategoryForm, DeleteProductForm, ADCustomUserForm, DeleteCustomUserForm, CustomUserDetailForm
 from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView
@@ -294,3 +294,51 @@ class YourOrderView(View):
             formatted_date = order_date.strftime("%H:%M:%S %d-%m-%Y")
             orderAllItem.append({'allItem':orderall,'total_price':total_price,'order':order,'formatted_date':formatted_date})
         return render(request, 'catalog/yourorder.html',{'orderAllItem': orderAllItem,'total_price': total_price})
+#views cho quản lý người dùng
+@method_decorator(staff_member_required, name='dispatch')
+class AdminUserList(ListView):
+    model = CustomUser
+    template_name = 'admin/user_list.html'
+    context_object_name = 'users'
+    paginate_by = 5
+
+
+@staff_member_required
+def admin_user_create(request):
+    if request.method == 'POST':
+        form = ADCustomUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('home:admin_user_list'))
+    else:
+        form = ADCustomUserForm()
+    return render(request, 'admin/user_form.html', {'form': form})
+
+@staff_member_required
+def delete_users(request):
+    if request.method == 'POST':
+        form = DeleteCustomUserForm(request.POST)
+        if form.is_valid():
+            user_ids = form.cleaned_data['user_ids']
+            CustomUser.objects.filter(id__in=user_ids).delete()
+            return redirect('home:admin_user_list')
+    else:
+        form = DeleteCustomUserForm()
+    users = User.objects.all()
+    return render(request, 'user_list.html', {'users': users, 'form': form})
+
+@staff_member_required
+def admin_user_detail(request, user_id):
+    aduser = get_object_or_404(CustomUser, pk=user_id)
+    users = CustomUser.objects.all()
+    if request.method == 'POST':
+        form = CustomUserDetailForm(request.POST, instance=aduser)
+        if form.is_valid():
+            aduser = form.save(commit=False)
+            aduser.is_staff = form.cleaned_data['is_staff']
+            aduser.save()
+            messages.success(request, _('Changes saved'))
+            return redirect('home:admin_user_detail', user_id=user_id)
+    else:
+        form = CustomUserDetailForm(instance=aduser)
+    return render(request, 'admin/user_detail.html', {'aduser': aduser, 'users': users, 'form': form})

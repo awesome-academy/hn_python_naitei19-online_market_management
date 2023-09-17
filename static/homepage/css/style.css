@@ -793,3 +793,22 @@ table.table td, table.table th {
 .custom-select select {
   width: 100%;
 }
+.checkbox-column {
+  width: 40px;
+  text-align: center;
+  vertical-align: middle;
+}
+.blue-label {
+  color: blue;
+}
+.text_left{
+  text-align: left !important;
+}
+.large-checkbox {
+  transform: scale(1.5);
+  margin-top: 11px;
+  margin-right: 10px;
+}
+.check-lable{
+  margin-top: 6px;
+}

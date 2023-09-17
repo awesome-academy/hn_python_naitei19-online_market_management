@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-18 14:15+0700\n"
+"POT-Creation-Date: 2023-09-18 23:31+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,7 +78,8 @@ msgstr ""
 msgid "Best Sellers"
 msgstr ""
 
-#: .\home\views.py:41 .\home\views.py:170 .\home\views.py:289
+#: .\home\views.py:41 .\home\views.py:172 .\home\views.py:233
+#: .\home\views.py:340
 msgid "Changes saved"
 msgstr ""
 
@@ -96,6 +97,7 @@ msgstr ""
 
 #: .\templates\admin\category_detail.html:52
 #: .\templates\admin\product_detail.html:71
+#: .\templates\admin\user_detail.html:50
 msgid "Save changes"
 msgstr ""
 
@@ -144,13 +146,13 @@ msgstr ""
 msgid "USER"
 msgstr ""
 
-#: .\templates\admin\home.html:108 .\templates\homepage\base.html:119
+#: .\templates\admin\home.html:122 .\templates\homepage\base.html:119
 #: .\templates\registration\login.html:10
 #: .\templates\registration\login.html:38
 msgid "Login"
 msgstr ""
 
-#: .\templates\admin\home.html:112 .\templates\homepage\base.html:138
+#: .\templates\admin\home.html:126 .\templates\homepage\base.html:138
 msgid "Admin Page"
 msgstr ""
 
@@ -198,6 +200,43 @@ msgstr ""
 
 #: .\templates\admin\product_list.html:57
 msgid "Create new product"
+msgstr ""
+
+#: .\templates\admin\user_detail.html:11
+msgid "User Detail"
+msgstr ""
+
+#: .\templates\admin\user_detail.html:54 .\templates\admin\user_form.html:52
+msgid "Return user list"
+msgstr ""
+
+#: .\templates\admin\user_form.html:11
+msgid "Create New User"
+msgstr ""
+
+#: .\templates\admin\user_form.html:13
+#: .\templates\registration\register.html:12
+msgid "There was an error with your submission:"
+msgstr ""
+
+#: .\templates\admin\user_form.html:28
+msgid "Pass Confirm:"
+msgstr ""
+
+#: .\templates\admin\user_form.html:48
+msgid "Create user"
+msgstr ""
+
+#: .\templates\admin\user_list.html:11
+msgid "Users Manage"
+msgstr ""
+
+#: .\templates\admin\user_list.html:38
+msgid "Delete selected users"
+msgstr ""
+
+#: .\templates\admin\user_list.html:43
+msgid "Create new user"
 msgstr ""
 
 #: .\templates\catalog\cart.html:13
@@ -391,10 +430,6 @@ msgstr ""
 #: .\templates\registration\register.html:10
 #: .\templates\registration\register.html:67
 msgid "Register"
-msgstr ""
-
-#: .\templates\registration\register.html:12
-msgid "There was an error with your submission:"
 msgstr ""
 
 #: .\templates\registration\register.html:41

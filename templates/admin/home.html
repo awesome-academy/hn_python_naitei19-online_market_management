@@ -42,7 +42,7 @@
               <li class="listlink"><a href="{% url 'home:admin_order' %}"> {% trans "ORDER" %}</a> </li>
               <li class="listlink"><a href="{% url 'home:admin_category_list' %}">&emsp;  &emsp; {% trans "CATEGORY" %}</a></li>
               <li class="listlink"><a href="{% url 'home:admin_product_list' %}">&emsp;  &emsp; {% trans "PRODUCT" %}</a></li>
-              <li class="listlink"><a href="">&emsp;  &emsp; {% trans "USER" %}</a></li>
+              <li class="listlink"><a href="{% url 'home:admin_user_list' %}">&emsp;  &emsp; {% trans "USER" %}</a></li>
             </ul>
             {% get_current_language as LANGUAGE_CODE %}
             {% get_available_languages as LANGUAGES %}
@@ -96,6 +96,27 @@
             <a class="listlink" href=" {% url 'en:admin_product_detail' product_id=product.id%}">   &emsp;
               <img src="/static/homepage/images/en.png" class="imagesflag">
               <a  href=" {% url 'en:admin_product_detail' product_id=product.id%}" class="trans-button"> EN &emsp; </a>
+            {% elif request.resolver_match.url_name == 'admin_user_list' %}
+            <a class="listlink" href="{% url 'vi:admin_user_list' %}">  &emsp;
+              <img src="/static/homepage/images/vi.png" class="imagesflag">
+              <a  href="{% url 'vi:admin_user_list' %}" class="trans-button"> VI </a> 
+            <a class="listlink" href="{% url 'en:admin_user_list' %}">   &emsp;
+              <img src="/static/homepage/images/en.png" class="imagesflag">
+              <a  href="{% url 'en:admin_user_list' %}" class="trans-button"> EN &emsp; </a>
+            {% elif request.resolver_match.url_name == 'admin_user_create' %}
+            <a class="listlink" href="{% url 'vi:admin_user_create' %}">  &emsp;
+              <img src="/static/homepage/images/vi.png" class="imagesflag">
+              <a  href="{% url 'vi:admin_user_create' %}" class="trans-button"> VI </a> 
+            <a class="listlink" href="{% url 'en:admin_user_create' %}">   &emsp;
+              <img src="/static/homepage/images/en.png" class="imagesflag">
+              <a  href="{% url 'en:admin_user_create' %}" class="trans-button"> EN &emsp; </a>
+            {% elif request.resolver_match.url_name == 'admin_user_detail' %}
+            <a class="listlink" href=" {% url 'vi:admin_user_detail' user_id=user.id%}">  &emsp;
+              <img src="/static/homepage/images/vi.png" class="imagesflag">
+              <a  href=" {% url 'vi:admin_user_detail' user_id=user.id%}" class="trans-button"> VI </a> 
+            <a class="listlink" href=" {% url 'en:admin_user_detail' user_id=user.id%}">   &emsp;
+              <img src="/static/homepage/images/en.png" class="imagesflag">
+              <a  href=" {% url 'en:admin_user_detail' user_id=user.id%}" class="trans-button"> EN &emsp; </a>
             {% endif %}
             <div class="user_option">
               {% if user.is_authenticated %}

@@ -245,7 +245,7 @@ msgstr "GIỎ HÀNG"
 
 #: .\templates\catalog\cart.html:14 .\templates\catalog\yourorder.html:13
 msgid "YOUR ORDERS"
-msgstr "ĐẶT HÀNG"
+msgstr "Đơn Của Bạn"
 
 #: .\templates\catalog\cart.html:19 .\templates\catalog\order.html:18
 #: .\templates\catalog\yourorder.html:19
@@ -273,7 +273,7 @@ msgstr "Thành Tiền"
 #: .\templates\catalog\cart.html:53 .\templates\catalog\order.html:56
 #: .\templates\catalog\order.html:58
 msgid "Order"
-msgstr "Đặt: "
+msgstr "Đặt Hàng"
 
 #: .\templates\catalog\cart.html:55
 msgid "There are no products in your cart, please add products to cart!!!"
@@ -281,9 +281,17 @@ msgstr ""
 "Không có món trong giỏ hàng của bạn, hãy thêm món vào giỏ hàng trước khi "
 "đặt!!!"
 
-#: .\templates\catalog\menu.html:13
+#: .\templates\catalog\menu.html:12
 msgid "Our Menu"
 msgstr "Thực Đơn Của Chúng Tôi"
+
+#: .\templates\catalog\menu.html:16
+msgid "Search for food here"
+msgstr "Tìm món ăn ở đây"
+
+#: .\templates\catalog\menu.html:54
+msgid "There are no products matching the search results!!!"
+msgstr " Không có món nào phù hợp với kết quả tìm kiếm của bạn!!! "
 
 #: .\templates\catalog\order.html:13
 msgid "YOUR ORDER"

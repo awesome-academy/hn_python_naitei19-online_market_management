@@ -9,9 +9,14 @@
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-            <p></p>
-          {%trans "Our Menu" %} 
+         {%trans "Our Menu" %}
+         <form class="total-text" method="GET">
+          &emsp; <button type="submit" class="fa fa-search searchbox" aria-hidden="true" >
+          </button> 
+          <input class="input-search" placeholder='{% trans "Search for food here" %}' name="food_name" type="text" />
+        </form>   
         </h2>
+
       </div>
       <ul class="filters_menu">
         {% for Category in menu %}
@@ -45,6 +50,8 @@
           </div>
         </div>
         {% endif %}
+        {% empty %}
+          <h2>{% trans "There are no products matching the search results!!!" %}</h2>
         {% endfor %}
       </div>
     </div>

@@ -10,7 +10,8 @@
     <section class="slider_section ">
             <div class="container ">
                 <div class="cart-container">
-                    <h1>{% trans "SHOPPING CART" %}</h1>
+                    <h1 class="total-text">{% trans "SHOPPING CART" %} </h1>
+                    <a  href="{% url 'home:your_order' %}"  class="ordercart" > {% trans "YOUR ORDERS" %} </a>
                     <br>
                   <table class="tablecart">
                       <thead>
@@ -44,8 +45,15 @@
                           </tr>
                           {% endfor %}
                       </tbody>
-                  </table>                  
-                  <h1 class="total-text">{% trans "Total" %}: </h1><h1 class="total-text" id="total_price">{% money_localize total_price 'VND' %}</h1>
+                  </table>        
+                  <div>         
+                    <h1 class="total-text">{% trans "Total" %}: </h1><h1 class="total-text" id="total_price">{% money_localize total_price 'VND' %}</h1>
+                  </div> 
+                  {% if cartall %}
+                  <a href="{% url 'home:order' %}" class="ordercart">{% trans "Order" %}</a>
+                  {% else %}
+                  <a href="{% url 'home:cart' %}" onclick="alert('{% trans "There are no products in your cart, please add products to cart!!!" %}')" class="ordercart">Order</a>
+                  {% endif %}
                 </div>   
             </div>
     </section>

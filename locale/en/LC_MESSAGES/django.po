@@ -131,10 +131,6 @@ msgid "ORDER"
 msgstr ""
 
 #: .\templates\admin\home.html:80 .\templates\homepage\base.html:105
-#: .\templates\registration\login.html:10
-#: .\templates\registration\login.html:38
-msgid "Login"
-msgstr ""
 
 #: .\templates\admin\home.html:84 .\templates\homepage\base.html:120
 msgid "Admin Page"
@@ -172,6 +168,60 @@ msgstr ""
 msgid "Our Menu"
 msgstr ""
 
+#: .\templates\catalog\order.html:13
+msgid "YOUR ORDER"
+msgstr ""
+
+#: .\templates\catalog\order.html:37 .\templates\catalog\yourorder.html:42
+msgid "User's Information:"
+msgstr ""
+
+#: .\templates\catalog\order.html:39 .\templates\catalog\yourorder.html:44
+msgid "Name:"
+msgstr ""
+
+#: .\templates\catalog\order.html:41 .\templates\catalog\yourorder.html:46
+msgid "Please enter your name."
+msgstr ""
+
+#: .\templates\catalog\order.html:44 .\templates\catalog\yourorder.html:49
+msgid "User's Phone Number:"
+msgstr ""
+
+#: .\templates\catalog\order.html:46 .\templates\catalog\yourorder.html:51
+msgid "Please enter your phone number."
+msgstr ""
+
+#: .\templates\catalog\order.html:49 .\templates\catalog\yourorder.html:54
+msgid "User's Address:"
+msgstr ""
+
+#: .\templates\catalog\order.html:51 .\templates\catalog\yourorder.html:56
+msgid "Please enter your address."
+msgstr ""
+
+#: .\templates\catalog\order.html:53 .\templates\catalog\yourorder.html:58
+msgid "User's Email:"
+msgstr ""
+
+#: .\templates\catalog\order.html:56
+msgid "Your order is being approved by admin, please wait a little longer!"
+msgstr ""
+
+#: .\templates\catalog\order.html:58
+msgid ""
+"Your information is incomplete, please update all information before "
+"ordering!!!"
+msgstr ""
+
+#: .\templates\catalog\yourorder.html:38
+msgid "Order Date:"
+msgstr ""
+
+#: .\templates\catalog\yourorder.html:39
+msgid "User's Status:"
+msgstr ""
+
 #: .\templates\homepage\base.html:47
 msgid "HOME"
 msgstr ""
@@ -182,6 +232,11 @@ msgstr ""
 
 #: .\templates\homepage\base.html:49
 msgid "ABOUT"
+msgstr ""
+
+#: .\templates\homepage\base.html:119 .\templates\registration\login.html:10
+#: .\templates\registration\login.html:38
+msgid "Login"
 msgstr ""
 
 #: .\templates\homepage\footer.html:11
@@ -250,11 +305,15 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
-#: .\templates\registration\profile.html:45
+#: .\templates\registration\profile.html:39
+msgid "Please Fill Out This Field"
+msgstr ""
+
+#: .\templates\registration\profile.html:46
 msgid "Save Changes"
 msgstr ""
 
-#: .\templates\registration\profile.html:51
+#: .\templates\registration\profile.html:52
 msgid "Logout"
 msgstr ""
 

@@ -1,18 +1,19 @@
+import datetime
 from django.views import View, generic
-from .models import Category, Product, Cart, CartItem, CustomUser
-from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse, HttpResponseRedirect
+from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import JsonResponse
-from .forms import CustomUserForm
-from .forms import RegistrationForm
-from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
+from .models import Category, Product, Cart, CartItem, CustomUser, Order, OrderDetail
+from .forms import CustomUserForm, RegistrationForm, CategoryForm, ProductForm, DeleteCategoryForm
+from django.contrib.auth import logout
 from djmoney.money import Money
 from django.contrib.admin.views.decorators import staff_member_required
-from django.http import HttpResponseRedirect
-from .forms import CategoryForm, ProductForm, DeleteCategoryForm
-from django.urls import reverse
+from django.db import transaction
+from django.http import Http404
+
 
 class HomeView(View):
     def get(self, request):
@@ -63,7 +64,7 @@ class CartView(View):
     def get(self, request):
         cartall = CartItem.objects.filter(cart_id=Cart.objects.get(user_id=request.user.id))
         total_price = sum(item.product.base_price * item.quantity for item in cartall)
-        return render(request, 'catalog/cart.html',{'cartall':cartall,'total_price':total_price})
+        return render(request, 'catalog/cart.html',{'cartall': cartall,'total_price': total_price})
 
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
@@ -96,12 +97,12 @@ def update_cart(request):
                 status = 2
             cartall = CartItem.objects.filter(cart_id=Cart.objects.get(user_id=request.user.id))
             total_price = sum(item.product.base_price * item.quantity for item in cartall)
-            return JsonResponse({'status':status,'message': 'Cập nhật giỏ hàng thành công', 'quantity': cart.quantity,'total_price':total_price})
+            return JsonResponse({'status': status,'message': 'Cập nhật giỏ hàng thành công', 'quantity': cart.quantity,'total_price': total_price})
             
         except Cart.DoesNotExist:
-            return JsonResponse({'status':-1,'message': 'Sản phẩm không tồn tại'}, status=404)
+            return JsonResponse({'status': -1,'message': 'Sản phẩm không tồn tại'}, status=404)
     else:
-        return JsonResponse({'status':-1,'message': 'Yêu cầu không hợp lệ'}, status=400)
+        return JsonResponse({'status': -1,'message': 'Yêu cầu không hợp lệ'}, status=400)
 
 @staff_member_required
 def overview(request):
@@ -176,3 +177,62 @@ def admin_product_update(request, product_id):
     else:
         form = ProductForm(instance=product)
     return render(request, 'admin/product_form.html', {'form': form})
+
+class OrderView(View):
+    model = Order
+
+    def get(self, request):
+        try:
+            cart = Cart.objects.get(user_id=request.user.id)
+            cartall = CartItem.objects.filter(cart_id=cart)
+            total_price = sum(item.product.base_price * item.quantity for item in cartall)
+        except Cart.DoesNotExist:
+            # Xử lý khi không tìm thấy giỏ hàng
+            cartall = []
+            total_price = 0
+            
+        return render(request, 'catalog/order.html', {'cartall': cartall, 'total_price': total_price})
+
+@transaction.atomic
+def add_order(request):
+    user = request.user
+    cart = get_object_or_404(Cart, user=user)
+    order = Order(cart=cart, user=user)
+    order.save()
+    cartall = CartItem.objects.filter(cart=Cart.objects.get(user=user))  
+    try:
+        # Bắt đầu một transaction
+        with transaction.atomic():
+            for cartitem in cartall:
+                order_detail = OrderDetail(
+                    price=cartitem.product.base_price,
+                    quantity=cartitem.quantity,
+                    total_cost=cartitem.product.base_price * cartitem.quantity,
+                    order=order,
+                    product=cartitem.product
+                )
+                order_detail.save()
+                cartitem.delete()
+
+            order.status = 0
+            order.save()
+    except Exception as e:
+        # Xử lý lỗi nếu có
+        transaction.rollback()
+        # Ghi log lỗi hoặc thông báo lỗi tùy theo nhu cầu
+        print(f"Transaction failed: {str(e)}")
+    return redirect('/yourorder/')
+
+class YourOrderView(View):
+    model=Order
+
+    def get(self, request):
+        orders = Order.objects.filter(user=request.user, status__lt=2).order_by('-order_date')
+        orderAllItem=[]
+        for order in orders :
+            orderall = OrderDetail.objects.filter(order = order) 
+            total_price = sum(item.price * item.quantity for item in orderall)
+            order_date = order.order_date + datetime.timedelta(hours=7)
+            formatted_date = order_date.strftime("%H:%M:%S %d-%m-%Y")
+            orderAllItem.append({'allItem':orderall,'total_price':total_price,'order':order,'formatted_date':formatted_date})
+        return render(request, 'catalog/yourorder.html',{'orderAllItem': orderAllItem,'total_price': total_price})

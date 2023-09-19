@@ -42,3 +42,19 @@ class DeleteProductForm(forms.Form):
         queryset=Product.objects.all(),
         widget=forms.CheckboxSelectMultiple,
     )
+
+class ADCustomUserForm(UserCreationForm):
+    class Meta:
+        model = CustomUser
+        fields = ('username', 'password1', 'password2')
+
+class DeleteCustomUserForm(forms.Form):
+    user_ids = forms.ModelMultipleChoiceField(
+        queryset=CustomUser.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+    )
+
+class CustomUserDetailForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'first_name', 'last_name', 'email', 'phone', 'address', 'is_staff']

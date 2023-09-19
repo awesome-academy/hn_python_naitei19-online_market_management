@@ -34,4 +34,11 @@ class DeleteCategoryForm(forms.Form):
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'category', 'description', 'base_price']
+        fields = ['name', 'category', 'image', 'description', 'base_price', 'number_in_stock']
+        labels = {'number_in_stock': 'Num in stock'}
+
+class DeleteProductForm(forms.Form):
+    product_ids = forms.ModelMultipleChoiceField(
+        queryset=Product.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+    )

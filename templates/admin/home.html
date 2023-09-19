@@ -39,21 +39,21 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto ">
-              <li class="listlink"><a href="{% url 'home:admin_overview' %}"> {% trans "OVERVIEW" %}</a> </li>
-              <li class="listlink"><a href="{% url 'home:admin_category_list' %}">&emsp;  &emsp; {% trans "GOODS" %}</a></li>
+              <li class="listlink"><a href="{% url 'home:admin_order' %}"> {% trans "ORDER" %}</a> </li>
+              <li class="listlink"><a href="{% url 'home:admin_category_list' %}">&emsp;  &emsp; {% trans "CATEGORY" %}</a></li>
+              <li class="listlink"><a href="{% url 'home:admin_product_list' %}">&emsp;  &emsp; {% trans "PRODUCT" %}</a></li>
               <li class="listlink"><a href="">&emsp;  &emsp; {% trans "USER" %}</a></li>
-              <li class="listlink"><a href="">&emsp;  &emsp; {% trans "ORDER" %}</a></li>
             </ul>
             {% get_current_language as LANGUAGE_CODE %}
             {% get_available_languages as LANGUAGES %}
             {% get_language_info_list for LANGUAGES as languages %}
-            {% if request.resolver_match.url_name == 'admin_overview' %}
-            <a class="listlink" href="{% url 'vi:admin_overview' %}">  &emsp;
+            {% if request.resolver_match.url_name == 'admin_order' %}
+            <a class="listlink" href="{% url 'vi:admin_order' %}">  &emsp;
               <img src="/static/homepage/images/vi.png" class="imagesflag">
-              <a  href="{% url 'vi:admin_overview' %}" class="trans-button"> VI </a> 
-            <a class="listlink" href="{% url 'en:admin_overview' %}">   &emsp;
+              <a  href="{% url 'vi:admin_order' %}" class="trans-button"> VI </a> 
+            <a class="listlink" href="{% url 'en:admin_order' %}">   &emsp;
               <img src="/static/homepage/images/en.png" class="imagesflag">
-              <a  href="{% url 'en:admin_overview' %}" class="trans-button"> EN &emsp; </a> 
+              <a  href="{% url 'en:admin_order' %}" class="trans-button"> EN &emsp; </a> 
             {% elif request.resolver_match.url_name == 'admin_category_list' %}
             <a class="listlink" href="{% url 'vi:admin_category_list' %}">  &emsp;
               <img src="/static/homepage/images/vi.png" class="imagesflag">
@@ -61,13 +61,41 @@
             <a class="listlink" href="{% url 'en:admin_category_list' %}">   &emsp;
               <img src="/static/homepage/images/en.png" class="imagesflag">
               <a  href="{% url 'en:admin_category_list' %}" class="trans-button"> EN &emsp; </a>
-              {% elif request.resolver_match.url_name == 'admin_category_create' %}
+            {% elif request.resolver_match.url_name == 'admin_category_create' %}
             <a class="listlink" href="{% url 'vi:admin_category_create' %}">  &emsp;
               <img src="/static/homepage/images/vi.png" class="imagesflag">
               <a  href="{% url 'vi:admin_category_create' %}" class="trans-button"> VI </a> 
             <a class="listlink" href="{% url 'en:admin_category_create' %}">   &emsp;
               <img src="/static/homepage/images/en.png" class="imagesflag">
               <a  href="{% url 'en:admin_category_create' %}" class="trans-button"> EN &emsp; </a>
+            {% elif request.resolver_match.url_name == 'admin_category_detail' %}
+            <a class="listlink" href=" {% url 'vi:admin_category_detail' category_id=category.id%}">  &emsp;
+              <img src="/static/homepage/images/vi.png" class="imagesflag">
+              <a  href=" {% url 'vi:admin_category_detail' category_id=category.id%}" class="trans-button"> VI </a> 
+            <a class="listlink" href=" {% url 'en:admin_category_detail' category_id=category.id%}">   &emsp;
+              <img src="/static/homepage/images/en.png" class="imagesflag">
+              <a  href=" {% url 'en:admin_category_detail' category_id=category.id%}" class="trans-button"> EN &emsp; </a>
+            {% elif request.resolver_match.url_name == 'admin_product_list' %}
+            <a class="listlink" href="{% url 'vi:admin_product_list' %}">  &emsp;
+              <img src="/static/homepage/images/vi.png" class="imagesflag">
+              <a  href="{% url 'vi:admin_product_list' %}" class="trans-button"> VI </a> 
+            <a class="listlink" href="{% url 'en:admin_product_list' %}">   &emsp;
+              <img src="/static/homepage/images/en.png" class="imagesflag">
+              <a  href="{% url 'en:admin_product_list' %}" class="trans-button"> EN &emsp; </a>
+            {% elif request.resolver_match.url_name == 'admin_product_create' %}
+            <a class="listlink" href="{% url 'vi:admin_product_create' %}">  &emsp;
+              <img src="/static/homepage/images/vi.png" class="imagesflag">
+              <a  href="{% url 'vi:admin_product_create' %}" class="trans-button"> VI </a> 
+            <a class="listlink" href="{% url 'en:admin_product_create' %}">   &emsp;
+              <img src="/static/homepage/images/en.png" class="imagesflag">
+              <a  href="{% url 'en:admin_product_create' %}" class="trans-button"> EN &emsp; </a>
+            {% elif request.resolver_match.url_name == 'admin_product_detail' %}
+            <a class="listlink" href=" {% url 'vi:admin_product_detail' product_id=product.id%}">  &emsp;
+              <img src="/static/homepage/images/vi.png" class="imagesflag">
+              <a  href=" {% url 'vi:admin_product_detail' product_id=product.id%}" class="trans-button"> VI </a> 
+            <a class="listlink" href=" {% url 'en:admin_product_detail' product_id=product.id%}">   &emsp;
+              <img src="/static/homepage/images/en.png" class="imagesflag">
+              <a  href=" {% url 'en:admin_product_detail' product_id=product.id%}" class="trans-button"> EN &emsp; </a>
             {% endif %}
             <div class="user_option">
               {% if user.is_authenticated %}
@@ -81,7 +109,7 @@
                 <i class="fa fa-user" aria-hidden="true"></i>
               </a>
               {% endif %}
-                <a href="{% url 'home:admin_overview' %}" class="sunas"> <b>{%trans "Admin Page"%}</b></a>
+                <a href="{% url 'home:admin_order' %}" class="sunas"> <b>{%trans "Admin Page"%}</b></a>
             </div>
           </div>
         </nav>

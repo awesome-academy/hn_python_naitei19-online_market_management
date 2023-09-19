@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-15 13:22+0700\n"
+"POT-Creation-Date: 2023-09-18 14:15+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,39 +46,39 @@ msgstr ""
 msgid "Date of the order."
 msgstr ""
 
-#: .\home\models.py:48
+#: .\home\models.py:47
 msgid "Status of the order."
 msgstr ""
 
-#: .\home\models.py:53
+#: .\home\models.py:52
 msgid "Price of product at order."
 msgstr ""
 
-#: .\home\models.py:54
+#: .\home\models.py:53
 msgid "total quantity of products ordered."
 msgstr ""
 
-#: .\home\models.py:57
+#: .\home\models.py:56
 msgid "total cost of order."
 msgstr ""
 
-#: .\home\models.py:63
+#: .\home\models.py:62
 msgid "Quantity of each product in the cart."
 msgstr ""
 
-#: .\home\models.py:69
+#: .\home\models.py:68
 msgid "The number of sales of the best-selling product."
 msgstr ""
 
-#: .\home\models.py:72
+#: .\home\models.py:71
 msgid "Best Seller"
 msgstr ""
 
-#: .\home\models.py:73
+#: .\home\models.py:72
 msgid "Best Sellers"
 msgstr ""
 
-#: .\home\views.py:35
+#: .\home\views.py:41 .\home\views.py:170 .\home\views.py:289
 msgid "Changes saved"
 msgstr ""
 
@@ -90,78 +90,154 @@ msgstr ""
 msgid "EN"
 msgstr ""
 
+#: .\templates\admin\category_detail.html:11
+msgid "Category Detail"
+msgstr ""
+
+#: .\templates\admin\category_detail.html:52
+#: .\templates\admin\product_detail.html:71
+msgid "Save changes"
+msgstr ""
+
+#: .\templates\admin\category_detail.html:56
+#: .\templates\admin\category_form.html:51
+msgid "Return category list"
+msgstr ""
+
 #: .\templates\admin\category_form.html:11
 msgid "Create New Category"
 msgstr ""
 
-#: .\templates\admin\category_form.html:45
+#: .\templates\admin\category_form.html:47
 msgid "Create category"
-msgstr ""
-
-#: .\templates\admin\category_form.html:49
-msgid "Return category list"
 msgstr ""
 
 #: .\templates\admin\category_list.html:11
 msgid "Categories Manage"
 msgstr ""
 
-#: .\templates\admin\category_list.html:23
-msgid "Delete selected"
+#: .\templates\admin\category_list.html:16
+msgid "Category Name"
 msgstr ""
 
-#: .\templates\admin\category_list.html:28
+#: .\templates\admin\category_list.html:44
+msgid "Delete selected categories"
+msgstr ""
+
+#: .\templates\admin\category_list.html:49
 msgid "Create new category"
 msgstr ""
 
 #: .\templates\admin\home.html:42
-msgid "OVERVIEW"
-msgstr ""
-
-#: .\templates\admin\home.html:43
-msgid "GOODS"
-msgstr ""
-
-#: .\templates\admin\home.html:44
-msgid "USER"
-msgstr ""
-
-#: .\templates\admin\home.html:45
 msgid "ORDER"
 msgstr ""
 
-#: .\templates\admin\home.html:80 .\templates\homepage\base.html:105
+#: .\templates\admin\home.html:43
+msgid "CATEGORY"
+msgstr ""
 
-#: .\templates\admin\home.html:84 .\templates\homepage\base.html:120
+#: .\templates\admin\home.html:44
+msgid "PRODUCT"
+msgstr ""
+
+#: .\templates\admin\home.html:45
+msgid "USER"
+msgstr ""
+
+#: .\templates\admin\home.html:108 .\templates\homepage\base.html:119
+#: .\templates\registration\login.html:10
+#: .\templates\registration\login.html:38
+msgid "Login"
+msgstr ""
+
+#: .\templates\admin\home.html:112 .\templates\homepage\base.html:138
 msgid "Admin Page"
+msgstr ""
+
+#: .\templates\admin\product_detail.html:11
+msgid "Product Detail"
+msgstr ""
+
+#: .\templates\admin\product_detail.html:75
+#: .\templates\admin\product_form.html:51
+msgid "Return product list"
+msgstr ""
+
+#: .\templates\admin\product_form.html:11
+msgid "Create New Product"
+msgstr ""
+
+#: .\templates\admin\product_form.html:47
+msgid "Create product"
+msgstr ""
+
+#: .\templates\admin\product_list.html:13
+msgid "Products Manage"
+msgstr ""
+
+#: .\templates\admin\product_list.html:18
+msgid "Name"
+msgstr ""
+
+#: .\templates\admin\product_list.html:19
+msgid "Category"
+msgstr ""
+
+#: .\templates\admin\product_list.html:20
+msgid "Stock"
+msgstr ""
+
+#: .\templates\admin\product_list.html:21 .\templates\catalog\cart.html:20
+#: .\templates\catalog\order.html:19 .\templates\catalog\yourorder.html:20
+msgid "Price"
+msgstr ""
+
+#: .\templates\admin\product_list.html:52
+msgid "Delete selected products"
+msgstr ""
+
+#: .\templates\admin\product_list.html:57
+msgid "Create new product"
 msgstr ""
 
 #: .\templates\catalog\cart.html:13
 msgid "SHOPPING CART"
 msgstr ""
 
-#: .\templates\catalog\cart.html:18
+#: .\templates\catalog\cart.html:14 .\templates\catalog\yourorder.html:13
+msgid "YOUR ORDERS"
+msgstr ""
+
+#: .\templates\catalog\cart.html:19 .\templates\catalog\order.html:18
+#: .\templates\catalog\yourorder.html:19
 msgid "Product Name"
 msgstr ""
 
-#: .\templates\catalog\cart.html:19
-msgid "Price"
-msgstr ""
-
-#: .\templates\catalog\cart.html:20
+#: .\templates\catalog\cart.html:21 .\templates\catalog\order.html:20
+#: .\templates\catalog\yourorder.html:21
 msgid "Quantity"
 msgstr ""
 
-#: .\templates\catalog\cart.html:21
+#: .\templates\catalog\cart.html:22
 msgid "Action"
 msgstr ""
 
-#: .\templates\catalog\cart.html:41
+#: .\templates\catalog\cart.html:42
 msgid "Delete"
 msgstr ""
 
-#: .\templates\catalog\cart.html:48
+#: .\templates\catalog\cart.html:50 .\templates\catalog\order.html:34
+#: .\templates\catalog\yourorder.html:36
 msgid "Total"
+msgstr ""
+
+#: .\templates\catalog\cart.html:53 .\templates\catalog\order.html:56
+#: .\templates\catalog\order.html:58
+msgid "Order"
+msgstr ""
+
+#: .\templates\catalog\cart.html:55
+msgid "There are no products in your cart, please add products to cart!!!"
 msgstr ""
 
 #: .\templates\catalog\menu.html:13
@@ -232,11 +308,6 @@ msgstr ""
 
 #: .\templates\homepage\base.html:49
 msgid "ABOUT"
-msgstr ""
-
-#: .\templates\homepage\base.html:119 .\templates\registration\login.html:10
-#: .\templates\registration\login.html:38
-msgid "Login"
 msgstr ""
 
 #: .\templates\homepage\footer.html:11

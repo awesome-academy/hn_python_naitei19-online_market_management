@@ -189,11 +189,6 @@ msgstr ""
 msgid "Stock"
 msgstr ""
 
-#: .\templates\admin\product_list.html:21 .\templates\catalog\cart.html:20
-#: .\templates\catalog\order.html:19 .\templates\catalog\yourorder.html:20
-msgid "Price"
-msgstr ""
-
 #: .\templates\admin\product_list.html:52
 msgid "Delete selected products"
 msgstr ""
@@ -252,6 +247,11 @@ msgstr ""
 msgid "Product Name"
 msgstr ""
 
+#: .\templates\catalog\cart.html:20 .\templates\catalog\order.html:19
+#: .\templates\catalog\yourorder.html:20
+msgid "Price"
+msgstr ""
+
 #: .\templates\catalog\cart.html:21 .\templates\catalog\order.html:20
 #: .\templates\catalog\yourorder.html:21
 msgid "Quantity"
@@ -281,6 +281,14 @@ msgstr ""
 
 #: .\templates\catalog\menu.html:13
 msgid "Our Menu"
+msgstr ""
+
+#: .\templates\catalog\menu.html:16
+msgid "Search for food here"
+msgstr ""
+
+#: .\templates\catalog\menu.html:54
+msgid "There are no products matching the search results!!!"
 msgstr ""
 
 #: .\templates\catalog\order.html:13

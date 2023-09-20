@@ -35,6 +35,12 @@ class Product(models.Model):
 
     def get_stock_count(self):
         return self.number_in_stock
+    
+    class Meta:
+        ordering = ['name']
+
+        def __str__(self):
+            return self.name
 
 class Order(models.Model):
     order_date = models.DateTimeField(default=datetime.now, help_text=_("Date of the order."))

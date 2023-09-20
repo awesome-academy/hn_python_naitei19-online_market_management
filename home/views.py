@@ -19,6 +19,8 @@ from .forms import CategoryForm, ProductForm, DeleteCategoryForm, DeleteProductF
 from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView
+import datetime
+from unidecode import unidecode
 
 class HomeView(View):
     def get(self, request):
@@ -29,7 +31,10 @@ class CategoryView(generic.DetailView):
 
     def get(self, request):
         menu = Category.objects.all()
-        products = Product.objects.all()
+        products = Product.objects.all().order_by('name')
+        if request.GET.get('food_name'):
+            productssearch =  filter(lambda x: unidecode((request.GET.get('food_name'))).lower()  in unidecode((_(x.name))).lower()  , products)
+            return render(request, 'catalog/menu.html', {'menu': menu,'products' : productssearch})
         return render(request, 'catalog/menu.html', {'menu': menu,'products' : products})
 
 @login_required
@@ -71,6 +76,7 @@ class CartView(View):
         total_price = sum(item.product.base_price * item.quantity for item in cartall)
         return render(request, 'catalog/cart.html',{'cartall': cartall,'total_price': total_price})
 
+@login_required
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     user = request.user
@@ -82,8 +88,9 @@ def add_to_cart(request, product_id):
         cart_item.quantity += 1
         cart_item.save()
 
-    return redirect('/cart')
+    return redirect('/category')
 
+@login_required
 def update_cart(request):
 
     if request.method == 'POST':
@@ -279,6 +286,52 @@ def add_order(request):
         transaction.rollback()
         # Ghi log lỗi hoặc thông báo lỗi tùy theo nhu cầu
         print(f"Transaction failed: {str(e)}")
+class OrderView(View):
+    model = Order
+
+    def get(self, request):
+        try:
+            cart = Cart.objects.get(user_id=request.user.id)
+            cartall = CartItem.objects.filter(cart_id=cart)
+            total_price = sum(item.product.base_price * item.quantity for item in cartall)
+        except Cart.DoesNotExist:
+            cartall = []  # Không tìm thấy bản ghi Cart, danh sách cartall rỗng
+            total_price = 0
+
+        return render(request, 'catalog/order.html', {'cartall': cartall, 'total_price': total_price})
+
+def search_food(request):
+    menu = Category.objects.all()
+    products = Product.objects.all()
+    return render(request, 'catalog/menu.html', {'menu': menu, 'products': products})
+
+@login_required
+def add_order(request):
+    user = request.user
+    cart = get_object_or_404(Cart, user=user)
+
+    if cart:
+        # Sử dụng transaction.atomic() để đảm bảo tính toàn vẹn dữ liệu
+        with transaction.atomic():
+            order = Order(cart=cart, user=user)
+            order.save()
+            
+            cartall = CartItem.objects.filter(cart=cart)
+            
+            # Thêm các chi tiết đơn hàng vào trong giao dịch
+            for cartitem in cartall:
+                order_detail = OrderDetail(
+                    price=cartitem.product.base_price,
+                    quantity=cartitem.quantity,
+                    total_cost=cartitem.product.base_price * cartitem.quantity,
+                    order=order,
+                    product=cartitem.product)
+                order_detail.save()
+                cartitem.delete()
+
+            order.status = 0
+            order.save()
+
     return redirect('/yourorder/')
 
 class YourOrderView(View):

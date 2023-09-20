@@ -22,7 +22,10 @@ urlpatterns = [
     path('custom_logout/', views.custom_logout, name='custom_logout'),
     path('register/', views.register, name='register'),
     # URL cho quản lý đơn hàng
-    path('admin/order/', views.admin_order, name='admin_order'),
+    path('admin/order/', views.AdminOrderList.as_view(), name='admin_order'),
+    path('accept_order/<int:order_id>', views.accept_order, name='admin_accept_order'),
+    path('reject_order/<int:order_id>', views.reject_order, name='admin_reject_order'),
+    path('delete_order/<int:order_id>', views.delete_order, name='admin_delete_order'),
     # URL cho quản lý thể loại sản phẩm
     path('admin/categories/', views.AdminCategoryList.as_view(), name='admin_category_list'),
     path('delete_categories/', views.delete_categories, name='delete_categories'),

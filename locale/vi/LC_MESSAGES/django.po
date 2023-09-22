@@ -114,6 +114,10 @@ msgstr "Tạo Thể Loại Mới"
 msgid "Create category"
 msgstr "Tạo thể loại"
 
+#: .\templates\admin\category_form.html:51
+msgid "Return category list"
+msgstr "Quay lại danh sách thể loại"
+
 #: .\templates\admin\category_list.html:11
 msgid "Categories Manage"
 msgstr "Quản lý thể loại"
@@ -248,12 +252,17 @@ msgid "YOUR ORDERS"
 msgstr "Đơn Của Bạn"
 
 #: .\templates\catalog\cart.html:19 .\templates\catalog\order.html:18
-#: .\templates\catalog\yourorder.html:19
+#: .\templates\catalog\yourorder.html:20
 msgid "Product Name"
 msgstr "Tên món"
 
-#: .\templates\catalog\cart.html:21 .\templates\catalog\order.html:20
+#: .\templates\catalog\cart.html:20 .\templates\catalog\order.html:19
 #: .\templates\catalog\yourorder.html:21
+msgid "Price"
+msgstr "Giá"
+
+#: .\templates\catalog\cart.html:21 .\templates\catalog\order.html:20
+#: .\templates\catalog\yourorder.html:22
 msgid "Quantity"
 msgstr "Số Lượng"
 
@@ -266,7 +275,7 @@ msgid "Delete"
 msgstr "Xóa"
 
 #: .\templates\catalog\cart.html:50 .\templates\catalog\order.html:34
-#: .\templates\catalog\yourorder.html:36
+#: .\templates\catalog\yourorder.html:37
 msgid "Total"
 msgstr "Thành Tiền"
 
@@ -297,7 +306,7 @@ msgstr " Không có món nào phù hợp với kết quả tìm kiếm của b�
 msgid "YOUR ORDER"
 msgstr "Đơn Của Bạn"
 
-#: .\templates\catalog\order.html:37 .\templates\catalog\yourorder.html:42
+#: .\templates\catalog\order.html:37 .\templates\catalog\yourorder.html:43
 msgid "User's Information:"
 msgstr "Thông Tin Người Dùng: "
 
@@ -305,27 +314,27 @@ msgstr "Thông Tin Người Dùng: "
 msgid "Name:"
 msgstr "Tên: "
 
-#: .\templates\catalog\order.html:41 .\templates\catalog\yourorder.html:46
+#: .\templates\catalog\order.html:41
 msgid "Please enter your name."
 msgstr "Hãy thêm tên của bạn."
 
-#: .\templates\catalog\order.html:44 .\templates\catalog\yourorder.html:49
+#: .\templates\catalog\order.html:44 .\templates\catalog\yourorder.html:45
 msgid "User's Phone Number:"
 msgstr "Số Điện Thoại Người Dùng:"
 
-#: .\templates\catalog\order.html:46 .\templates\catalog\yourorder.html:51
+#: .\templates\catalog\order.html:46
 msgid "Please enter your phone number."
 msgstr "Hãy thêm số điện thoại của bạn."
 
-#: .\templates\catalog\order.html:49 .\templates\catalog\yourorder.html:54
+#: .\templates\catalog\order.html:49 .\templates\catalog\yourorder.html:46
 msgid "User's Address:"
 msgstr "Địa Chỉ:"
 
-#: .\templates\catalog\order.html:51 .\templates\catalog\yourorder.html:56
+#: .\templates\catalog\order.html:51
 msgid "Please enter your address."
 msgstr "Hãy nhập địa chỉ của bạn"
 
-#: .\templates\catalog\order.html:53 .\templates\catalog\yourorder.html:58
+#: .\templates\catalog\order.html:53 .\templates\catalog\yourorder.html:47
 msgid "User's Email:"
 msgstr "Email Người Dùng:"
 
@@ -343,11 +352,19 @@ msgstr ""
 "Thông tin của bạn chưa hoàn thiện, hãy cập nhật thông tin ở tài khoản cá "
 "nhân trước khi đặt hàng!!!"
 
-#: .\templates\catalog\yourorder.html:38
+#: .\templates\catalog\yourorder.html:17
+msgid "Your order has been cancelled!"
+msgstr "Đơn hàng của bạn đã được hủy"
+
+#: .\templates\catalog\yourorder.html:17
+msgid "Cancel Order"
+msgstr "Hủy đơn hàng"
+
+#: .\templates\catalog\yourorder.html:39
 msgid "Order Date:"
 msgstr "Thời Gian Đặt: "
 
-#: .\templates\catalog\yourorder.html:39
+#: .\templates\catalog\yourorder.html:40
 msgid "User's Status:"
 msgstr "Trạng Thái Đơn Hàng: "
 
@@ -465,6 +482,9 @@ msgstr "Đã có tài khoản? "
 #: .\templates\registration\register.html:70
 msgid "Login here!"
 msgstr "Đăng nhập ở đây!"
+
+msgid "Name"
+msgstr "Tên"
 
 msgid "Parent"
 msgstr "Nhánh Cha"
@@ -976,3 +996,12 @@ msgstr ""
 "Các món combo độc quyền được nghiên cứu và sáng tạo bởi nhà hàng chúng "
 "tôi, chúng tôi đảm bảo bạn sẽ có những trải nghiệm khó quên với hương vị "
 "độc đáo nhưng thơm ngon."
+
+msgid "Pending"
+msgstr "Đang xử lý"
+
+msgid "Accepted-Ongoing"
+msgstr "Shop đã nhận đơn"
+
+msgid "Rejected"
+msgstr "Shop từ chối nhận đơn hàng"

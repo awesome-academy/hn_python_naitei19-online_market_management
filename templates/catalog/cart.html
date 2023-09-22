@@ -47,7 +47,7 @@
                       </tbody>
                   </table>        
                   <div>         
-                    <h1 class="total-text">{% trans "Total" %}: </h1><h1 class="total-text" id="total_price">{% money_localize total_price 'VND' %}</h1>
+                    <h1 class="d-inline">{% trans "Total" %}: </h1><h1 class="d-inline" id="total_price">{% money_localize total_price 'VND' %}</h1>
                   </div> 
                   {% if cartall %}
                   <a href="{% url 'home:order' %}" class="ordercart">{% trans "Order" %}</a>

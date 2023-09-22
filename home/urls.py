@@ -18,6 +18,7 @@ urlpatterns = [
     path('update_cart/', views.update_cart, name='update_cart'),
     path('accounts/login/', LoginView.as_view(), name='login'),
     path('profile/', views.update_profile, name='profile'),
+    path('cancelled_order/<int:order_id>', views.cancelled_order, name='cancelled_order'),
     path('custom_logout/', views.custom_logout, name='custom_logout'),
     path('register/', views.register, name='register'),
     # URL cho quản lý đơn hàng

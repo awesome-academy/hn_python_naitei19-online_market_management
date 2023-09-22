@@ -13,7 +13,7 @@
                     <h1>{% trans "YOUR ORDERS" %}</h1>
                     <br>
                   {% for orderall in orderAllItem %}  
-                    <table class="tablecart">
+                    <table class="tablecart"> <br>
                         <thead>
                             <tr>
                               <th>{% trans "Product Name" %}</th>
@@ -34,27 +34,16 @@
                       
                     <div>         
                       <h1 class="total-text">{% trans "Total" %}: </h1><h1 class="total-text" id="total_price">{% money_localize orderall.total_price 'VND' %}</h1>
+                      <a onclick="alert('{% trans "Your order has been cancelled!" %}')" href="{% url 'home:cancelled_order' orderall.order.id %}" class="ordercart">{% trans "Cancel Order" %}</a>
                     </div> 
                     <h1>{% trans "Order Date:" %} {{orderall.formatted_date}}</h1>
                     <h1 class="order-status">{% trans "User's Status:" %} {% trans orderall.order.get_status_display %}</h1>
                   {% endfor %}
                   <ul class="infor">                 
-                     <h1>{% trans "User's Information:" %} </h1>
-                     <li>{% if user.first_name or user.last_name %}
-                        <p>{% trans "Name:" %} {{user.first_name}} {{user.last_name}}</p>
-                    {% else %}
-                        <p class="errororder">{% trans "Please enter your name." %}</p>
-                    {% endif %}</li>
-                     <li>{% if user.phone %}
-                        <p>{% trans "User's Phone Number:" %} {{ user.phone }}</p>
-                    {% else %}
-                        <p class="errororder">{% trans "Please enter your phone number." %}</p>
-                    {% endif %}</li>
-                    <li>{% if user.address %}
-                        <p>{% trans "User's Address:" %} {{ user.address }}</p>
-                    {% else %}
-                        <p class="errororder">{% trans "Please enter your address." %}</p>
-                    {% endif %}</li>
+                    <h1>{% trans "User's Information:" %} </h1>
+                    <li><p>{% trans "Name:" %} {{user.first_name}} {{user.last_name}}</p></li>
+                    <li><p>{% trans "User's Phone Number:" %} {{ user.phone }}</p></li>
+                    <li><p>{% trans "User's Address:" %} {{ user.address }}</p></li>
                     <li><p>{% trans "User's Email:" %} {{user.email}}</p></li>
                   </ul>
                   <div>         

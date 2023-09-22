@@ -827,6 +827,29 @@ table.table td, table.table th {
   margin-right: 10px;
 }
 
+.searchbox {
+  display: inline-block;
+  padding: 6px 20px;
+  background-color: #3e3d3d;
+  color: #fffcfc;
+  border-radius: 40px;
+  float: right;
+}
+.infor li{
+  list-style-type: none;
+  text-align: left ; 
+}
+.errororder{
+  color:red
+}
+.input-search{
+  background-color: #3e3d3d;
+  color: #fffcfc;
+  border-radius: 20px;
+  padding-left: 16px;
+  margin-right: 10px;
+}
+
 .searchbox{
   display: inline-block;
   padding: 6px 20px;
@@ -834,4 +857,8 @@ table.table td, table.table th {
   color: #fffcfc;
   border-radius: 40px;
   float: right;
+}
+
+.navbar-market{
+  min-width: 90%;
 }

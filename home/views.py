@@ -395,3 +395,11 @@ def admin_user_detail(request, user_id):
     else:
         form = CustomUserDetailForm(instance=aduser)
     return render(request, 'admin/user_detail.html', {'aduser': aduser, 'users': users, 'form': form})
+
+@login_required
+def cancelled_order(request, order_id):
+    user = request.user
+    order = get_object_or_404(Order, user=user, id=order_id)
+    order.status = 3
+    order.save()
+    return redirect('/yourorder/')

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-18 23:31+0700\n"
+"POT-Creation-Date: 2023-09-26 10:26+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,45 +42,49 @@ msgstr ""
 msgid "Number of products sold."
 msgstr ""
 
-#: .\home\models.py:40
+#: .\home\models.py:46
 msgid "Date of the order."
 msgstr ""
 
-#: .\home\models.py:47
+#: .\home\models.py:54
 msgid "Status of the order."
 msgstr ""
 
-#: .\home\models.py:52
+#: .\home\models.py:59
 msgid "Price of product at order."
 msgstr ""
 
-#: .\home\models.py:53
+#: .\home\models.py:60
 msgid "total quantity of products ordered."
 msgstr ""
 
-#: .\home\models.py:56
+#: .\home\models.py:63
 msgid "total cost of order."
 msgstr ""
 
-#: .\home\models.py:62
+#: .\home\models.py:69
 msgid "Quantity of each product in the cart."
 msgstr ""
 
-#: .\home\models.py:68
+#: .\home\models.py:75
 msgid "The number of sales of the best-selling product."
 msgstr ""
 
-#: .\home\models.py:71
+#: .\home\models.py:78
 msgid "Best Seller"
 msgstr ""
 
-#: .\home\models.py:72
+#: .\home\models.py:79
 msgid "Best Sellers"
 msgstr ""
 
-#: .\home\views.py:41 .\home\views.py:172 .\home\views.py:233
-#: .\home\views.py:340
+#: .\home\views.py:47 .\home\views.py:175 .\home\views.py:236
+#: .\home\views.py:398
 msgid "Changes saved"
+msgstr ""
+
+#: .\home\views.py:436 .\home\views.py:446
+msgid "Đơn đặt hàng không tồn tại"
 msgstr ""
 
 #: .\shop\settings.py:121
@@ -114,10 +118,6 @@ msgstr ""
 msgid "Create category"
 msgstr ""
 
-#: .\templates\admin\category_form.html:51
-msgid "Return category list"
-msgstr ""
-
 #: .\templates\admin\category_list.html:11
 msgid "Categories Manage"
 msgstr ""
@@ -134,30 +134,114 @@ msgstr ""
 msgid "Create new category"
 msgstr ""
 
-#: .\templates\admin\home.html:42
+#: .\templates\admin\home.html:48
 msgid "ORDER"
 msgstr ""
 
-#: .\templates\admin\home.html:43
+#: .\templates\admin\home.html:49
 msgid "CATEGORY"
 msgstr ""
 
-#: .\templates\admin\home.html:44
+#: .\templates\admin\home.html:50
 msgid "PRODUCT"
 msgstr ""
 
-#: .\templates\admin\home.html:45
+#: .\templates\admin\home.html:51
 msgid "USER"
 msgstr ""
 
-#: .\templates\admin\home.html:122 .\templates\homepage\base.html:119
+#: .\templates\admin\home.html:135 .\templates\homepage\base.html:119
 #: .\templates\registration\login.html:10
 #: .\templates\registration\login.html:38
 msgid "Login"
 msgstr ""
 
-#: .\templates\admin\home.html:126 .\templates\homepage\base.html:138
+#: .\templates\admin\home.html:139 .\templates\homepage\base.html:133
 msgid "Admin Page"
+msgstr ""
+
+#: .\templates\admin\order_list.html:11
+msgid "Filter"
+msgstr ""
+
+#: .\templates\admin\order_list.html:14
+msgid "Start Date"
+msgstr ""
+
+#: .\templates\admin\order_list.html:19
+msgid "End Date"
+msgstr ""
+
+#: .\templates\admin\order_list.html:24
+msgid "Price Range"
+msgstr ""
+
+#: .\templates\admin\order_list.html:25
+msgid "Min price"
+msgstr ""
+
+#: .\templates\admin\order_list.html:26
+msgid "Max price"
+msgstr ""
+
+#: .\templates\admin\order_list.html:30
+msgid "Refresh"
+msgstr ""
+
+#: .\templates\admin\order_list.html:31
+msgid "Apply"
+msgstr ""
+
+#: .\templates\admin\order_list.html:38
+msgid "All"
+msgstr ""
+
+#: .\templates\admin\order_list.html:39
+msgid "Pending"
+msgstr ""
+
+#: .\templates\admin\order_list.html:40
+msgid "Ongoing"
+msgstr ""
+
+#: .\templates\admin\order_list.html:41
+msgid "Cancelled"
+msgstr ""
+
+#: .\templates\admin\order_list.html:42
+msgid "Rejected"
+msgstr ""
+
+#: .\templates\admin\order_list.html:43
+msgid "Completed"
+msgstr ""
+
+#: .\templates\admin\order_list.html:50
+msgid "Customer"
+msgstr ""
+
+#: .\templates\admin\order_list.html:51
+msgid "Status"
+msgstr ""
+
+#: .\templates\admin\order_list.html:66
+msgid "Order Date"
+msgstr ""
+
+#: .\templates\admin\order_list.html:67
+msgid "Total Cost"
+msgstr ""
+
+#: .\templates\admin\order_list.html:74 .\templates\catalog\cart.html:42
+msgid "Delete"
+msgstr ""
+
+#: .\templates\admin\order_list.html:79 .\templates\admin\order_list.html:81
+msgid "Reject"
+msgstr ""
+
+#: .\templates\admin\order_list.html:86 .\templates\admin\order_list.html:88
+msgid "Accept"
 msgstr ""
 
 #: .\templates\admin\product_detail.html:11
@@ -191,6 +275,11 @@ msgstr ""
 
 #: .\templates\admin\product_list.html:20
 msgid "Stock"
+msgstr ""
+
+#: .\templates\admin\product_list.html:21 .\templates\catalog\cart.html:20
+#: .\templates\catalog\order.html:19 .\templates\catalog\yourorder.html:20
+msgid "Price"
 msgstr ""
 
 #: .\templates\admin\product_list.html:52
@@ -247,17 +336,12 @@ msgid "YOUR ORDERS"
 msgstr ""
 
 #: .\templates\catalog\cart.html:19 .\templates\catalog\order.html:18
-#: .\templates\catalog\yourorder.html:20
+#: .\templates\catalog\yourorder.html:19
 msgid "Product Name"
 msgstr ""
 
-#: .\templates\catalog\cart.html:20 .\templates\catalog\order.html:19
-#: .\templates\catalog\yourorder.html:21
-msgid "Price"
-msgstr ""
-
 #: .\templates\catalog\cart.html:21 .\templates\catalog\order.html:20
-#: .\templates\catalog\yourorder.html:22
+#: .\templates\catalog\yourorder.html:21
 msgid "Quantity"
 msgstr ""
 
@@ -265,12 +349,8 @@ msgstr ""
 msgid "Action"
 msgstr ""
 
-#: .\templates\catalog\cart.html:42
-msgid "Delete"
-msgstr ""
-
 #: .\templates\catalog\cart.html:50 .\templates\catalog\order.html:34
-#: .\templates\catalog\yourorder.html:37
+#: .\templates\catalog\yourorder.html:36
 msgid "Total"
 msgstr ""
 
@@ -341,11 +421,11 @@ msgid ""
 "ordering!!!"
 msgstr ""
 
-#: .\templates\catalog\yourorder.html:17
+#: .\templates\catalog\yourorder.html:37
 msgid "Your order has been cancelled!"
 msgstr ""
 
-#: .\templates\catalog\yourorder.html:17
+#: .\templates\catalog\yourorder.html:37
 msgid "Cancel Order"
 msgstr ""
 

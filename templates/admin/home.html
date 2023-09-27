@@ -23,9 +23,15 @@
   {% block navbarblock %}
   <!-- header section strats -->
   <div class="hero_area">
+    {% if request.resolver_match.url_name == 'admin_order'%}
+    <div class="bg-navbar">
+      <img src="{% static 'homepage/images/navbar.jpg' %}" alt="">
+    </div>
+    {% else %}
     <div class="bg-box">
       <img src="{% static 'homepage/images/bground.jpg' %}" alt="">
     </div>
+    {% endif %}
   <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
@@ -143,6 +149,8 @@
   {% endblock %}
 
 </div>
-
+<!-- jQery -->
+<script src="{% static 'homepage/js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'homepage/js/order_list.js' %}"></script>
 </body>
 </html>

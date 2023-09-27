@@ -62,6 +62,7 @@ h2 {
 .heading_container p {
   margin-top: 10px;
   margin-bottom: 0;
+  color: #040404;
 }
 
 .heading_container.heading_center {
@@ -861,4 +862,168 @@ table.table td, table.table th {
 
 .navbar-market{
   min-width: 90%;
+}
+
+.center-text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CSS cho container chứa bộ lọc*/
+.orderlist-container {
+    display: flex;
+    margin: 20px;
+}
+.filter-price{
+    margin-bottom: 20px;
+}
+/* CSS cho bộ lọc */
+.filter-sidebar {
+    width: 220px;
+    height: 420px;
+    padding: 11px;
+    background-color: #f9f9f9;
+    margin-top: 56px;
+    border: 1px solid #ddd; 
+    position: fixed; /* Cố định phần sidebar */
+}
+
+/* CSS cho danh sách các đơn hàng */
+.order-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* CSS cho hình chữ nhật chứa thông tin đơn hàng */
+.order-details {
+    padding: 20px;
+    border: 1px solid #ddd; 
+    background-color: #c9c9c9;
+    margin-bottom: 20px;
+    margin-left: 250px;
+    margin-right: 10px;
+}
+
+/* CSS cho thanh navbar */
+.orderlist-navbar {
+    margin-top: 56px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    background-color: #ffdede;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    margin-left: 250px; 
+    margin-right: 10px;
+    max-width: 1000px;
+}
+
+ /* CSS cho các mục trong thanh navbar */
+.orderlist-navbar a {
+    color: rgb(3, 3, 3);
+    text-align: center; 
+    padding: 14px 29px; 
+    text-decoration: none; 
+    margin: 0 10px; 
+}
+
+/* Hover (di chuột qua) trên các mục */
+.orderlist-navbar a:hover {
+    background-color: #ddd; /* Màu nền khi di chuột qua */
+    color: rgb(190, 57, 57); /* Màu chữ khi di chuột qua */
+}
+.orderlist-navbar a:active {
+    border-bottom: 2px solid rgb(0, 0, 0); 
+}
+.line-container {
+    display: flex; /* Sử dụng flexbox để căn chỉnh chữ trên cùng 1 dòng */
+    justify-content: space-between;
+}
+.big-text{
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+    font-size: 32px;
+}
+.table-orderdetail{
+    border: collapse;
+}
+.table-orderdetail th, td{
+    border-top: 1px solid black; 
+    border-bottom: 1px solid black; 
+    border-left: none;
+    border-right: none;
+    padding: 10px;
+    padding: 10px;
+    color: black;
+    width: 100%;
+}
+.table-orderdetail 
+    :nth-child(1), td:nth-child(1){
+        width: 50px;
+    }
+    th:nth-child(2), td:nth-child(2){
+         text-align: left;
+         width: 200px;
+    }
+    th:nth-child(3), td:nth-child(3) {
+         text-align: center;
+        width: 300px;
+    }
+    th:nth-child(4), td:nth-child(4) {
+        text-align: right;
+        width: 400px;
+    }
+.order-manage-heading{
+    margin-left: 650px;
+}
+.filter-item{
+    margin-bottom: 20px;
+}
+.filter-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#refresh-filter {
+    margin-right: auto;
+}
+#apply-filter {
+    margin-left: auto;
+}
+.cus-left{
+    text-align: left;
+}
+.cus-right{
+    text-align: right;
+}
+.btn-custom {
+  background-color: #ffffff;
+  border: none; 
+  cursor: not-allowed; /* Con trỏ không cho phép */
+  padding: 10px 20px; /* Padding tùy chỉnh */
+  border-radius: 5px; /* Bo góc */
+
+}
+.button-cus-container {
+  margin-top: 10px;
+  margin-bottom: -10px;
+  padding: 10px 20px;
+}  
+.button-cus-container td {
+  border: none !important;
+  width: 100%;
+}
+.button-cus-container td:nth-child(1) {
+  width: 250px !important;
+  text-align: left;
+}
+.button-cus-container td:nth-child(2) {
+  width: 500px !important;
+  text-align: right;
+}
+.button-cus-container td:nth-child(3) {
+  width: 200px !important;
+  text-align: right;
 }

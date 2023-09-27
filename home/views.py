@@ -13,7 +13,7 @@ from djmoney.money import Money
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db import transaction
 from django.http import Http404
-
+from django.utils import timezone
 from django.http import HttpResponseRedirect
 from .forms import CategoryForm, ProductForm, DeleteCategoryForm, DeleteProductForm, ADCustomUserForm, DeleteCustomUserForm, CustomUserDetailForm
 from django.urls import reverse
@@ -21,6 +21,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic import ListView
 import datetime
 from unidecode import unidecode
+from django.db.models import Sum
 
 class HomeView(View):
     def get(self, request):
@@ -115,11 +116,6 @@ def update_cart(request):
             return JsonResponse({'status': -1,'message': 'Sản phẩm không tồn tại'}, status=404)
     else:
         return JsonResponse({'status': -1,'message': 'Yêu cầu không hợp lệ'}, status=400)
-
-#views cho quản lý đơn hàng
-@staff_member_required
-def admin_order(request):
-    return render(request, 'admin/order.html')
 
 #views cho quản lý thể loại
 @method_decorator(staff_member_required, name='dispatch')
@@ -347,6 +343,15 @@ class YourOrderView(View):
             formatted_date = order_date.strftime("%H:%M:%S %d-%m-%Y")
             orderAllItem.append({'allItem':orderall,'total_price':total_price,'order':order,'formatted_date':formatted_date})
         return render(request, 'catalog/yourorder.html',{'orderAllItem': orderAllItem,'total_price': total_price})
+
+@login_required
+def cancelled_order(request, order_id):
+    user = request.user
+    order = get_object_or_404(Order, user=user, id=order_id)
+    order.status = 2
+    order.save()
+    return redirect('/yourorder/')
+
 #views cho quản lý người dùng
 @method_decorator(staff_member_required, name='dispatch')
 class AdminUserList(ListView):
@@ -396,10 +401,59 @@ def admin_user_detail(request, user_id):
         form = CustomUserDetailForm(instance=aduser)
     return render(request, 'admin/user_detail.html', {'aduser': aduser, 'users': users, 'form': form})
 
-@login_required
-def cancelled_order(request, order_id):
-    user = request.user
-    order = get_object_or_404(Order, user=user, id=order_id)
-    order.status = 3
-    order.save()
-    return redirect('/yourorder/')
+#views cho quản lý order
+@method_decorator(staff_member_required, name='dispatch')
+class AdminOrderList(View):
+    model = Order
+
+    def get(self, request, status=None):
+        if status is None:
+            # Nếu không có trạng thái được chỉ định, mặc định là 'all'
+            status = 'all'
+
+        orders = Order.objects.order_by('-order_date')
+        orderAllItem = []
+
+        for order in orders:
+            orderall = OrderDetail.objects.filter(order=order)
+            total_price = sum(item.price * item.quantity for item in orderall)
+            local_order_date = timezone.localtime(order.order_date)
+            formatted_date = local_order_date.strftime("%H:%M:%S %d/%m/%Y")
+
+            if status == 'all' or order.status == status:
+                orderAllItem.append({'allItem': orderall, 'total_price': total_price, 'order': order, 'formatted_date': formatted_date})
+
+        return render(request, 'admin/order_list.html', {'orderAllItem': orderAllItem, 'total_price': total_price, 'status': status})
+
+@staff_member_required
+def accept_order(request, order_id):
+    try:
+        order = get_object_or_404(Order, id=order_id)
+        order.status = 1
+        order.save()
+        return redirect('home:admin_order')
+    except Order.DoesNotExist:
+        return HttpResponse(_('Đơn đặt hàng không tồn tại'), status=404)
+
+@staff_member_required
+def reject_order(request, order_id):
+    try:
+        order = get_object_or_404(Order, id=order_id)
+        order.status = 3
+        order.save()
+        return redirect('home:admin_order')
+    except Order.DoesNotExist:
+        return HttpResponse(_('Đơn đặt hàng không tồn tại'), status=404)
+
+@staff_member_required
+def delete_order(request, order_id):
+    try:
+        order = get_object_or_404(Order, id=order_id)
+        if order.status in [2, 3, 4]:
+            order.delete()
+            return redirect('home:admin_order')
+        else:
+            return HttpResponse(_('Không thể xóa đơn đặt hàng với trạng thái này'), status=400)
+    
+    except Order.DoesNotExist:
+        return HttpResponse(_('Đơn đặt hàng không tồn tại'), status=404)

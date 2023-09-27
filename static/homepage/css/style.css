@@ -946,35 +946,45 @@ table.table td, table.table th {
     font-weight: bold;
     font-size: 32px;
 }
-.table-orderdetail{
+.table-orderdetail {
     border: collapse;
 }
-.table-orderdetail th, td{
-    border-top: 1px solid black; 
-    border-bottom: 1px solid black; 
+.table-orderdetail th,
+.table-orderdetail td {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
     border-left: none;
     border-right: none;
-    padding: 10px;
     padding: 10px;
     color: black;
     width: 100%;
 }
-.table-orderdetail 
-    :nth-child(1), td:nth-child(1){
-        width: 50px;
-    }
-    th:nth-child(2), td:nth-child(2){
-         text-align: left;
-         width: 200px;
-    }
-    th:nth-child(3), td:nth-child(3) {
-         text-align: center;
-        width: 300px;
-    }
-    th:nth-child(4), td:nth-child(4) {
-        text-align: right;
-        width: 400px;
-    }
+.table-orderdetail .image-cell img {
+  width: 50px;
+  height: auto; /* Đảm bảo tỷ lệ khung hình được duy trì */
+}
+.table-orderdetail th:nth-child(1),
+.table-orderdetail td:nth-child(1) {
+    width: 50px;
+}
+
+.table-orderdetail th:nth-child(2),
+.table-orderdetail td:nth-child(2) {
+    text-align: left;
+    width: 200px;
+}
+
+.table-orderdetail th:nth-child(3),
+.table-orderdetail td:nth-child(3) {
+    text-align: center;
+    width: 300px;
+}
+
+.table-orderdetail th:nth-child(4),
+.table-orderdetail td:nth-child(4) {
+    text-align: right;
+    width: 400px;
+}
 .order-manage-heading{
     margin-left: 650px;
 }
@@ -1013,7 +1023,7 @@ table.table td, table.table th {
 }  
 .button-cus-container td {
   border: none !important;
-  width: 100%;
+  width: 100%;f
 }
 .button-cus-container td:nth-child(1) {
   width: 250px !important;
@@ -1022,8 +1032,32 @@ table.table td, table.table th {
 .button-cus-container td:nth-child(2) {
   width: 500px !important;
   text-align: right;
+  color: black!important;
 }
 .button-cus-container td:nth-child(3) {
   width: 200px !important;
   text-align: right;
+  color: black!important;
+}
+
+.admin_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  min-width: 90%;
+  margin-left: 120px;
+}
+
+.day-statistics {
+  border-radius: 15px;
+  text-align: center;
+}
+
+.todaystatistics {
+  border-radius: 10px; /* Bo góc bảng */
+  color: black; /* Màu chữ đen */
 }

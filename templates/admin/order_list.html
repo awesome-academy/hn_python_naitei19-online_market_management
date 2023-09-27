@@ -54,7 +54,7 @@
                 <table class="table-orderdetail">
                     {% for order_detail in orderAll.allItem %}
                     <tr>
-                        <td><img src="{{ order_detail.product.image.url }}" alt="{{ order_detail.product.name }}"></td>
+                        <td class="image-cell"><img src="{{ order_detail.product.image.url }}" alt="{{ order_detail.product.name }}"></td>
                         <td>{{ order_detail.product.name }}</td>
                         <td>x{{ order_detail.quantity }}</td>
                         <td>{% money_localize order_detail.price 'VND' %}</td>

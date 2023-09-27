@@ -55,6 +55,7 @@ class Order(models.Model):
     status = models.IntegerField(choices=ORDER_STATUS, default=0, help_text=_("Status of the order."))
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     cart = models.ForeignKey('Cart', on_delete=models.CASCADE)
+    order_cost = models.DecimalField(max_digits=12, decimal_places=0, default=0, help_text=_("total cost of order."))
 
 class OrderDetail(models.Model):
     price = models.DecimalField(max_digits=12, decimal_places=0, default=0, help_text=_("Price of product at order."))

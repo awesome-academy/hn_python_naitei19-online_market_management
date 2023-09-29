@@ -43,4 +43,6 @@ urlpatterns = [
     path('delete_users/', views.delete_users, name='delete_users'),
     path('admin/users/<int:user_id>/', views.admin_user_detail, name='admin_user_detail'),
     path('admin/users/create/', views.admin_user_create, name='admin_user_create'),
+    #URL cho thống kê
+    path('admin/statistics/', views.Statistics.as_view(), name='admin_statistics'),  
 ]

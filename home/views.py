@@ -1,6 +1,6 @@
 import datetime
 from django.views import View, generic
-from django.http import JsonResponse, HttpResponseRedirect
+from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -20,8 +20,11 @@ from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView
 import datetime
+from datetime import date
 from unidecode import unidecode
-from django.db.models import Sum
+from django.db.models.functions import TruncDate, Trunc
+from django.utils import timezone
+from django.db.models import Sum, Count
 
 class HomeView(View):
     def get(self, request):
@@ -313,7 +316,6 @@ def add_order(request):
             order.save()
             
             cartall = CartItem.objects.filter(cart=cart)
-            
             # Thêm các chi tiết đơn hàng vào trong giao dịch
             for cartitem in cartall:
                 order_detail = OrderDetail(
@@ -322,7 +324,8 @@ def add_order(request):
                     total_cost=cartitem.product.base_price * cartitem.quantity,
                     order=order,
                     product=cartitem.product)
-                order_detail.save()
+                order_detail.save()            
+                order.order_cost += order_detail.total_cost
                 cartitem.delete()
 
             order.status = 0
@@ -347,11 +350,14 @@ class YourOrderView(View):
 @login_required
 def cancelled_order(request, order_id):
     user = request.user
-    order = get_object_or_404(Order, user=user, id=order_id)
-    order.status = 2
-    order.save()
-    return redirect('/yourorder/')
-
+    order = get_object_or_404(Order, user=user, id=order_id, status__lt=2)
+    if order.status<2 :
+        order.status = 2
+        order.save()
+        return redirect('/yourorder/')
+    else:
+        return HttpResponse("Không thể hủy đơn hàng này vì đã được xử lý hoặc đã hoàn thành.")
+    
 #views cho quản lý người dùng
 @method_decorator(staff_member_required, name='dispatch')
 class AdminUserList(ListView):
@@ -417,7 +423,9 @@ class AdminOrderList(View):
         for order in orders:
             orderall = OrderDetail.objects.filter(order=order)
             total_price = sum(item.price * item.quantity for item in orderall)
-            local_order_date = timezone.localtime(order.order_date)
+            naive_order_date = datetime.datetime(2023, 9, 28, 12, 0, 0)
+            aware_order_date = timezone.make_aware(naive_order_date, timezone.get_default_timezone())
+            local_order_date = timezone.localtime(aware_order_date)
             formatted_date = local_order_date.strftime("%H:%M:%S %d/%m/%Y")
 
             if status == 'all' or order.status == status:
@@ -457,3 +465,58 @@ def delete_order(request, order_id):
     
     except Order.DoesNotExist:
         return HttpResponse(_('Đơn đặt hàng không tồn tại'), status=404)
+@login_required
+def cancelled_order(request, order_id):
+    user = request.user
+    order = get_object_or_404(Order, user=user, id=order_id)
+    order.status = 3
+    order.save()
+    return redirect('/yourorder/')
+
+# View dành cho thống kê
+class Statistics(ListView):
+    model = Order
+    template_name = 'admin/statistics.html'
+    paginate_by = 5
+    
+    def get(self, request):
+        start_date = request.GET.get('start_date')
+        end_date = request.GET.get('end_date')
+        date_status=0
+        today = date.today()
+
+        if start_date and end_date:
+            if(start_date>=end_date):
+                date_status=0
+            else:
+                date_status=1
+        # Kiểm tra xem start_date có giá trị không rỗng
+        daily_order_totals = Order.objects.filter(status=4)
+        if start_date:
+            daily_order_totals = daily_order_totals.filter(order_date__gte=start_date)
+        # Áp dụng điều kiện cho end_date
+        if end_date:
+            daily_order_totals = daily_order_totals.filter(order_date__lt=end_date)
+
+        daily_order_totals = daily_order_totals.annotate(
+            order_date_new=Trunc('order_date','day')
+        ).values('order_date_new').annotate(
+            total_price=Sum('order_cost'),
+            count=Count('id')
+        ).order_by('order_date_new')
+        
+        daily_summary = daily_order_totals.filter(order_date__gte=today)
+        daily_summary = daily_summary.annotate(
+            order_today_new=Trunc('order_date','day')
+        ).values('order_today_new').annotate(
+            total_price=Sum('order_cost'),
+            count=Count('id')
+        )
+
+        return render(request, 'admin/statistics.html',{
+            'daily_summary': daily_summary,
+            'today': today,
+            'orderAllItem': daily_order_totals,
+            'start_date': start_date,
+            'end_date': end_date, 
+            'date_status': date_status})

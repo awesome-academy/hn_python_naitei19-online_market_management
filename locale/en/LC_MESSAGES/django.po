@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-26 10:26+0700\n"
+"POT-Creation-Date: 2023-09-28 00:01+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,73 +18,77 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\home\models.py:16
+#: .\home\models.py:17
 msgid "Parent category of this category (if any)."
 msgstr ""
 
-#: .\home\models.py:23
+#: .\home\models.py:24
 msgid "Product image"
 msgstr ""
 
-#: .\home\models.py:24
+#: .\home\models.py:25
 msgid "Brief description of the product."
 msgstr ""
 
-#: .\home\models.py:25
+#: .\home\models.py:26
 msgid "The origin price of the product."
 msgstr ""
 
-#: .\home\models.py:26
+#: .\home\models.py:27
 msgid "Quantity of the product available in stock."
 msgstr ""
 
-#: .\home\models.py:27
+#: .\home\models.py:28
 msgid "Number of products sold."
 msgstr ""
 
-#: .\home\models.py:46
+#: .\home\models.py:47
 msgid "Date of the order."
 msgstr ""
 
-#: .\home\models.py:54
+#: .\home\models.py:55
 msgid "Status of the order."
 msgstr ""
 
-#: .\home\models.py:59
-msgid "Price of product at order."
-msgstr ""
-
-#: .\home\models.py:60
-msgid "total quantity of products ordered."
-msgstr ""
-
-#: .\home\models.py:63
+#: .\home\models.py:58 .\home\models.py:65
 msgid "total cost of order."
 msgstr ""
 
-#: .\home\models.py:69
+#: .\home\models.py:61
+msgid "Price of product at order."
+msgstr ""
+
+#: .\home\models.py:62
+msgid "total quantity of products ordered."
+msgstr ""
+
+#: .\home\models.py:71
 msgid "Quantity of each product in the cart."
 msgstr ""
 
-#: .\home\models.py:75
+#: .\home\models.py:77
 msgid "The number of sales of the best-selling product."
 msgstr ""
 
-#: .\home\models.py:78
+#: .\home\models.py:80
 msgid "Best Seller"
 msgstr ""
 
-#: .\home\models.py:79
+#: .\home\models.py:81
 msgid "Best Sellers"
 msgstr ""
 
-#: .\home\views.py:47 .\home\views.py:175 .\home\views.py:236
-#: .\home\views.py:398
+#: .\home\views.py:52 .\home\views.py:180 .\home\views.py:241
+#: .\home\views.py:403
 msgid "Changes saved"
 msgstr ""
 
-#: .\home\views.py:436 .\home\views.py:446
+#: .\home\views.py:441 .\home\views.py:451 .\home\views.py:464
 msgid "Đơn đặt hàng không tồn tại"
+msgstr ""
+
+#: .\home\views.py:461
+msgid "Không thể xóa đơn đặt hàng với trạng thái này"
 msgstr ""
 
 #: .\shop\settings.py:121
@@ -134,29 +138,33 @@ msgstr ""
 msgid "Create new category"
 msgstr ""
 
-#: .\templates\admin\home.html:48
+#: .\templates\admin\home.html:49
 msgid "ORDER"
 msgstr ""
 
-#: .\templates\admin\home.html:49
+#: .\templates\admin\home.html:50
 msgid "CATEGORY"
 msgstr ""
 
-#: .\templates\admin\home.html:50
+#: .\templates\admin\home.html:51
 msgid "PRODUCT"
 msgstr ""
 
-#: .\templates\admin\home.html:51
+#: .\templates\admin\home.html:52
 msgid "USER"
 msgstr ""
 
-#: .\templates\admin\home.html:135 .\templates\homepage\base.html:119
+#: .\templates\admin\home.html:53
+msgid "STATISTICS"
+msgstr ""
+
+#: .\templates\admin\home.html:144 .\templates\homepage\base.html:119
 #: .\templates\registration\login.html:10
 #: .\templates\registration\login.html:38
 msgid "Login"
 msgstr ""
 
-#: .\templates\admin\home.html:139 .\templates\homepage\base.html:133
+#: .\templates\admin\home.html:148 .\templates\homepage\base.html:133
 msgid "Admin Page"
 msgstr ""
 
@@ -288,6 +296,42 @@ msgstr ""
 
 #: .\templates\admin\product_list.html:57
 msgid "Create new product"
+msgstr ""
+
+#: .\templates\admin\statistics.html:13
+msgid "TODAY'S ORDER STATISTICS"
+msgstr ""
+
+#: .\templates\admin\statistics.html:18
+msgid "Day"
+msgstr ""
+
+#: .\templates\admin\statistics.html:19
+msgid "Revenue"
+msgstr ""
+
+#: .\templates\admin\statistics.html:20
+msgid "Number Of Orders"
+msgstr ""
+
+#: .\templates\admin\statistics.html:34
+msgid "STATISTICAL CHART"
+msgstr ""
+
+#: .\templates\admin\statistics.html:38
+msgid "Filter:"
+msgstr ""
+
+#: .\templates\admin\statistics.html:38
+msgid "Day from"
+msgstr ""
+
+#: .\templates\admin\statistics.html:40
+msgid "To"
+msgstr ""
+
+#: .\templates\admin\statistics.html:45
+msgid "Please make sure the start and end dates are accurate!!!"
 msgstr ""
 
 #: .\templates\admin\user_detail.html:11

@@ -19,6 +19,7 @@ urlpatterns = [
     path('accounts/login/', LoginView.as_view(), name='login'),
     path('profile/', views.update_profile, name='profile'),
     path('cancelled_order/<int:order_id>', views.cancelled_order, name='cancelled_order'),
+    path('pay_order/<int:order_id>', views.pay_order, name='pay_order'),
     path('custom_logout/', views.custom_logout, name='custom_logout'),
     path('register/', views.register, name='register'),
     # URL cho quản lý đơn hàng
@@ -35,6 +36,8 @@ urlpatterns = [
     # URL cho quản lý sản phẩm
     path('admin/products/', views.AdminProductList.as_view(), name='admin_product_list'),
     path('delete_products/', views.delete_products, name='delete_products'),
+    path('delete_promotion/<int:promotion_id>', views.delete_promotion, name='delete_promotion'),
+    path('update_promotion/', views.update_promotion, name='update_promotion'),
     path('admin/products/<int:product_id>/', views.admin_product_detail, name='admin_product_detail'),
     path('admin/products/create/', views.admin_product_create, name='admin_product_create'),
     path('admin/products/<int:product_id>/update/', views.admin_product_update, name='admin_product_update'),

@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
-from .models import Category, Product, Cart, CartItem, CustomUser, Order, OrderDetail
+from .models import Category, Product, Cart, CartItem, CustomUser, Order, OrderDetail, Promotion
 from .forms import CustomUserForm, RegistrationForm, CategoryForm, ProductForm, DeleteCategoryForm
 from django.contrib.auth import logout
 from djmoney.money import Money
@@ -31,15 +31,24 @@ class HomeView(View):
         return render(request, 'homepage/index.html')
 
 class CategoryView(generic.DetailView):
-    model=Category
+    model = Category
 
     def get(self, request):
         menu = Category.objects.all()
         products = Product.objects.all().order_by('name')
         if request.GET.get('food_name'):
-            productssearch =  filter(lambda x: unidecode((request.GET.get('food_name'))).lower()  in unidecode((_(x.name))).lower()  , products)
-            return render(request, 'catalog/menu.html', {'menu': menu,'products' : productssearch})
-        return render(request, 'catalog/menu.html', {'menu': menu,'products' : products})
+            search_term = unidecode(request.GET.get('food_name')).lower()
+            products = filter(lambda x: search_term in unidecode(_(x.name)).lower(), products)
+            # return render(request, 'catalog/menu.html', {'menu': menu, 'products': productssearch})
+        products_array = []
+        for product in products:
+            promotion = filter_promotion(product)
+            if promotion.exists():
+                products_array.append({'product': product, 'promotion': (100 - promotion[0].dis_percent) * product.base_price / 100, 'dis_percent': promotion[0].dis_percent})
+            else:
+                products_array.append({'product': product, 'promotion': 0})
+        return render(request, 'catalog/menu.html', {'menu': menu, 'products': products, 'products_array': products_array})
+
 
 @login_required
 def update_profile(request):
@@ -77,8 +86,18 @@ class CartView(View):
 
     def get(self, request):
         cartall = CartItem.objects.filter(cart_id=Cart.objects.get(user_id=request.user.id))
-        total_price = sum(item.product.base_price * item.quantity for item in cartall)
-        return render(request, 'catalog/cart.html',{'cartall': cartall,'total_price': total_price})
+        products_array =[]
+        total_price=0
+        for cart in cartall:
+            promotion = filter_promotion(cart.product)
+            if(len(promotion)>0):
+                promo_price = (100-promotion[0].dis_percent)*cart.product.base_price/100
+                products_array.append({'product': cart.product,'cart': cart,'promotion': promo_price,'dis_percent': promotion[0].dis_percent})
+                total_price += promo_price * cart.quantity
+            else:
+                products_array.append({'product': cart.product,'cart': cart,'promotion': 0})
+                total_price += cart.product.base_price * cart.quantity
+        return render(request, 'catalog/cart.html',{'cartall': products_array,'total_price': total_price})
 
 @login_required
 def add_to_cart(request, product_id):
@@ -112,7 +131,14 @@ def update_cart(request):
                 cart.delete()
                 status = 2
             cartall = CartItem.objects.filter(cart_id=Cart.objects.get(user_id=request.user.id))
-            total_price = sum(item.product.base_price * item.quantity for item in cartall)
+            total_price=0
+            for cartitem in cartall:
+                promotion = filter_promotion(cartitem.product)
+                if(len(promotion)>0):
+                    promo_price = (100-promotion[0].dis_percent)*cartitem.product.base_price/100
+                    total_price += promo_price * cartitem.quantity
+                else:
+                    total_price += cartitem.product.base_price * cartitem.quantity
             return JsonResponse({'status': status,'message': 'Cập nhật giỏ hàng thành công', 'quantity': cart.quantity,'total_price': total_price})
             
         except Cart.DoesNotExist:
@@ -187,10 +213,16 @@ class AdminProductList(ListView):
     model = Product
     template_name = 'admin/product_list.html'
     context_object_name = 'products'
-    paginate_by = 5
-
+    paginate_by = 10
     def get_queryset(self):
-        return Product.objects.select_related('category').order_by('category__name', 'name')
+        products = Product.objects.select_related('category').order_by('category__name', 'name')
+        products_array =[]
+        for product in products:
+            promotion = filter_promotion(product)
+            if(len(promotion)>0):
+                products_array.append({'product':product,'promotion_id': promotion[0].id, 'promotion':(100-promotion[0].dis_percent)*product.base_price/100,'dis_percent': promotion[0].dis_percent})
+            else:products_array.append({'product':product,'promotion':0})
+        return products_array
 
 @staff_member_required
 def admin_product_create(request):
@@ -249,89 +281,66 @@ class OrderView(View):
         try:
             cart = Cart.objects.get(user_id=request.user.id)
             cartall = CartItem.objects.filter(cart_id=cart)
-            total_price = sum(item.product.base_price * item.quantity for item in cartall)
         except Cart.DoesNotExist:
             # Xử lý khi không tìm thấy giỏ hàng
             cartall = []
-            total_price = 0
+        total_price = 0
+        products_array =[]
+        for cart in cartall:
+            promotion = filter_promotion(cart.product)
+            if(len(promotion)>0):
+                promo_price = (100-promotion[0].dis_percent)*cart.product.base_price/100
+                products_array.append({'product':cart.product,'quantity':cart.quantity,'promotion':promo_price,'dis_percent': promotion[0].dis_percent})
+                total_price += promo_price * cart.quantity
+            else:
+                products_array.append({'product':cart.product,'quantity':cart.quantity,'promotion':0})
+                total_price += cart.product.base_price * cart.quantity
             
-        return render(request, 'catalog/order.html', {'cartall': cartall, 'total_price': total_price})
-
+        return render(request, 'catalog/order.html', {'cartall': products_array, 'total_price': total_price})
 @transaction.atomic
 def add_order(request):
     user = request.user
     cart = get_object_or_404(Cart, user=user)
     order = Order(cart=cart, user=user)
     order.save()
-    cartall = CartItem.objects.filter(cart=Cart.objects.get(user=user))  
+    cartall = CartItem.objects.filter(cart=Cart.objects.get(user=user))
+
     try:
-        # Bắt đầu một transaction
         with transaction.atomic():
+            total_price=0
             for cartitem in cartall:
+                promotion = filter_promotion(cartitem.product)
+                if promotion.exists():
+                    promo_price = (100 - promotion[0].dis_percent) * cartitem.product.base_price / 100
+                    total_price += promo_price * cartitem.quantity
+                else:
+                    promo_price = cartitem.product.base_price
+                    total_price += cartitem.product.base_price * cartitem.quantity
                 order_detail = OrderDetail(
-                    price=cartitem.product.base_price,
+                    price=promo_price,
                     quantity=cartitem.quantity,
-                    total_cost=cartitem.product.base_price * cartitem.quantity,
+                    total_cost=total_price,
                     order=order,
                     product=cartitem.product
                 )
                 order_detail.save()
+                order.order_cost += order_detail.total_cost
                 cartitem.delete()
-
             order.status = 0
             order.save()
+            return redirect('/yourorder/')
     except Exception as e:
-        # Xử lý lỗi nếu có
         transaction.rollback()
-        # Ghi log lỗi hoặc thông báo lỗi tùy theo nhu cầu
         print(f"Transaction failed: {str(e)}")
-class OrderView(View):
-    model = Order
 
-    def get(self, request):
-        try:
-            cart = Cart.objects.get(user_id=request.user.id)
-            cartall = CartItem.objects.filter(cart_id=cart)
-            total_price = sum(item.product.base_price * item.quantity for item in cartall)
-        except Cart.DoesNotExist:
-            cartall = []  # Không tìm thấy bản ghi Cart, danh sách cartall rỗng
-            total_price = 0
-
-        return render(request, 'catalog/order.html', {'cartall': cartall, 'total_price': total_price})
+def filter_promotion(product):
+    today_format = datetime.datetime.now().isoformat()
+    return Promotion.objects.filter(product=product, start_date__lt=today_format, end_date__gte=today_format)
 
 def search_food(request):
     menu = Category.objects.all()
     products = Product.objects.all()
     return render(request, 'catalog/menu.html', {'menu': menu, 'products': products})
-
-@login_required
-def add_order(request):
-    user = request.user
-    cart = get_object_or_404(Cart, user=user)
-
-    if cart:
-        # Sử dụng transaction.atomic() để đảm bảo tính toàn vẹn dữ liệu
-        with transaction.atomic():
-            order = Order(cart=cart, user=user)
-            order.save()
-            
-            cartall = CartItem.objects.filter(cart=cart)
-            # Thêm các chi tiết đơn hàng vào trong giao dịch
-            for cartitem in cartall:
-                order_detail = OrderDetail(
-                    price=cartitem.product.base_price,
-                    quantity=cartitem.quantity,
-                    total_cost=cartitem.product.base_price * cartitem.quantity,
-                    order=order,
-                    product=cartitem.product)
-                order_detail.save()            
-                order.order_cost += order_detail.total_cost
-                cartitem.delete()
-
-            order.status = 0
-            order.save()
-
-    return redirect('/yourorder/')
 
 class YourOrderView(View):
     model=Order
@@ -520,3 +529,33 @@ class Statistics(ListView):
             'start_date': start_date,
             'end_date': end_date, 
             'date_status': date_status})
+
+
+@login_required
+def pay_order(request, order_id):
+    user = request.user
+    order = get_object_or_404(Order, user=user, id=order_id, status__lt=2)
+    if order.status<2 :
+        order.status = 4
+        order_detail=OrderDetail.objects.filter(order=order)
+        for sold_product in order_detail:
+            sold_product.product.sold_number += sold_product.quantity
+            sold_product.product.save()
+        order.save()
+        return redirect('/yourorder/')
+
+
+@staff_member_required
+def update_promotion(request):
+    if request.method == 'POST':
+        promotion = request.POST
+        print(promotion)
+        new_promotion = Promotion(product_id=promotion["product_id"], dis_percent=promotion["dis_percent"], description=promotion["description"], start_date=promotion["start_promo"], end_date=promotion["end_promo"])
+        new_promotion.save()
+        return redirect('home:admin_product_list')
+
+@staff_member_required
+def delete_promotion(request, promotion_id):
+    promotion = get_object_or_404(Promotion, id=promotion_id)
+    promotion.delete()
+    return redirect('home:admin_product_list')

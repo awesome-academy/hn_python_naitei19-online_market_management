@@ -24,7 +24,12 @@
                           {% for cart in cartall %}
                           <tr id="row_{{cart.id}}" data-url="{% url 'home:update_cart'  %}" data-csrf="{{ csrf_token }}">
                             <td>{% trans cart.product.name %}</td>
-                            <td>{% money_localize cart.product.base_price 'VND' %}</td>
+                            <td>{% if cart.promotion > 0 %}
+                              <h6 class="text-danger"> <del>{% money_localize cart.product.base_price 'VND' %} </del></h6>
+                              <h6> {% money_localize cart.promotion 'VND' %} </h6>
+                            {% else %}
+                              <h6> {% money_localize cart.product.base_price 'VND' %} </h6>
+                            {% endif %}</td>
                             <td>{{ cart.quantity }}</td>
                           </tr>
                           {% endfor %}

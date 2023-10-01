@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-28 00:01+0700\n"
+"POT-Creation-Date: 2023-10-01 22:47+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,16 +78,20 @@ msgstr ""
 msgid "Best Sellers"
 msgstr ""
 
-#: .\home\views.py:52 .\home\views.py:180 .\home\views.py:241
-#: .\home\views.py:403
+#: .\home\models.py:85
+msgid "Brief description of the promotion."
+msgstr ""
+
+#: .\home\views.py:56 .\home\views.py:194 .\home\views.py:261
+#: .\home\views.py:402
 msgid "Changes saved"
 msgstr ""
 
-#: .\home\views.py:441 .\home\views.py:451 .\home\views.py:464
+#: .\home\views.py:442 .\home\views.py:452 .\home\views.py:465
 msgid "Đơn đặt hàng không tồn tại"
 msgstr ""
 
-#: .\home\views.py:461
+#: .\home\views.py:462
 msgid "Không thể xóa đơn đặt hàng với trạng thái này"
 msgstr ""
 
@@ -105,6 +109,7 @@ msgstr ""
 
 #: .\templates\admin\category_detail.html:52
 #: .\templates\admin\product_detail.html:71
+#: .\templates\admin\product_list.html:112
 #: .\templates\admin\user_detail.html:50
 msgid "Save changes"
 msgstr ""
@@ -138,33 +143,33 @@ msgstr ""
 msgid "Create new category"
 msgstr ""
 
-#: .\templates\admin\home.html:49
+#: .\templates\admin\home.html:48
 msgid "ORDER"
 msgstr ""
 
-#: .\templates\admin\home.html:50
+#: .\templates\admin\home.html:49
 msgid "CATEGORY"
 msgstr ""
 
-#: .\templates\admin\home.html:51
+#: .\templates\admin\home.html:50
 msgid "PRODUCT"
 msgstr ""
 
-#: .\templates\admin\home.html:52
+#: .\templates\admin\home.html:51
 msgid "USER"
 msgstr ""
 
-#: .\templates\admin\home.html:53
+#: .\templates\admin\home.html:52
 msgid "STATISTICS"
 msgstr ""
 
-#: .\templates\admin\home.html:144 .\templates\homepage\base.html:119
+#: .\templates\admin\home.html:143 .\templates\homepage\base.html:119
 #: .\templates\registration\login.html:10
 #: .\templates\registration\login.html:38
 msgid "Login"
 msgstr ""
 
-#: .\templates\admin\home.html:148 .\templates\homepage\base.html:133
+#: .\templates\admin\home.html:147 .\templates\homepage\base.html:133
 msgid "Admin Page"
 msgstr ""
 
@@ -172,11 +177,11 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
-#: .\templates\admin\order_list.html:14
+#: .\templates\admin\order_list.html:14 .\templates\admin\product_list.html:102
 msgid "Start Date"
 msgstr ""
 
-#: .\templates\admin\order_list.html:19
+#: .\templates\admin\order_list.html:19 .\templates\admin\product_list.html:106
 msgid "End Date"
 msgstr ""
 
@@ -240,7 +245,7 @@ msgstr ""
 msgid "Total Cost"
 msgstr ""
 
-#: .\templates\admin\order_list.html:74 .\templates\catalog\cart.html:42
+#: .\templates\admin\order_list.html:74 .\templates\catalog\cart.html:46
 msgid "Delete"
 msgstr ""
 
@@ -290,12 +295,60 @@ msgstr ""
 msgid "Price"
 msgstr ""
 
-#: .\templates\admin\product_list.html:52
+#: .\templates\admin\product_list.html:22
+msgid "Promo"
+msgstr ""
+
+#: .\templates\admin\product_list.html:23 .\templates\catalog\cart.html:22
+msgid "Action"
+msgstr ""
+
+#: .\templates\admin\product_list.html:40
+msgid "Delete Promotion"
+msgstr ""
+
+#: .\templates\admin\product_list.html:44
+msgid "Set"
+msgstr ""
+
+#: .\templates\admin\product_list.html:60
+msgid "Page"
+msgstr ""
+
+#: .\templates\admin\product_list.html:60
+msgid "of"
+msgstr ""
+
+#: .\templates\admin\product_list.html:64
+msgid "next"
+msgstr ""
+
+#: .\templates\admin\product_list.html:69
 msgid "Delete selected products"
 msgstr ""
 
-#: .\templates\admin\product_list.html:57
+#: .\templates\admin\product_list.html:72
+msgid "--------or--------"
+msgstr ""
+
+#: .\templates\admin\product_list.html:74
 msgid "Create new product"
+msgstr ""
+
+#: .\templates\admin\product_list.html:84
+msgid "Set Promotion"
+msgstr ""
+
+#: .\templates\admin\product_list.html:94
+msgid "Discount Percent"
+msgstr ""
+
+#: .\templates\admin\product_list.html:98
+msgid "Description"
+msgstr ""
+
+#: .\templates\admin\product_list.html:111
+msgid "Close"
 msgstr ""
 
 #: .\templates\admin\statistics.html:13
@@ -389,21 +442,17 @@ msgstr ""
 msgid "Quantity"
 msgstr ""
 
-#: .\templates\catalog\cart.html:22
-msgid "Action"
-msgstr ""
-
-#: .\templates\catalog\cart.html:50 .\templates\catalog\order.html:34
+#: .\templates\catalog\cart.html:54 .\templates\catalog\order.html:39
 #: .\templates\catalog\yourorder.html:36
 msgid "Total"
 msgstr ""
 
-#: .\templates\catalog\cart.html:53 .\templates\catalog\order.html:56
-#: .\templates\catalog\order.html:58
+#: .\templates\catalog\cart.html:57 .\templates\catalog\order.html:61
+#: .\templates\catalog\order.html:63
 msgid "Order"
 msgstr ""
 
-#: .\templates\catalog\cart.html:55
+#: .\templates\catalog\cart.html:59
 msgid "There are no products in your cart, please add products to cart!!!"
 msgstr ""
 
@@ -415,7 +464,7 @@ msgstr ""
 msgid "Search for food here"
 msgstr ""
 
-#: .\templates\catalog\menu.html:54
+#: .\templates\catalog\menu.html:59
 msgid "There are no products matching the search results!!!"
 msgstr ""
 
@@ -423,61 +472,69 @@ msgstr ""
 msgid "YOUR ORDER"
 msgstr ""
 
-#: .\templates\catalog\order.html:37 .\templates\catalog\yourorder.html:43
+#: .\templates\catalog\order.html:42 .\templates\catalog\yourorder.html:47
 msgid "User's Information:"
 msgstr ""
 
-#: .\templates\catalog\order.html:39 .\templates\catalog\yourorder.html:44
+#: .\templates\catalog\order.html:44 .\templates\catalog\yourorder.html:48
 msgid "Name:"
 msgstr ""
 
-#: .\templates\catalog\order.html:41
+#: .\templates\catalog\order.html:46
 msgid "Please enter your name."
 msgstr ""
 
-#: .\templates\catalog\order.html:44 .\templates\catalog\yourorder.html:45
+#: .\templates\catalog\order.html:49 .\templates\catalog\yourorder.html:49
 msgid "User's Phone Number:"
 msgstr ""
 
-#: .\templates\catalog\order.html:46
+#: .\templates\catalog\order.html:51
 msgid "Please enter your phone number."
 msgstr ""
 
-#: .\templates\catalog\order.html:49 .\templates\catalog\yourorder.html:46
+#: .\templates\catalog\order.html:54 .\templates\catalog\yourorder.html:50
 msgid "User's Address:"
 msgstr ""
 
-#: .\templates\catalog\order.html:51
+#: .\templates\catalog\order.html:56
 msgid "Please enter your address."
 msgstr ""
 
-#: .\templates\catalog\order.html:53 .\templates\catalog\yourorder.html:47
+#: .\templates\catalog\order.html:58 .\templates\catalog\yourorder.html:51
 msgid "User's Email:"
 msgstr ""
 
-#: .\templates\catalog\order.html:56
+#: .\templates\catalog\order.html:61
 msgid "Your order is being approved by admin, please wait a little longer!"
 msgstr ""
 
-#: .\templates\catalog\order.html:58
+#: .\templates\catalog\order.html:63
 msgid ""
 "Your information is incomplete, please update all information before "
 "ordering!!!"
 msgstr ""
 
-#: .\templates\catalog\yourorder.html:37
+#: .\templates\catalog\yourorder.html:38
 msgid "Your order has been cancelled!"
 msgstr ""
 
-#: .\templates\catalog\yourorder.html:37
+#: .\templates\catalog\yourorder.html:38
 msgid "Cancel Order"
 msgstr ""
 
-#: .\templates\catalog\yourorder.html:39
-msgid "Order Date:"
+#: .\templates\catalog\yourorder.html:40
+msgid "Your order has been paid!"
 msgstr ""
 
 #: .\templates\catalog\yourorder.html:40
+msgid "Pay"
+msgstr ""
+
+#: .\templates\catalog\yourorder.html:43
+msgid "Order Date:"
+msgstr ""
+
+#: .\templates\catalog\yourorder.html:44
 msgid "User's Status:"
 msgstr ""
 

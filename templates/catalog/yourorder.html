@@ -34,7 +34,11 @@
                       
                     <div>         
                       <h1 class="total-text">{% trans "Total" %}: </h1><h1 class="total-text" id="total_price">{% money_localize orderall.total_price 'VND' %}</h1>
+                      {% if orderall.order.status == 0 %}
                       <a onclick="alert('{% trans "Your order has been cancelled!" %}')" href="{% url 'home:cancelled_order' orderall.order.id %}" class="ordercart">{% trans "Cancel Order" %}</a>
+                      {% elif  orderall.order.status == 1 %}
+                      <a onclick="alert('{% trans "Your order has been paid!" %}')" href="{% url 'home:pay_order' orderall.order.id %}" class="ordercart">{% trans "Pay" %}</a>
+                      {% endif %}
                     </div> 
                     <h1>{% trans "Order Date:" %} {{orderall.formatted_date}}</h1>
                     <h1 class="order-status">{% trans "User's Status:" %} {% trans orderall.order.get_status_display %}</h1>

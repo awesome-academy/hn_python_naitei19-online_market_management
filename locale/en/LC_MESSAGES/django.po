@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 22:47+0700\n"
+"POT-Creation-Date: 2023-10-03 10:34+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,16 +82,16 @@ msgstr ""
 msgid "Brief description of the promotion."
 msgstr ""
 
-#: .\home\views.py:56 .\home\views.py:194 .\home\views.py:261
-#: .\home\views.py:402
+#: .\home\views.py:66 .\home\views.py:211 .\home\views.py:278
+#: .\home\views.py:420
 msgid "Changes saved"
 msgstr ""
 
-#: .\home\views.py:442 .\home\views.py:452 .\home\views.py:465
+#: .\home\views.py:460 .\home\views.py:470 .\home\views.py:483
 msgid "Đơn đặt hàng không tồn tại"
 msgstr ""
 
-#: .\home\views.py:462
+#: .\home\views.py:480
 msgid "Không thể xóa đơn đặt hàng với trạng thái này"
 msgstr ""
 
@@ -109,7 +109,7 @@ msgstr ""
 
 #: .\templates\admin\category_detail.html:52
 #: .\templates\admin\product_detail.html:71
-#: .\templates\admin\product_list.html:112
+#: .\templates\admin\product_list.html:110
 #: .\templates\admin\user_detail.html:50
 msgid "Save changes"
 msgstr ""
@@ -177,11 +177,11 @@ msgstr ""
 msgid "Filter"
 msgstr ""
 
-#: .\templates\admin\order_list.html:14 .\templates\admin\product_list.html:102
+#: .\templates\admin\order_list.html:14 .\templates\admin\product_list.html:100
 msgid "Start Date"
 msgstr ""
 
-#: .\templates\admin\order_list.html:19 .\templates\admin\product_list.html:106
+#: .\templates\admin\order_list.html:19 .\templates\admin\product_list.html:104
 msgid "End Date"
 msgstr ""
 
@@ -205,7 +205,7 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-#: .\templates\admin\order_list.html:38
+#: .\templates\admin\order_list.html:38 .\templates\catalog\menu.html:23
 msgid "All"
 msgstr ""
 
@@ -290,64 +290,68 @@ msgstr ""
 msgid "Stock"
 msgstr ""
 
-#: .\templates\admin\product_list.html:21 .\templates\catalog\cart.html:20
+#: .\templates\admin\product_list.html:21
+msgid "Sold"
+msgstr ""
+
+#: .\templates\admin\product_list.html:22 .\templates\catalog\cart.html:20
 #: .\templates\catalog\order.html:19 .\templates\catalog\yourorder.html:20
 msgid "Price"
 msgstr ""
 
-#: .\templates\admin\product_list.html:22
+#: .\templates\admin\product_list.html:23
 msgid "Promo"
 msgstr ""
 
-#: .\templates\admin\product_list.html:23 .\templates\catalog\cart.html:22
+#: .\templates\admin\product_list.html:24 .\templates\catalog\cart.html:22
 msgid "Action"
 msgstr ""
 
-#: .\templates\admin\product_list.html:40
+#: .\templates\admin\product_list.html:38
 msgid "Delete Promotion"
 msgstr ""
 
-#: .\templates\admin\product_list.html:44
+#: .\templates\admin\product_list.html:43
 msgid "Set"
 msgstr ""
 
-#: .\templates\admin\product_list.html:60
+#: .\templates\admin\product_list.html:58
 msgid "Page"
 msgstr ""
 
-#: .\templates\admin\product_list.html:60
+#: .\templates\admin\product_list.html:58
 msgid "of"
 msgstr ""
 
-#: .\templates\admin\product_list.html:64
+#: .\templates\admin\product_list.html:62
 msgid "next"
 msgstr ""
 
-#: .\templates\admin\product_list.html:69
+#: .\templates\admin\product_list.html:67
 msgid "Delete selected products"
 msgstr ""
 
-#: .\templates\admin\product_list.html:72
+#: .\templates\admin\product_list.html:70
 msgid "--------or--------"
 msgstr ""
 
-#: .\templates\admin\product_list.html:74
+#: .\templates\admin\product_list.html:72
 msgid "Create new product"
 msgstr ""
 
-#: .\templates\admin\product_list.html:84
+#: .\templates\admin\product_list.html:82
 msgid "Set Promotion"
 msgstr ""
 
-#: .\templates\admin\product_list.html:94
+#: .\templates\admin\product_list.html:92
 msgid "Discount Percent"
 msgstr ""
 
-#: .\templates\admin\product_list.html:98
+#: .\templates\admin\product_list.html:96
 msgid "Description"
 msgstr ""
 
-#: .\templates\admin\product_list.html:111
+#: .\templates\admin\product_list.html:109
 msgid "Close"
 msgstr ""
 
@@ -371,7 +375,7 @@ msgstr ""
 msgid "STATISTICAL CHART"
 msgstr ""
 
-#: .\templates\admin\statistics.html:38
+#: .\templates\admin\statistics.html:38 .\templates\catalog\menu.html:21
 msgid "Filter:"
 msgstr ""
 
@@ -460,11 +464,27 @@ msgstr ""
 msgid "Our Menu"
 msgstr ""
 
+#: .\templates\catalog\menu.html:15
+msgid "Search: "
+msgstr ""
+
 #: .\templates\catalog\menu.html:16
 msgid "Search for food here"
 msgstr ""
 
-#: .\templates\catalog\menu.html:59
+#: .\templates\catalog\menu.html:24
+msgid "By Sold Number"
+msgstr ""
+
+#: .\templates\catalog\menu.html:25
+msgid "By Promotion"
+msgstr ""
+
+#: .\templates\catalog\menu.html:53
+msgid "Sold:"
+msgstr ""
+
+#: .\templates\catalog\menu.html:71
 msgid "There are no products matching the search results!!!"
 msgstr ""
 

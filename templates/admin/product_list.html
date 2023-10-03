@@ -18,6 +18,7 @@
                   <th class="thprod">{% trans "Name" %}</th>
                   <th>{% trans "Category" %}</th>
                   <th>{% trans "Stock" %}</th>
+                  <th>&emsp;{% trans "Sold" %}</th>
                   <th>{% trans "Price" %}</th>
                   <th>{% trans "Promo" %} &emsp;</th>
                   <th>{% trans "Action" %}</th>
@@ -30,6 +31,7 @@
                 <td class="tdprod"><a href="{% url 'home:admin_product_detail' product.product.id %}">{% trans product.product.name %}</a></td>
                 <td class="tdprod2">{{ product.product.category.name }}</td>
                 <td>{{ product.product.number_in_stock }}</td>
+                <td>{{ product.product.sold_number }}</td>
                 <td>{% money_localize product.product.base_price 'VND' %}</td>
                 {% if product.promotion > 0 %}
                 <td>{{product.dis_percent}}%</td>

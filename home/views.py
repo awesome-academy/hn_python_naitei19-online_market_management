@@ -9,10 +9,8 @@ from django.utils.translation import gettext_lazy as _
 from .models import Category, Product, Cart, CartItem, CustomUser, Order, OrderDetail, Promotion
 from .forms import CustomUserForm, RegistrationForm, CategoryForm, ProductForm, DeleteCategoryForm
 from django.contrib.auth import logout
-from djmoney.money import Money
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db import transaction
-from django.http import Http404
 from django.utils import timezone
 from django.http import HttpResponseRedirect
 from .forms import CategoryForm, ProductForm, DeleteCategoryForm, DeleteProductForm, ADCustomUserForm, DeleteCustomUserForm, CustomUserDetailForm
@@ -22,7 +20,7 @@ from django.views.generic import ListView
 import datetime
 from datetime import date
 from unidecode import unidecode
-from django.db.models.functions import TruncDate, Trunc
+from django.db.models.functions import Trunc
 from django.utils import timezone
 from django.db.models import Sum, Count
 
@@ -35,7 +33,13 @@ class CategoryView(generic.DetailView):
 
     def get(self, request):
         menu = Category.objects.all()
+        
+        sold_filter = request.GET.get('filter_menu')
         products = Product.objects.all().order_by('name')
+        if sold_filter == 'by_sold_number':
+            products = products.order_by('-sold_number')
+        elif sold_filter == 'by_promotion':
+            products = [product for product in products if filter_promotion(product).exists()]
         if request.GET.get('food_name'):
             search_term = unidecode(request.GET.get('food_name')).lower()
             products = filter(lambda x: search_term in unidecode(_(x.name)).lower(), products)
@@ -432,10 +436,10 @@ class AdminOrderList(View):
         for order in orders:
             orderall = OrderDetail.objects.filter(order=order)
             total_price = sum(item.price * item.quantity for item in orderall)
-            naive_order_date = datetime.datetime(2023, 9, 28, 12, 0, 0)
-            aware_order_date = timezone.make_aware(naive_order_date, timezone.get_default_timezone())
-            local_order_date = timezone.localtime(aware_order_date)
-            formatted_date = local_order_date.strftime("%H:%M:%S %d/%m/%Y")
+
+            # Chuyển đối tượng datetime naive sang đối tượng có thông tin múi giờ
+            tz = timezone.get_current_timezone()
+            formatted_date = (timezone.make_aware(order.order_date, tz)).strftime("%H:%M:%S %d/%m/%Y")
 
             if status == 'all' or order.status == status:
                 orderAllItem.append({'allItem': orderall, 'total_price': total_price, 'order': order, 'formatted_date': formatted_date})
@@ -474,13 +478,6 @@ def delete_order(request, order_id):
     
     except Order.DoesNotExist:
         return HttpResponse(_('Đơn đặt hàng không tồn tại'), status=404)
-@login_required
-def cancelled_order(request, order_id):
-    user = request.user
-    order = get_object_or_404(Order, user=user, id=order_id)
-    order.status = 3
-    order.save()
-    return redirect('/yourorder/')
 
 # View dành cho thống kê
 class Statistics(ListView):

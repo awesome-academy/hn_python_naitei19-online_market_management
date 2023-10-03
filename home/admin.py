@@ -1,4 +1,4 @@
-from .models import Product, Category, Order
+from .models import Product, Category, Order, Promotion
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import CustomUser
@@ -16,3 +16,4 @@ admin.site.register(Product)
 admin.site.register(Category)
 admin.site.register(Order)
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(Promotion)

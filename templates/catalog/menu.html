@@ -28,20 +28,25 @@
     </ul>
     <div class="filters-content">
       <div class="row grid">
-        {% for Product in products%}
-        {% if request.GET.category == Product.category.name or request.GET.category|length == 0  %}
+        {% for Product in products_array%}
+        {% if request.GET.category == Product.product.category.name or request.GET.category|length == 0  %}
         <div class="col-sm-6 col-lg-4 all pizza">
           <div class="box">
             <div>
               <div class="img-box">
-                <img src="{{Product.image.url}}" >
+                <img src="{{Product.product.image.url}}" >
               </div>
               <div class="detail-box">
-                <h5  class="product-title-text"> {% trans Product.name%} </h5>
-                <p class="description-text"> {% trans Product.description %} </p>
+                <h5  class="product-title-text"> {% trans Product.product.name%} </h5>
+                <p class="description-text"> {% trans Product.product.description %} </p>
                 <div class="options"> 
-                  <h6> {% money_localize Product.base_price 'VND' %} </h6>
-                  <a href="{% url 'home:add_to_cart' Product.id %}" class="user_link">
+                  {% if Product.promotion > 0 %}
+                    <h6 class="text-danger"> <del>{% money_localize Product.product.base_price 'VND' %} </del></h6>
+                    <h6> {% money_localize Product.promotion 'VND' %} </h6>
+                  {% else %}
+                    <h6> {% money_localize Product.product.base_price 'VND' %} </h6>
+                  {% endif %}
+                  <a href="{% url 'home:add_to_cart' Product.product.id %}" class="user_link">
                     <i class="fa fa-shopping-cart	" aria-hidden="true"></i>
                   </a>
                 </div>

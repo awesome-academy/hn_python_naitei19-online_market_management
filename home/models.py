@@ -80,3 +80,9 @@ class BestSeller(models.Model):
         verbose_name = _("Best Seller")
         verbose_name_plural = _("Best Sellers")
 
+class Promotion(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    description = models.CharField(max_length=255, help_text=_("Brief description of the promotion."))
+    dis_percent = models.IntegerField(default=0)
+    start_date = models.DateTimeField(default=timezone.now)
+    end_date = models.DateTimeField(default=timezone.now)

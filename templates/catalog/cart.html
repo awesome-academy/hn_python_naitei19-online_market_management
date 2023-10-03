@@ -24,22 +24,26 @@
                       </thead>
                       <tbody>
                           {% for cart in cartall %}
-                          <tr id="row_{{cart.id}}" data-url="{% url 'home:update_cart'  %}" data-csrf="{{ csrf_token }}">
+                          <tr id="row_{{cart.cart.id}}" data-url="{% url 'home:update_cart'  %}" data-csrf="{{ csrf_token }}">
                             <td>{% trans cart.product.name %}</td>
-                            <td>{% money_localize cart.product.base_price 'VND' %}</td>
+                            <td>{% if cart.promotion > 0 %}
+                              <h6 class="text-danger"> <del>{% money_localize cart.product.base_price 'VND' %} </del></h6>
+                              <h6> {% money_localize cart.promotion 'VND' %} </h6>
+                            {% else %}
+                              <h6> {% money_localize cart.product.base_price 'VND' %} </h6>
+                            {% endif %}</td>
                               <td>
-
                                 <div>
                                     {% csrf_token %}
-                                    <button onclick="action('{{cart.id}}', 'decrease')">-</button>
-                                    <span id="quantity_{{cart.id}}">{{cart.quantity}}</span>
-                                    <button  onclick="action('{{cart.id}}', 'increase')">+</button>
+                                    <button onclick="action('{{cart.cart.id}}', 'decrease')">-</button>
+                                    <span id="quantity_{{cart.cart.id}}">{{cart.cart.quantity}}</span>
+                                    <button  onclick="action('{{cart.cart.id}}', 'increase')">+</button>
                                 </div>
                             </td>
                             <td>
                                 <div>
                                     {% csrf_token %}
-                                    <button  onclick="action('{{cart.id}}', 'delete')">{% trans "Delete" %}</button>
+                                    <button  onclick="action('{{cart.cart.id}}', 'delete')">{% trans "Delete" %}</button>
                                 </div>
                             </td>
                           </tr>

@@ -834,8 +834,8 @@ table.table td, table.table th {
   background-color: #3e3d3d;
   color: #fffcfc;
   border-radius: 40px;
-  float: right;
 }
+
 .infor li{
   list-style-type: none;
   text-align: left ; 
@@ -857,7 +857,6 @@ table.table td, table.table th {
   background-color: #3e3d3d;
   color: #fffcfc;
   border-radius: 40px;
-  float: right;
 }
 
 .navbar-market{

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-01 22:44+0700\n"
+"POT-Creation-Date: 2023-10-03 10:37+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,16 +78,16 @@ msgstr "Sản phẩm bán chạy"
 msgid "Best Sellers"
 msgstr "Sản phẩm bán chạy"
 
-#: .\home\views.py:56 .\home\views.py:194 .\home\views.py:261
-#: .\home\views.py:402
+#: .\home\views.py:66 .\home\views.py:211 .\home\views.py:278
+#: .\home\views.py:420
 msgid "Changes saved"
 msgstr "Thay đổi đã lưu"
 
-#: .\home\views.py:442 .\home\views.py:452 .\home\views.py:465
+#: .\home\views.py:460 .\home\views.py:470 .\home\views.py:483
 msgid "Đơn đặt hàng không tồn tại"
 msgstr ""
 
-#: .\home\views.py:462
+#: .\home\views.py:480
 msgid "Không thể xóa đơn đặt hàng với trạng thái này"
 msgstr ""
 
@@ -105,7 +105,7 @@ msgstr "Chi Tiết Thể Loại"
 
 #: .\templates\admin\category_detail.html:52
 #: .\templates\admin\product_detail.html:71
-#: .\templates\admin\product_list.html:112
+#: .\templates\admin\product_list.html:110
 #: .\templates\admin\user_detail.html:50
 msgid "Save changes"
 msgstr "Lưu thay đổi"
@@ -173,11 +173,11 @@ msgstr "Trang Quản Lý"
 msgid "Filter"
 msgstr "Bộ Lọc"
 
-#: .\templates\admin\order_list.html:14 .\templates\admin\product_list.html:102
+#: .\templates\admin\order_list.html:14 .\templates\admin\product_list.html:100
 msgid "Start Date"
 msgstr "Thời Gian Bắt Đầu"
 
-#: .\templates\admin\order_list.html:19 .\templates\admin\product_list.html:106
+#: .\templates\admin\order_list.html:19 .\templates\admin\product_list.html:104
 msgid "End Date"
 msgstr "Thời Gian Kết Thúc"
 
@@ -201,7 +201,7 @@ msgstr "Xóa lọc"
 msgid "Apply"
 msgstr "Lọc"
 
-#: .\templates\admin\order_list.html:38
+#: .\templates\admin\order_list.html:38 .\templates\catalog\menu.html:23
 msgid "All"
 msgstr "Tất Cả"
 
@@ -286,56 +286,68 @@ msgstr "Thể loại"
 msgid "Stock"
 msgstr "Số Lượng"
 
-#: .\templates\admin\product_list.html:21 .\templates\catalog\cart.html:20
+#: .\templates\admin\product_list.html:21
+msgid "Sold"
+msgstr "Đã Bán"
+
+#: .\templates\admin\product_list.html:22 .\templates\catalog\cart.html:20
 #: .\templates\catalog\order.html:19 .\templates\catalog\yourorder.html:20
 msgid "Price"
 msgstr "Giá"
 
-#: .\templates\admin\product_list.html:22
+#: .\templates\admin\product_list.html:23
 msgid "Promo"
 msgstr "K.Mãi"
 
-#: .\templates\admin\product_list.html:23 .\templates\catalog\cart.html:22
+#: .\templates\admin\product_list.html:24 .\templates\catalog\cart.html:22
 msgid "Action"
 msgstr "Hành Động"
 
-#: .\templates\admin\product_list.html:84
-msgid "Set Promotion"
-msgstr "Thiết Lập K.Mãi"
+#: .\templates\admin\product_list.html:38
+msgid "Delete Promotion"
+msgstr "Xóa K.M"
 
-#: .\templates\admin\product_list.html:60
+#: .\templates\admin\product_list.html:43
+msgid "Set"
+msgstr "Đặt K.M"
+
+#: .\templates\admin\product_list.html:58
 msgid "Page"
 msgstr "Trang"
 
-#: .\templates\admin\product_list.html:60
+#: .\templates\admin\product_list.html:58
 msgid "of"
 msgstr "trên"
 
-#: .\templates\admin\product_list.html:64
+#: .\templates\admin\product_list.html:62
 msgid "next"
 msgstr "tiếp"
 
-#: .\templates\admin\product_list.html:69
+#: .\templates\admin\product_list.html:67
 msgid "Delete selected products"
 msgstr "Xóa sản phẩm đã chọn"
 
-#: .\templates\admin\product_list.html:72
+#: .\templates\admin\product_list.html:70
 msgid "--------or--------"
 msgstr "--------hoặc--------"
 
-#: .\templates\admin\product_list.html:74
+#: .\templates\admin\product_list.html:72
 msgid "Create new product"
 msgstr "Tạo sản phẩm mới"
 
-#: .\templates\admin\product_list.html:94
+#: .\templates\admin\product_list.html:82
+msgid "Set Promotion"
+msgstr "Thiết Lập K.Mãi"
+
+#: .\templates\admin\product_list.html:92
 msgid "Discount Percent"
 msgstr "Phần Trăm Giảm Giá"
 
-#: .\templates\admin\product_list.html:98
+#: .\templates\admin\product_list.html:96
 msgid "Description"
 msgstr "Mô Tả"
 
-#: .\templates\admin\product_list.html:111
+#: .\templates\admin\product_list.html:109
 msgid "Close"
 msgstr "Đóng"
 
@@ -359,9 +371,9 @@ msgstr "Số lượng sản phẩm đã bán."
 msgid "STATISTICAL CHART"
 msgstr "BIỂU ĐỒ THỐNG KÊ"
 
-#: .\templates\admin\statistics.html:38
+#: .\templates\admin\statistics.html:38 .\templates\catalog\menu.html:21
 msgid "Filter:"
-msgstr "Lọc ngày:"
+msgstr "Lọc:"
 
 #: .\templates\admin\statistics.html:38
 msgid "Day from"
@@ -451,11 +463,23 @@ msgstr ""
 msgid "Our Menu"
 msgstr "Thực Đơn Của Chúng Tôi"
 
+#: .\templates\catalog\menu.html:15
+msgid "Search: "
+msgstr "Tìm kiếm: "
+
 #: .\templates\catalog\menu.html:16
 msgid "Search for food here"
 msgstr "Tìm món ăn ở đây"
 
-#: .\templates\catalog\menu.html:59
+#: .\templates\catalog\menu.html:24
+msgid "By Sold Number"
+msgstr "Theo Số Lượng Bán"
+
+#: .\templates\catalog\menu.html:25
+msgid "By Promotion"
+msgstr "Theo Khuyến Mãi"
+
+#: .\templates\catalog\menu.html:71
 msgid "There are no products matching the search results!!!"
 msgstr " Không có món nào phù hợp với kết quả tìm kiếm của bạn!!! "
 
@@ -519,7 +543,7 @@ msgstr "Hủy đơn hàng"
 
 #: .\templates\catalog\yourorder.html:40
 msgid "Your order has been paid!"
-msgstr "Đơn hàng của bạn đã được hủy"
+msgstr "Đơn hàng của bạn đã được thanh toán!"
 
 #: .\templates\catalog\yourorder.html:40
 msgid "Pay"
@@ -647,9 +671,6 @@ msgstr "Đã có tài khoản? "
 #: .\templates\registration\register.html:70
 msgid "Login here!"
 msgstr "Đăng nhập ở đây!"
-
-msgid "Set"
-msgstr "Đặt K.M"
 
 msgid "Parent"
 msgstr "Nhánh Cha"
@@ -1165,5 +1186,5 @@ msgstr ""
 msgid "Accepted-Ongoing"
 msgstr "Shop đã nhận đơn"
 
-msgid "Delete Promotion"
-msgstr "Xóa K.M"
+msgid "Sold:"
+msgstr "Đã Bán:"

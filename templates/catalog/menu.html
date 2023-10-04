@@ -9,14 +9,25 @@
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-         {%trans "Our Menu" %}
-         <form class="total-text" method="GET">
-          &emsp; <button type="submit" class="fa fa-search searchbox" aria-hidden="true" >
-          </button> 
+         {%trans "Our Menu" %} </h2> <br>
+         <h3>
+         <form method="GET" class="d-inline">
+          {%trans "Search: " %}
           <input class="input-search" placeholder='{% trans "Search for food here" %}' name="food_name" type="text" />
-        </form>   
-        </h2>
-
+          <button type="submit" class="fa fa-search searchbox" aria-hidden="true" >
+          </button> 
+        </form> &emsp;
+        <form method="get" class="d-inline">
+          <label class="d-inline" for="filter"  >{%trans "Filter:" %} </label>
+          <select id="filter_menu" name="filter_menu" class="input-search">
+              <option value="all">{%trans "All" %}</option>
+              <option value="by_sold_number">{%trans "By Sold Number" %}</option>
+              <option value="by_promotion">{%trans "By Promotion" %}</option>
+          </select>
+          <button type="submit" class="fa fa-search searchbox" aria-hidden="true" >
+          </button> 
+      </form>
+        </h3>
       </div>
       <ul class="filters_menu">
         {% for Category in menu %}
@@ -37,8 +48,9 @@
                 <img src="{{Product.product.image.url}}" >
               </div>
               <div class="detail-box">
-                <h5  class="product-title-text"> {% trans Product.product.name%} </h5>
+                <h5  class="product-title-text"> {% trans Product.product.name%}</h5>
                 <p class="description-text"> {% trans Product.product.description %} </p>
+                <h6 class="text-primary">{%trans "Sold:"%} {{Product.product.sold_number}}</h6>
                 <div class="options"> 
                   {% if Product.promotion > 0 %}
                     <h6 class="text-danger"> <del>{% money_localize Product.product.base_price 'VND' %} </del></h6>

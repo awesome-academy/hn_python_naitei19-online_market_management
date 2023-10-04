@@ -22,7 +22,7 @@
   {% block navbarblock %}
   <!-- header section strats -->
   <div class="hero_area">
-    {% if request.resolver_match.url_name == 'category'%}
+    {% if request.resolver_match.url_name == 'category' or request.resolver_match.url_name == 'your_order' %}
     <div class="bg-navbar">
       <img src="{% static 'homepage/images/navbar.jpg' %}" alt="">
     </div>
@@ -144,12 +144,15 @@
 
   {% block content %}
   {% endblock %}
-
+  {% if request.resolver_match.url_name == 'your_order' %}
+  {% else %}
   {% include 'homepage/footer.html' %}
+  {% endif %}
 </div>
 <!-- jQery -->
 <script src="{% static 'homepage/js/jquery-3.4.1.min.js' %}"></script>
 <script src="{% static 'homepage/js/chart.js' %}"></script>
 <script src="{% static 'homepage/js/total.js' %}"></script>
+<script src="{% static 'homepage/js/order_list.js' %}"></script>
 </body>
 </html>

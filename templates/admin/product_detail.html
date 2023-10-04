@@ -9,6 +9,12 @@
         <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
             <h1>{% trans "Product Detail" %}</h1>
+            {% for error in form.base_price.errors %}
+                <strong><p class="text-danger text-center">{{ error }}</p></strong>
+            {% endfor %}
+            {% for error in form.number_in_stock.errors %}
+                <strong><p class="text-danger text-center">{{ error }}</p></strong>
+            {% endfor %}
             {% if messages %}
             {% for message in messages %}
               <p class="text-success text-center">{{ message }}</p>

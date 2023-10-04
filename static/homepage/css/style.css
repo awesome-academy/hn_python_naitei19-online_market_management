@@ -166,7 +166,7 @@ a:focus {
 }
 
 .header_section {
-  padding: 15px 0;
+  padding: 8px 0;
 }
 
 .header_section .container-fluid {
@@ -1048,7 +1048,7 @@ table.table td, table.table th {
   margin-right: auto;
   margin-left: auto;
   min-width: 90%;
-  margin-left: 120px;
+  margin-left: 50px;
 }
 
 .day-statistics {
@@ -1059,4 +1059,9 @@ table.table td, table.table th {
 .todaystatistics {
   border-radius: 10px; /* Bo góc bảng */
   color: black; /* Màu chữ đen */
+}
+
+.pay-btn {
+  margin-top: 10px;
+  text-align: right !important;
 }

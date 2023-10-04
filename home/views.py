@@ -14,14 +14,11 @@ from django.db import transaction
 from django.utils import timezone
 from django.http import HttpResponseRedirect
 from .forms import CategoryForm, ProductForm, DeleteCategoryForm, DeleteProductForm, ADCustomUserForm, DeleteCustomUserForm, CustomUserDetailForm
-from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView
-import datetime
 from datetime import date
 from unidecode import unidecode
-from django.db.models.functions import Trunc
-from django.utils import timezone
+from django.db.models.functions import TruncDate, Trunc
 from django.db.models import Sum, Count
 
 class HomeView(View):
@@ -347,18 +344,29 @@ def search_food(request):
     return render(request, 'catalog/menu.html', {'menu': menu, 'products': products})
 
 class YourOrderView(View):
-    model=Order
+    model = Order
 
-    def get(self, request):
-        orders = Order.objects.filter(user=request.user, status__lt=2).order_by('-order_date')
-        orderAllItem=[]
-        for order in orders :
-            orderall = OrderDetail.objects.filter(order = order) 
+    def get(self, request, status=None):
+        if status is None:
+            # Nếu không có trạng thái được chỉ định, mặc định là 'all'
+            status = 'all'
+
+        orders = Order.objects.order_by('-order_date')
+        orderAllItem = []
+        total_price=0
+
+        for order in orders:
+            orderall = OrderDetail.objects.filter(order=order)
             total_price = sum(item.price * item.quantity for item in orderall)
-            order_date = order.order_date + datetime.timedelta(hours=7)
-            formatted_date = order_date.strftime("%H:%M:%S %d-%m-%Y")
-            orderAllItem.append({'allItem':orderall,'total_price':total_price,'order':order,'formatted_date':formatted_date})
-        return render(request, 'catalog/yourorder.html',{'orderAllItem': orderAllItem,'total_price': total_price})
+            tz = timezone.get_current_timezone()
+            if order.order_date is not None and isinstance(order.order_date, datetime.datetime):
+                formatted_date = timezone.make_aware(order.order_date, tz).strftime("%H:%M:%S %d/%m/%Y")
+            else:
+                formatted_date = "Invalid date"  # or any other appropriate handling for non-datetime values
+            if status == 'all' or order.status == status:
+                orderAllItem.append({'allItem': orderall, 'total_price': total_price, 'order': order, 'formatted_date': formatted_date})
+
+        return render(request, 'catalog/yourorder.html', {'orderAllItem': orderAllItem, 'total_price': total_price, 'status': status})
 
 @login_required
 def cancelled_order(request, order_id):
@@ -432,15 +440,16 @@ class AdminOrderList(View):
 
         orders = Order.objects.order_by('-order_date')
         orderAllItem = []
+        total_price=0
 
         for order in orders:
             orderall = OrderDetail.objects.filter(order=order)
             total_price = sum(item.price * item.quantity for item in orderall)
-
-            # Chuyển đối tượng datetime naive sang đối tượng có thông tin múi giờ
             tz = timezone.get_current_timezone()
-            formatted_date = (timezone.make_aware(order.order_date, tz)).strftime("%H:%M:%S %d/%m/%Y")
-
+            if order.order_date is not None and isinstance(order.order_date, datetime.datetime):
+                formatted_date = timezone.make_aware(order.order_date, tz).strftime("%H:%M:%S %d/%m/%Y")
+            else:
+                formatted_date = "Invalid date"  # or any other appropriate handling for non-datetime values
             if status == 'all' or order.status == status:
                 orderAllItem.append({'allItem': orderall, 'total_price': total_price, 'order': order, 'formatted_date': formatted_date})
 
@@ -451,6 +460,14 @@ def accept_order(request, order_id):
     try:
         order = get_object_or_404(Order, id=order_id)
         order.status = 1
+        for order_detail in order.orderdetail_set.all():
+            if order_detail.product.number_in_stock < order_detail.quantity:
+                return redirect('home:admin_order')
+        order_detail=OrderDetail.objects.filter(order=order)
+        for sold_product in order_detail:
+            sold_product.product.number_in_stock -= sold_product.quantity
+            sold_product.product.save()
+        order.save()
         order.save()
         return redirect('home:admin_order')
     except Order.DoesNotExist:

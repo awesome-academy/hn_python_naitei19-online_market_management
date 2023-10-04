@@ -32,14 +32,16 @@
                                     name="{{ form.is_staff.name }}"
                                     id="{{ form.is_staff.id_for_label }}"
                                     {% if form.is_staff.value %}checked{% endif %}
-                                    {% if not request.user.is_superuser %}disabled{% endif %}>
+                                    {% if not request.user.is_superuser %}disabled{% endif %}
+                                    required>
                                 {% else %}
                                     <div class="input-group">
                                     <input  type="{{ field.field.widget.input_type }}"
                                             class="form-control"
                                             name="{{ field.name }}"
                                             id="{{ field.id_for_label }}"
-                                            value="{{ field.value|default:''}}">
+                                            value="{{ field.value|default:''}}" 
+                                            required>
                                     </div>
                                 {% endif %}
                             </td>

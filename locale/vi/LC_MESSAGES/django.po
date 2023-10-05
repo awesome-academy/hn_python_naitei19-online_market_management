@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-05 01:50+0700\n"
+"POT-Creation-Date: 2023-10-06 00:22+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,80 +26,80 @@ msgstr "Số lượng trong kho phải là số nguyên dương."
 msgid "The base price must be a positive integer."
 msgstr "Giá cơ bản phải là số nguyên dương."
 
-#: .\home\models.py:17
+#: .\home\models.py:18
 msgid "Parent category of this category (if any)."
 msgstr "Thể loại gốc của thể loại này (nếu có)."
 
-#: .\home\models.py:24
+#: .\home\models.py:25
 msgid "Product image"
 msgstr "URL của hình ảnh sản phẩm."
 
-#: .\home\models.py:25
+#: .\home\models.py:26
 msgid "Brief description of the product."
 msgstr "Mô tả ngắn gọn về sản phẩm."
 
-#: .\home\models.py:26
+#: .\home\models.py:27
 msgid "The origin price of the product."
 msgstr "giá gốc của sản phẩm."
 
-#: .\home\models.py:27
+#: .\home\models.py:28
 msgid "Quantity of the product available in stock."
 msgstr "Số lượng sản phẩm có sẵn trong kho."
 
-#: .\home\models.py:28
+#: .\home\models.py:29
 msgid "Number of products sold."
 msgstr "Số lượng sản phẩm đã bán."
 
-#: .\home\models.py:47
+#: .\home\models.py:48
 msgid "Date of the order."
 msgstr "Ngày đặt hàng."
 
-#: .\home\models.py:55
+#: .\home\models.py:56
 msgid "Status of the order."
 msgstr "Tình trạng của đơn hàng."
 
-#: .\home\models.py:58 .\home\models.py:65
+#: .\home\models.py:59 .\home\models.py:66
 msgid "total cost of order."
 msgstr "tổng chi phí của đơn hàng"
 
-#: .\home\models.py:61
+#: .\home\models.py:62
 msgid "Price of product at order."
 msgstr "Giá sản phẩm theo đơn hàng."
 
-#: .\home\models.py:62
+#: .\home\models.py:63
 msgid "total quantity of products ordered."
 msgstr "tổng số lượng sản phẩm đã đặt hàng."
 
-#: .\home\models.py:71
+#: .\home\models.py:72
 msgid "Quantity of each product in the cart."
 msgstr "Số lượng của từng sản phẩm trong giỏ hàng."
 
-#: .\home\models.py:77
+#: .\home\models.py:78
 msgid "The number of sales of the best-selling product."
 msgstr "Số lượng bán ra của sản phẩm bán chạy nhất"
 
-#: .\home\models.py:80
+#: .\home\models.py:81
 msgid "Best Seller"
 msgstr "Sản phẩm bán chạy"
 
-#: .\home\models.py:81
+#: .\home\models.py:82
 msgid "Best Sellers"
 msgstr "Sản phẩm bán chạy"
 
-#: .\home\models.py:85
+#: .\home\models.py:86
 msgid "Brief description of the promotion."
 msgstr "Mô tả ngắn gọn về khuyến mãi."
 
-#: .\home\views.py:60 .\home\views.py:205 .\home\views.py:272
-#: .\home\views.py:425
+#: .\home\views.py:76 .\home\views.py:221 .\home\views.py:288
+#: .\home\views.py:440
 msgid "Changes saved"
 msgstr "Thay đổi đã lưu"
 
-#: .\home\views.py:474 .\home\views.py:484 .\home\views.py:497
+#: .\home\views.py:489 .\home\views.py:499 .\home\views.py:512
 msgid "Đơn đặt hàng không tồn tại"
 msgstr ""
 
-#: .\home\views.py:494
+#: .\home\views.py:509
 msgid "Không thể xóa đơn đặt hàng với trạng thái này"
 msgstr ""
 
@@ -153,31 +153,31 @@ msgstr "Tạo thể loại mới"
 
 #: .\templates\admin\home.html:48
 msgid "ORDER"
-msgstr ""
+msgstr "Đơn"
 
 #: .\templates\admin\home.html:49
 msgid "CATEGORY"
-msgstr ""
+msgstr "T.Loại"
 
 #: .\templates\admin\home.html:50
 msgid "PRODUCT"
-msgstr ""
+msgstr "S.Phẩm"
 
 #: .\templates\admin\home.html:51
 msgid "USER"
-msgstr ""
+msgstr "Người Dùng"
 
 #: .\templates\admin\home.html:52
 msgid "STATISTICS"
-msgstr ""
+msgstr "T.KÊ"
 
-#: .\templates\admin\home.html:143 .\templates\homepage\base.html:119
+#: .\templates\admin\home.html:143 .\templates\homepage\base.html:126
 #: .\templates\registration\login.html:10
 #: .\templates\registration\login.html:38
 msgid "Login"
 msgstr "Đăng Nhập"
 
-#: .\templates\admin\home.html:147 .\templates\homepage\base.html:133
+#: .\templates\admin\home.html:147 .\templates\homepage\base.html:140
 msgid "Admin Page"
 msgstr "Trang Quản Lý"
 
@@ -302,6 +302,7 @@ msgid "Stock"
 msgstr "Số Lượng"
 
 #: .\templates\admin\product_list.html:21
+#: .\templates\catalog\product_detail.html:17
 msgid "Sold"
 msgstr "Đã Bán"
 
@@ -495,7 +496,11 @@ msgstr "Theo Khuyến Mãi"
 msgid "Sold:"
 msgstr "Đã Bán:"
 
-#: .\templates\catalog\menu.html:71
+#: .\templates\catalog\menu.html:54
+msgid "View More"
+msgstr "Chi tiết"
+
+#: .\templates\catalog\menu.html:78
 msgid "There are no products matching the search results!!!"
 msgstr " Không có món nào phù hợp với kết quả tìm kiếm của bạn!!! "
 
@@ -549,21 +554,55 @@ msgstr ""
 "Thông tin của bạn chưa hoàn thiện, hãy cập nhật thông tin ở tài khoản cá "
 "nhân trước khi đặt hàng!!!"
 
+#: .\templates\catalog\product_detail.html:34
+msgid "Add to Cart"
+msgstr "Thêm vào Giỏ hàng"
+
+#: .\templates\catalog\product_detail.html:43
+#: .\templates\catalog\product_detail.html:62
+msgid "Add a Review"
+msgstr "Thêm Đánh Giá"
+
+#: .\templates\catalog\product_detail.html:48
+#: .\templates\catalog\product_detail.html:66
+#: .\templates\catalog\product_detail.html:86
+msgid "Rating:"
+msgstr "Điểm:"
+
+#: .\templates\catalog\product_detail.html:52
+#: .\templates\catalog\product_detail.html:70
+#: .\templates\catalog\product_detail.html:88
+msgid "Review:"
+msgstr "Đánh Giá:"
+
+#: .\templates\catalog\product_detail.html:56
+#: .\templates\catalog\product_detail.html:74
+msgid "Submit Review"
+msgstr "Gửi Đánh giá"
+
+#: .\templates\catalog\product_detail.html:71
+msgid "Login To Add Review"
+msgstr "Đăng Nhập Để Đánh Giá"
+
+#: .\templates\catalog\product_detail.html:91
+msgid "No reviews yet."
+msgstr "Chưa có đắnh giá về sản phẩm."
+
 #: .\templates\catalog\yourorder.html:72
 msgid "Pay"
 msgstr "Thanh Toán"
 
 #: .\templates\homepage\base.html:47
 msgid "HOME"
-msgstr "HOME"
+msgstr "TR.CHỦ"
 
 #: .\templates\homepage\base.html:48
 msgid "MENU"
-msgstr "MENU"
+msgstr "T.ĐƠN"
 
 #: .\templates\homepage\base.html:49
 msgid "ABOUT"
-msgstr "ABOUT"
+msgstr "VỀ HYNIU"
 
 #: .\templates\homepage\footer.html:11
 msgid " Contact Us "

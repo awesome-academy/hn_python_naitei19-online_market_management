@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class CustomUser(AbstractUser):
     phone = models.CharField(max_length=15)
@@ -21,7 +22,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='product_images/', null=True, blank=True, help_text=_("Product image"))
+    image = models.ImageField(upload_to='product_images/', default='homepage/image404.png', null=True, blank=True, help_text=_("Product image"))
     description = models.CharField(max_length=255, help_text=_("Brief description of the product."))
     base_price = models.DecimalField(max_digits=12, decimal_places=0, help_text=_("The origin price of the product."))
     number_in_stock = models.IntegerField(default=0, help_text=_("Quantity of the product available in stock."))
@@ -86,3 +87,15 @@ class Promotion(models.Model):
     dis_percent = models.IntegerField(default=0)
     start_date = models.DateTimeField(default=timezone.now)
     end_date = models.DateTimeField(default=timezone.now)
+
+class Review(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    rating = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
+    comment = models.TextField()
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Review by {self.user.username} for {self.product.name}"

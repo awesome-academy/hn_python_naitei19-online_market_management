@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser, Category, Product
+from .models import CustomUser, Category, Product, Review
 from django.utils.translation import gettext_lazy as _
 
 CustomUser = get_user_model()
@@ -71,3 +71,8 @@ class CustomUserDetailForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ['username', 'first_name', 'last_name', 'email', 'phone', 'address', 'is_staff']
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['rating', 'comment']

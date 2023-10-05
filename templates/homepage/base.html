@@ -22,7 +22,7 @@
   {% block navbarblock %}
   <!-- header section strats -->
   <div class="hero_area">
-    {% if request.resolver_match.url_name == 'category' or request.resolver_match.url_name == 'your_order' %}
+    {% if request.resolver_match.url_name == 'category' or request.resolver_match.url_name == 'your_order'  or request.resolver_match.url_name == 'menu_product_detail' %}
     <div class="bg-navbar">
       <img src="{% static 'homepage/images/navbar.jpg' %}" alt="">
     </div>
@@ -46,7 +46,7 @@
             <ul class="navbar-nav  mx-auto ">
               <li class="listlink"><a href="{% url 'home:home' %}"> {% trans "HOME" %}</a> </li>
               <li class="listlink"><a href="{% url 'home:category' %}">&emsp;  &emsp; {% trans "MENU" %}</a></li>
-              <li class="listlink"><a href="">&emsp;  &emsp; {% trans "ABOUT" %}</a></li>
+              <li class="listlink"><a href="https://www.facebook.com/emiotsetsubun">&emsp;  &emsp; {% trans "ABOUT" %}</a></li>
             </ul>
             {% get_current_language as LANGUAGE_CODE %}
             {% get_available_languages as LANGUAGES %}
@@ -107,6 +107,13 @@
             <a class="listlink" href="{% url 'en:your_order' %}">   &emsp;
               <img src="/static/homepage/images/en.png" class="imagesflag">
               <a  href="{% url 'en:your_order' %}" class="trans-button"> EN &emsp; </a>    
+              {% elif request.resolver_match.url_name == 'menu_product_detail' %}
+              <a class="listlink" href="{% url 'vi:menu_product_detail' product_id=product.id %}">  &emsp;
+                <img src="/static/homepage/images/vi.png" class="imagesflag">
+                <a  href="{% url 'vi:menu_product_detail' product_id=product.id %}" class="trans-button"> VI </a> 
+              <a class="listlink" href="{% url 'en:menu_product_detail' product_id=product.id %}">   &emsp;
+                <img src="/static/homepage/images/en.png" class="imagesflag">
+                <a  href="{% url 'en:menu_product_detail' product_id=product.id %}" class="trans-button"> EN &emsp; </a>    
             {% endif %}
             <div class="user_option">
               {% if user.is_authenticated %}
@@ -122,11 +129,11 @@
               {% endif %}
               {% if user.is_authenticated %}
               <a href="{% url 'home:cart' %}" class="user_link">
-                <i class="fa fa-shopping-cart	" aria-hidden="true"></i>
+                <i class="fa fa-shopping-cart	" aria-hidden="true">({{total_quantity}})</i>
               </a>
               {% elif user.order %}
               <a href="{% url 'home:yourorder' %}" class="user_link">
-                <i class="fa fa-shopping-cart	" aria-hidden="true"><p>(*)</p></i>
+                <i class="fa fa-shopping-cart	" aria-hidden="true"></i>
               </a>
               {% endif %}
               {% if user.is_staff %}

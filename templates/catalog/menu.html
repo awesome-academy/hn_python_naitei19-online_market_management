@@ -50,7 +50,8 @@
               <div class="detail-box">
                 <h5  class="product-title-text"> {% trans Product.product.name%}</h5>
                 <p class="description-text"> {% trans Product.product.description %} </p>
-                <h6 class="text-primary">{%trans "Sold:"%} {{Product.product.sold_number}}</h6>
+                <h6 class="font-weight-bold d-inline">{%trans "Sold:"%} {{Product.product.sold_number}}  &emsp;  &emsp;  &emsp;  </h6>    
+                  &emsp; &emsp; &emsp; <a href="{% url 'home:menu_product_detail' Product.product.id %}" class="product-link text-primary d-inline">{%trans "View More" %}</a>
                 <div class="options"> 
                   {% if Product.promotion > 0 %}
                     <h6 class="text-danger"> <del>{% money_localize Product.product.base_price 'VND' %} </del></h6>
@@ -58,9 +59,15 @@
                   {% else %}
                     <h6> {% money_localize Product.product.base_price 'VND' %} </h6>
                   {% endif %}
-                  <a href="{% url 'home:add_to_cart' Product.product.id %}" class="user_link">
-                    <i class="fa fa-shopping-cart	" aria-hidden="true"></i>
+                  {% if Product.cart_item_quantity %}
+                  <a href="{% url 'home:add_to_cart' Product.product.id %}" class="user_link bg-success">
+                    <i class="fa fa-shopping-cart	" aria-hidden="true"></i>  ({{Product.cart_item_quantity}})
                   </a>
+                  {% else %}
+                    <a href="{% url 'home:add_to_cart' Product.product.id %}" class="user_link">
+                      <i class="fa fa-shopping-cart	" aria-hidden="true"></i>
+                    </a>
+                  {% endif %}
                 </div>
               </div>
             </div>

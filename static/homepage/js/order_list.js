@@ -1,6 +1,9 @@
 $(document).ready(function () {
-    if (!window.location.search.includes('status=')) {
-        var newUrl = window.location.href + (window.location.search ? '&' : '?') + 'status=all';
+    var currentUrl = window.location.href;
+
+    if (currentUrl.endsWith('/yourorder/') || currentUrl.endsWith('/admin/order/')) {
+        var separator = currentUrl.includes('?') ? '&' : '?';
+        var newUrl = currentUrl + separator + 'status=all';
         window.location.href = newUrl;
     }
 });

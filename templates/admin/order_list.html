@@ -56,7 +56,12 @@
                     <tr>
                         <td class="image-cell"><img src="{{ order_detail.product.image.url }}" alt="{{ order_detail.product.name }}"></td>
                         <td>{{ order_detail.product.name }}</td>
-                        <td>x{{ order_detail.quantity }}</td>
+                        <td>
+                            x{{ order_detail.quantity }}
+                            {% if orderAll.order.status == 0 and order_detail.product.number_in_stock < order_detail.quantity %}
+                            (không đủ trong kho)
+                            {% endif %}
+                        </td>
                         <td>{% money_localize order_detail.price 'VND' %}</td>
                     </tr>
                     {% endfor %}
@@ -75,7 +80,7 @@
                             {% endif %}
                         </td>
                         <td>
-                            {% if orderAll.order.status == 0 or orderAll.order.status == 1 %}
+                            {% if orderAll.order.status == 0 %}
                             <a href="{% url 'home:admin_reject_order' orderAll.order.id %}" class="btn btn-danger">{% trans "Reject" %}</a>
                             {% else %}
                             <a class="btn btn-custom" readonly>{% trans "Reject" %}</a>

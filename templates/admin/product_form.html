@@ -9,6 +9,12 @@
         <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
             <h1>{% trans "Create New Product" %}</h1>
+            {% for error in form.base_price.errors %}
+                <strong><p class="text-danger text-center">{{ error }}</p></strong>
+            {% endfor %}
+            {% for error in form.number_in_stock.errors %}
+                <strong><p class="text-danger text-center">{{ error }}</p></strong>
+            {% endfor %}
             <table class="table">
                 {% for field in form %}
                     {% if field.name != "csrfmiddlewaretoken" %}
